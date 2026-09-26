@@ -1,0 +1,93 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Engine fidelity</title>
+<meta name="description" content="Every module of both MDQNM editions, run in the browser, compared with the JVM engine.">
+<style>
+:root{color-scheme:light;--plane:#f9f9f7;--surface:#fcfcfb;--ink:#0b0b0b;--ink-2:#52514e;--muted:#898781;--line:#e1e0d9;--ok:#2f8a4e;--warn:#b7791f;--bad:#c2410c;--accent:#2a78d6}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){color-scheme:dark;--plane:#0d0d0d;--surface:#1a1a19;--ink:#fff;--ink-2:#c3c2b7;--muted:#898781;--line:#2c2c2a;--ok:#4caf6e;--warn:#d9a03a;--bad:#e0603f;--accent:#3987e5}}
+:root[data-theme="dark"]{color-scheme:dark;--plane:#0d0d0d;--surface:#1a1a19;--ink:#fff;--ink-2:#c3c2b7;--muted:#898781;--line:#2c2c2a;--ok:#4caf6e;--warn:#d9a03a;--bad:#e0603f;--accent:#3987e5}
+*{box-sizing:border-box}
+body{margin:0;background:var(--plane);color:var(--ink);font:14px/1.55 ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,sans-serif}
+.wrap{max-width:1000px;margin:0 auto;padding:28px 16px}
+h1{font-size:20px;margin:0 0 6px} h2{font-size:15px;margin:22px 0 8px}
+p{max-width:78ch;color:var(--ink-2)} a{color:var(--accent)}
+.mono,td.n{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;font-variant-numeric:tabular-nums}
+.tiles{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:1px;background:var(--line);border:1px solid var(--line);border-radius:12px;overflow:hidden}
+.tile{background:var(--surface);padding:12px 14px}
+.tile .k{font-size:10px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}
+.tile .v{font-size:18px;font-family:ui-monospace,monospace;margin-top:3px}
+.tile .s{font-size:12px;color:var(--ink-2)}
+.tbl{overflow-x:auto;border:1px solid var(--line);border-radius:12px;background:var(--surface);margin-top:10px}
+table{border-collapse:collapse;width:100%;font-size:12.5px}
+th,td{padding:6px 10px;border-bottom:1px solid var(--line);text-align:left;white-space:nowrap}
+th{font-size:10.5px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);font-weight:500;position:sticky;top:0;background:var(--surface)}
+td.n{text-align:right}
+.ok{color:var(--ok)} .warn{color:var(--warn)} .bad{color:var(--bad)}
+ul{color:var(--ink-2);max-width:80ch} li{margin:4px 0}
+code{font-family:ui-monospace,monospace;font-size:12.5px}
+</style>
+</head>
+<body>
+<div class="wrap">
+<h1>Engine fidelity</h1>
+<p>Every module of both editions was loaded in the browser engine (SCI, from the unmodified source) and compared with
+the JVM engine (Clojure 1.7.0 on Java 8) loading the same module: its printed output, every clock agent's sealed value,
+and a call of every public function with the same arguments (<code>24.5 7 3 2 1 0.5</code>, as many as each arity takes).
+Each module's clock was frozen at the instant the JVM loaded it, so sealed values can be compared.
+<a href="./">← back to the engine</a></p>
+
+<div id="out"></div>
+
+<h2>What differs, and why</h2>
+<ul>
+<li><b>Number printing.</b> JavaScript has one number type. A double with an integral value prints without its
+  <code>.0</code> (<code>16800</code> for the JVM's <code>16800.0</code>); a large value prints in full
+  (<code>14227095.359168053</code> for the JVM's <code>1.4227095359168053E7</code>); there are no exact ratios, so
+  <code>(/ 1000 7)</code> is <code>142.85714285714286</code>, not <code>1000/7</code>. Values agree; their printed form does not.</li>
+<li><b>Integers</b> are exact to 2<sup>53</sup> rather than 2<sup>63</sup>. The engine's day and millisecond counts sit far inside that.</li>
+<li><b>Character literals.</b> ClojureScript has no character type. A bare <code>\n</code> in the source — which Clojure reads
+  as the letter <code>n</code>, not a newline — is the one-letter string <code>"n"</code>, and prints as such where the JVM prints <code>\n</code>.</li>
+<li><b>Clocks.</b> Agents seal to this device's clock at the moment of loading, and re-seal whenever the page is reloaded.
+  Functions that read the clock when called (<code>*ztnldy*</code>) return the reading of that moment.</li>
+<li><b>Error wording.</b> Failures raise the JVM's exception where the engine's behaviour depends on it
+  (<code>ClassCastException</code> for arithmetic on an agent; <code>Agent is failed, needs restart</code>). Other errors
+  carry SCI's wording: <code>24.5 is not ISeqable</code> for the JVM's <code>Don't know how to create ISeq from: java.lang.Double</code>.</li>
+<li><b>Object identities.</b> <code>#object[… 0x2652b145 …]</code> hashes differ on every run, on the JVM as well.</li>
+</ul>
+<p>Reproduce: <code>tools/capture_jvm.py</code> against the running JVM engine, then <code>node tools/compare.js primary|bank</code>.</p>
+</div>
+<script>
+const esc=s=>String(s).replace(/[&<>]/g,m=>({"&":"&amp;","<":"&lt;",">":"&gt;"}[m]));
+fetch("data/fidelity.json").then(r=>r.json()).then(F=>{
+  let h="";
+  for(const [tree,mods] of Object.entries(F)){
+    const M=Object.values(mods), S=k=>M.reduce((a,m)=>a+(typeof m[k]==="number"?m[k]:(m[k]===true?1:0)),0);
+    const loadOk=M.filter(m=>m.load==="ok").length, outId=S("outExact"), outVal=M.filter(m=>!m.outExact&&m.outValue).length,
+          outClock=M.filter(m=>!m.outValue&&m.outClock).length, outDiff=M.filter(m=>!m.outClock).length;
+    const ag=S("agentsExact")+S("agentsClock"), agDiff=S("agentsDiff");
+    const inv=S("inv"), invOk=S("invExact")+S("invClock"), both=S("invBothFail"), same=S("invSameError"),
+          diff=M.reduce((a,m)=>a+m.invDiff.length,0);
+    h+=`<h2>${tree==="bank"?"Shulammite bank edition":"Primary edition"} — ${M.length} modules</h2><div class="tiles">
+      <div class="tile"><div class="k">modules loaded</div><div class="v ${loadOk===M.length?"ok":"bad"}">${loadOk} / ${M.length}</div></div>
+      <div class="tile"><div class="k">load output</div><div class="v">${outId} identical</div><div class="s">${outVal} differ only in number printing · ${outClock} only in clock time · ${outDiff} otherwise</div></div>
+      <div class="tile"><div class="k">clock agents</div><div class="v ${agDiff?"bad":"ok"}">${ag} match</div><div class="s">${S("agentsExact")} exactly · ${S("agentsClock")} within the load instant · ${agDiff} differ</div></div>
+      <div class="tile"><div class="k">function calls</div><div class="v">${invOk} / ${inv} same value</div><div class="s">${both} fail on both (${same} with the same exception) · ${diff} differ</div></div></div>`;
+    h+=`<div class="tbl"><table><tr><th>module</th><th>load</th><th>output</th><th class="n">agents</th><th class="n">calls same</th><th class="n">both fail</th><th class="n">differ</th></tr>`;
+    for(const [ns,m] of Object.entries(mods)){
+      const o=m.outExact?'<span class="ok">identical</span>':m.outValue?'<span class="warn">number print</span>':m.outClock?'<span class="warn">clock time</span>':'<span class="bad">differs</span>';
+      const d=m.invDiff.length;
+      h+=`<tr><td class="mono" title="${esc(ns)}">${esc(ns.replace("org.threeppnoah.",""))}</td><td class="${m.load==="ok"?"ok":"bad"}">${m.load==="ok"?"ok":esc(m.load)}</td><td>${o}</td>
+        <td class="n">${m.agentsExact+m.agentsClock}${m.agentsDiff?` <span class="bad">(${m.agentsDiff} ≠)</span>`:""}</td>
+        <td class="n">${m.invExact+m.invClock} / ${m.inv}</td><td class="n">${m.invBothFail}</td>
+        <td class="n ${d?"warn":""}" title="${esc(m.invDiff.map(x=>x.fn).join("\n"))}">${d}</td></tr>`;
+    }
+    h+=`</table></div>`;
+  }
+  document.getElementById("out").innerHTML=h;
+});
+</script>
+</body>
+</html>

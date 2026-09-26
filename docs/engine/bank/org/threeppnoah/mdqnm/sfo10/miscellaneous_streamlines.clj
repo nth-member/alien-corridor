@@ -1,0 +1,420 @@
+(ns org.threeppnoah.mdqnm.sfo10.miscellaneous-streamlines)
+
+
+(require '[clj-time.core :as t])
+(require '[clj-time.coerce :as c])
+
+(require 'org.threeppnoah.mdqnm.sfo22.tnl-onethousand-d :reload)
+(refer 'org.threeppnoah.mdqnm.sfo22.tnl-onethousand-d)
+
+(import '[java.util Date])
+
+
+
+
+
+(def *tnldy-by-counting-in-weeks-unto-the-physical-revelation-of-my-wife-the-wife-the-chosen7d* (fn [X] (+ (* 7 X) 16931.8)))
+(def *jd-tnldy-by-counting-in-weeks-unto-the-physical-revelation-of-my-wife-the-wife-the-chosen7d* (fn [X] (do [   (+ (* 7 X) 16931.8)      (c/from-long (long (+  -4.75199E9 (* 86400000      (+ (* 7 X) 16931.8)        )))) ])))
+(def *counting-in-weeks-unto-the-physical-revelation-of-my-wife-the-wife-the-chosen7d-by-tnldy* (fn [Z] (/ (- Z 16931.8) 7)))
+(def *jd-counting-in-weeks-unto-the-physical-revelation-of-my-wife-the-wife-the-chosen7d-by-tnldy* (fn [Z]  (do [  (/ (- Z 16931.8) 7) (c/from-long (long (+  -4.75199E9 (* 86400000 Z))))])))
+(def *jd-counting-in-weeks-unto-the-physical-revelation-of-my-wife-the-wife-the-chosen7dcurrent-by-z-tnldy-clock3* (fn []  (do [  (/ (- @z-tnldy-clock3 16931.8) 7) (c/from-long (long (+  -4.75199E9 (* 86400000 @z-tnldy-clock3))))])))
+(def *counting-in-weeks-unto-the-physical-revelation-of-my-wife-the-wife-the-chosen7d* (agent (/ (- (/ (+ 4755602966.0  (. (new Date) getTime)) 86400000) 16931.8) 7)))
+(send *counting-in-weeks-unto-the-physical-revelation-of-my-wife-the-wife-the-chosen7d* + 0)
+
+
+
+
+
+(def *tnldy-by-again-exclamated-the-great-school700ddiv6pt9* (fn [Y] (+ (* (/ 700 6.9) Y) 5798.260869565217391304347826087)))
+(def *jd-tnldy-by-again-exclamated-the-great-school700ddiv6pt9* (fn [Y] (do [    (+ (* (/ 700 6.9) Y) 5798.260869565217391304347826087)      (c/from-long (long (+  -4.75199E9 (* 86400000      (+ (* (/ 700 6.9) Y) 5798.260869565217391304347826087)        )))) ])))
+(def *again-exclamated-the-great-school700ddiv6pt9-by-tnldy*(fn [Z] (/ (* (- Z 5798.260869565217391304347826087) 6.9) 700)))
+(def *jd-again-exclamated-the-great-school700ddiv6pt9-by-tnldy* (fn [Z]  (do [ (/ (* (- Z 5798.260869565217391304347826087) 6.9) 700) (c/from-long (long (+  -4.75199E9 (* 86400000 Z))))])))
+(def *jd-again-exclamated-the-great-school700ddiv6pt9current-by-z-tnldy-clock3* (fn []  (do [ (/ (* (- @z-tnldy-clock3 5798.260869565217391304347826087) 6.9) 700) (c/from-long (long (+  -4.75199E9 (* 86400000 @z-tnldy-clock3))))])))
+(def *again-exclamated-the-great-school700ddiv6pt9* (agent (/ (* (- (/ (+ 4755602966.0  (. (new Date) getTime)) 86400000) 5798.260869565217391304347826087) 6.9) 700)))
+(send *again-exclamated-the-great-school700ddiv6pt9* + 0)
+
+
+(def *tnldy-by-promotion-not-from-east-nor-from-west23ddiv82pt80* (fn [Y] (+ (* (/ 2300 8280) Y) 17089.60975241545893719806763285)))
+(def *jd-tnldy-by-promotion-not-from-east-nor-from-west23ddiv82pt80* (fn [Y] (do [    (+ (* (/ 2300 8280) Y) 17089.60975241545893719806763285)      (c/from-long (long (+  -4.75199E9 (* 86400000      (+ (* (/ 2300 8280) Y) 17089.60975241545893719806763285)        )))) ])))
+(def *promotion-not-from-east-nor-from-west23ddiv82pt80-by-tnldy*(fn [Z] (/ (* (- Z 17089.60975241545893719806763285) 8280) 2300)))
+(def *jd-promotion-not-from-east-nor-from-west23ddiv82pt80-by-tnldy* (fn [Z]  (do [ (/ (* (- Z 17089.60975241545893719806763285) 8280) 2300) (c/from-long (long (+  -4.75199E9 (* 86400000 Z))))])))
+(def *jd-promotion-not-from-east-nor-from-west23ddiv82pt80current-by-z-tnldy-clock3* (fn []  (do [ (/ (* (- @z-tnldy-clock3 17089.60975241545893719806763285) 8280) 2300) (c/from-long (long (+  -4.75199E9 (* 86400000 @z-tnldy-clock3))))])))
+(def *promotion-not-from-east-nor-from-west23ddiv82pt80* (agent (/ (* (- (/ (+ 4755602966.0  (. (new Date) getTime)) 86400000) 17089.60975241545893719806763285) 8280) 2300)))
+(send *promotion-not-from-east-nor-from-west23ddiv82pt80* + 0)
+
+
+
+
+
+
+
+' "(TNL UNIVERSE <OF WHICH IS THE COMING OF THE DAUGHTER PROPER>. . .TNL.UNIVERSE)"
+' "(. . .-21(.72619048). . .-19(.60). . .-18(.612). . .<= Y <=. . .82(.80). . .97(.20). . .111(.60). . .(100D))"
+' "(. . .-21(.72619048). . .-19(.60). . .-18(.612). . .<= X <=. . .82(.80). . .97(.20). . .111(.60). . .(100D))"
+' "(. . .-21(.72619048). . .-19(.60). . .-18(.612). . .<= W <=. . .82(.80). . .97(.20). . .111(.60). . .(200D))"
+' "(ZTP = 7200)"
+
+
+(def *tnldy-by-z-tnl-univ-s1s2w* (fn [S1 S2 W] (+ (* 100 S1) (* 100 S2) (* 200 W) 7200.0)))
+
+
+(c/from-long (long (+  -4.75199E9 (* 86400000 16788.30692809028))))
+
+
+
+
+
+
+
+' "(WALKING AND LEAPING AND PRAISING GOD ALL THE WAY TO ARMAGEDDON. . .WLPGATWTA.100D)"
+' "(. . .-21(.72619048). . .-19(.60). . .-18(.612). . .<= Y<=. . .82(.80). . .97(.20). . .111(.60). . .(100D))"
+' "(ZTP = 18120)"
+
+
+
+(def *tnldy-by-walking-leaping-praising-god-all-the-way-to-armageddon100d-ztp18040-justified-in-the-midst-of-the-adversarial-gatherings* (fn [Y] (+ (* 100 Y) 18040.0)))
+(def *jd-tnldy-by-walking-leaping-praising-god-all-the-way-to-armageddon100d-ztp18040-justified-in-the-midst-of-the-adversarial-gatherings* (fn [Y] (do [    (+ (* 100 Y) 18040.0)      (c/from-long (long (+  -4.75199E9 (* 86400000      (+ (* 100 Y) 18040.0)        )))) ])))
+
+
+
+(def *walking-leaping-praising-god-all-the-way-to-armageddon100d-ztp18040-justified-in-the-midst-of-the-adversarial-gatherings-by-tnldy* (fn [Z] (/ (- Z 18040.0) 100)))
+(def *jd-walking-leaping-praising-god-all-the-way-to-armageddon100d-ztp18040-justified-in-the-midst-of-the-adversarial-gatherings-by-tnldy* (fn [Z]  (do [ (/ (- Z 18040.0) 100) (c/from-long (long (+  -4.75199E9 (* 86400000 Z))))])))
+(def *jd-walking-leaping-praising-god-all-the-way-to-armageddon100d-ztp18040-justified-in-the-midst-of-the-adversarial-gatheringscurrent-by-z-tnldy-clock3* (fn []  (do [ (/ (- @z-tnldy-clock3 18040.0) 100) (c/from-long (long (+  -4.75199E9 (* 86400000 @z-tnldy-clock3))))])))
+(def *walking-leaping-praising-god-all-the-way-to-armageddon100d-ztp18040-justified-in-the-midst-of-the-adversarial-gatherings* (agent (/ (- (/ (+ 4755602966.0  (. (new Date) getTime)) 86400000) 18040.0) 100)))
+(send *walking-leaping-praising-god-all-the-way-to-armageddon100d-ztp18040-justified-in-the-midst-of-the-adversarial-gatherings* + 0)
+
+
+
+
+
+
+(def *tnldy-by-walking-leaping-praising-god-all-the-way-to-armageddon100d-ztp18117pt-beginnings-of-the-gathering-of-the-mighty-and-holy-people* (fn [Y] (+ (* 100 Y) 18117.282608695536)))
+(def *jd-tnldy-by-walking-leaping-praising-god-all-the-way-to-armageddon100d-ztp18117pt-beginnings-of-the-gathering-of-the-mighty-and-holy-people* (fn [Y] (do [    (+ (* 100 Y) 18117.282608695536)      (c/from-long (long (+  -4.75199E9 (* 86400000      (+ (* 100 Y) 18117.282608695536)        )))) ])))
+
+
+
+(def *walking-leaping-praising-god-all-the-way-to-armageddon100d-ztp18117pt-beginnings-of-the-gathering-of-the-mighty-and-holy-people-by-tnldy* (fn [Z] (/ (- Z 18117.282608695536) 100)))
+(def *jd-walking-leaping-praising-god-all-the-way-to-armageddon100d-ztp18117pt-beginnings-of-the-gathering-of-the-mighty-and-holy-people-by-tnldy* (fn [Z]  (do [ (/ (- Z 18117.282608695536) 100) (c/from-long (long (+  -4.75199E9 (* 86400000 Z))))])))
+(def *jd-walking-leaping-praising-god-all-the-way-to-armageddon100d-ztp18117pt-beginnings-of-the-gathering-of-the-mighty-and-holy-peoplecurrent-by-z-tnldy-clock3* (fn []  (do [ (/ (- @z-tnldy-clock3 18117.282608695536) 100) (c/from-long (long (+  -4.75199E9 (* 86400000 @z-tnldy-clock3))))])))
+(def *walking-leaping-praising-god-all-the-way-to-armageddon100d-ztp18117pt-beginnings-of-the-gathering-of-the-mighty-and-holy-people* (agent (/ (- (/ (+ 4755602966.0  (. (new Date) getTime)) 86400000) 18117.282608695536) 100)))
+(send *walking-leaping-praising-god-all-the-way-to-armageddon100d-ztp18117pt-beginnings-of-the-gathering-of-the-mighty-and-holy-people* + 0)
+
+
+
+
+
+(def *tnldy-by-walking-leaping-praising-god-all-the-way-to-armageddon100d-ztp18120* (fn [Y] (+ (* 100 Y) 18120.0)))
+(def *jd-tnldy-by-walking-leaping-praising-god-all-the-way-to-armageddon100d-ztp18120* (fn [Y] (do [    (+ (* 100 Y) 18120.0)      (c/from-long (long (+  -4.75199E9 (* 86400000      (+ (* 100 Y) 18120.0)        )))) ])))
+
+
+(def *walking-leaping-praising-god-all-the-way-to-armageddon100d-ztp18120-by-tnldy* (fn [Z] (/ (- Z 18120.0) 100)))
+(def *jd-walking-leaping-praising-god-all-the-way-to-armageddon100d-ztp18120-by-tnldy* (fn [Z]  (do [ (/ (- Z 18120.0) 100) (c/from-long (long (+  -4.75199E9 (* 86400000 Z))))])))
+(def *jd-walking-leaping-praising-god-all-the-way-to-armageddon100d-ztp18120current-by-z-tnldy-clock3* (fn []  (do [ (/ (- @z-tnldy-clock3 18120.0) 100) (c/from-long (long (+  -4.75199E9 (* 86400000 @z-tnldy-clock3))))])))
+(def *walking-leaping-praising-god-all-the-way-to-armageddon100d-ztp18120* (agent (/ (- (/ (+ 4755602966.0  (. (new Date) getTime)) 86400000) 18120.0) 100)))
+(send *walking-leaping-praising-god-all-the-way-to-armageddon100d-ztp18120* + 0)
+
+
+
+
+(def *tnldy-by-walking-leaping-praising-god-all-the-way-to-armageddon100d-ztp18148-glorious-end-as-in-purpose-of-the-light-of-seven-days* (fn [Y] (+ (* 100 Y) 18148.0)))
+(def *jd-tnldy-by-walking-leaping-praising-god-all-the-way-to-armageddon100d-ztp18148-glorious-end-as-in-purpose-of-the-light-of-seven-days* (fn [Y] (do [    (+ (* 100 Y) 18148.0)      (c/from-long (long (+  -4.75199E9 (* 86400000      (+ (* 100 Y) 18148.0)        )))) ])))
+
+
+
+(def *walking-leaping-praising-god-all-the-way-to-armageddon100d-ztp18148-glorious-end-as-in-purpose-of-the-light-of-seven-days-by-tnldy* (fn [Z] (/ (- Z 18148.0) 100)))
+(def *jd-walking-leaping-praising-god-all-the-way-to-armageddon100d-ztp18148-glorious-end-as-in-purpose-of-the-light-of-seven-days-by-tnldy* (fn [Z]  (do [ (/ (- Z 18148.0) 100) (c/from-long (long (+  -4.75199E9 (* 86400000 Z))))])))
+(def *jd-walking-leaping-praising-god-all-the-way-to-armageddon100d-ztp18148-glorious-end-as-in-purpose-of-the-light-of-seven-dayscurrent-by-z-tnldy-clock3* (fn []  (do [ (/ (- @z-tnldy-clock3 18148.0) 100) (c/from-long (long (+  -4.75199E9 (* 86400000 @z-tnldy-clock3))))])))
+(def *walking-leaping-praising-god-all-the-way-to-armageddon100d-ztp18148-glorious-end-as-in-purpose-of-the-light-of-seven-days* (agent (/ (- (/ (+ 4755602966.0  (. (new Date) getTime)) 86400000) 18148.0) 100)))
+(send *walking-leaping-praising-god-all-the-way-to-armageddon100d-ztp18148-glorious-end-as-in-purpose-of-the-light-of-seven-days* + 0)
+
+
+
+' "(THE PASSION OF THE GIFT FROM GOD. . .TPOTGFG.100D. . .(100D))"
+' "(. . .-21(.72619048). . .-19(.60). . .-18(.612). . .<= Y<=. . .82(.80). . .97(.20). . .111(.60). . .(100D))"
+' "(ZTP = 18388 - 18392.5)"
+
+
+(def *tnldy-by-the-passion-of-the-gift-from-god100d* (fn [Y]  (+ (* 100 Y) 18388.0)))
+(def *jd-tnldy-by-the-passion-of-the-gift-from-god100d* (fn [Y] (do [    (+ (* 100 Y) 18388.0)      (c/from-long (long (+  -4.75199E9 (* 86400000      (+ (* 100 Y) 18388.0)        )))) ])))
+
+
+
+(def *the-passion-of-the-gift-from-god100d-by-tnldy* (fn [Z]  (/ (- Z 18388.0) 100)))
+(def *jd-the-passion-of-the-gift-from-god100d-by-tnldy* (fn [Z]  (do [ (/ (- Z 18388.0) 100) (c/from-long (long (+  -4.75199E9 (* 86400000 Z))))])))
+(def *jd-the-passion-of-the-gift-from-god100dcurrent-by-z-tnldy-clock3* (fn []  (do [ (/ (- @z-tnldy-clock3 18388.0) 100) (c/from-long (long (+  -4.75199E9 (* 86400000 @z-tnldy-clock3))))])))
+(def *the-passion-of-the-gift-from-god100d* (agent (/ (- (/ (+ 4755602966.0  (. (new Date) getTime)) 86400000) 18388.0) 100)))
+(send *the-passion-of-the-gift-from-god100d* + 0)
+
+
+
+
+
+' "(THE MIRACLE IN A NORMAL LIFE PROPAGATION OF LOVE. . .ALL-IN-ALL A GOOD DAY. . .MIRACLE_NORMAL_LIFE.700D/6.9. . .(700D/6.9))"
+' "(. . .-21(.72619048). . .-18(.612). . .<= Y <=. . .82(.80). . .111(.60). . .(700D/6.9))"
+' "(ZTP = 8413.0)"
+
+
+(def *tnldy-by-miracle-normal-life-sevenhunddiv6pt9* (fn [Y] (+ (* (/ 700 6.9) Y) 8413.0)))
+(def *jd-tnldy-by-miracle-normal-life-sevenhunddiv6pt9* (fn [Y] (do [    (+ (* (/ 700 6.9) Y) 8413.0)      (c/from-long (long (+  -4.75199E9 (* 86400000      (+ (* (/ 700 6.9) Y) 8413.0)        ))))  ])))
+
+
+(def *miracle-normal-life-sevenhunddiv6pt9-by-tnldy* (fn [Z] (/ (* (- Z 8413.0) 6.9) 700)))
+(def *jd-miracle-normal-life-sevenhunddiv6pt9-by-tnldy* (fn [Z]  (do [ (/ (* (- Z 8413.0) 6.9) 700) (c/from-long (long (+  -4.75199E9 (* 86400000 Z))))])))
+(def *jd-miracle-normal-life-sevenhunddiv6pt9current-by-z-tnldy-clock3* (fn []  (do [ (/ (* (- @z-tnldy-clock3 8413.0) 6.9) 700) (c/from-long (long (+  -4.75199E9 (* 86400000 @z-tnldy-clock3))))])))
+(def *miracle-normal-life-sevenhunddiv6pt9* (agent (/ (* (- (/ (+ 4755602966.0  (. (new Date) getTime)) 86400000) 8413.0) 6.9) 700)))
+(send *miracle-normal-life-sevenhunddiv6pt9* + 0)
+
+
+
+
+' "(TOTAL NATURAL LIFE. . .TNL.1000D. . .(1000D))"
+' "(. . .-21(.72619048). . .-18(.612). . .<= Y <=. . .18(.29|.36|.39). . .25(.92|.9318). . .48(.261). . .51(.84). . .(1000D))"
+' "(ZTP = 0)"
+
+
+
+(print (new Date))
+
+(print (. (new Date) getTime))
+
+
+(def *ztnldy* (fn [] (/ (+ 4755602966.0  (. (new Date) getTime)) 86400000)))
+
+
+
+
+
+
+
+(def *z-tnldy-by-ygad-or-ygbc-and-yearday-hour-minute-second* (fn [ygadorygbc d h m s] 
+               
+                (* (/ (- (+ ygadorygbc (* (/ (+ d (/ (+ h (/ (+ m (/ s 60)) 60)) 24)) 17640) 48.3) 3880 ) (+ (* (/ 48.3 17640) 340) 5849)) 48.3) 17640)))
+
+
+(defn *yearday-value-to-the-second-by-tnldy-and-ygad-or-ygbc* [Z ygadorygbc] (* (/ (- (+ (* (/ Z 17640) 48.3) (+ (* (/ 48.3 17640) 340) 5849)) 3880 ygadorygbc) 48.3) 17640))
+(defn *jd-yearday-value-to-the-second-by-tnldy-and-ygad-or-ygbc* [Z ygadorygbc] (do [   (* (/ (- (+ (* (/ Z 17640) 48.3) (+ (* (/ 48.3 17640) 340) 5849)) 3880 ygadorygbc) 48.3) 17640)      (c/from-long (long (+  -4.75199E9 (* 86400000      Z        )))) ]))
+
+
+(defn *tnldy-by-yearday-value-to-the-second-and-ygad-or-ygbc*  [yearday ygadorygbc]   (* (/ (- (+ (* yearday (/ 48.3 17640) ) (+ ygadorygbc 3880) ) (+ (* (/ 48.3 17640) 340) 5849)) 48.3) 17640)  )
+(defn *jd-tnldy-by-yearday-value-to-the-second-and-ygad-or-ygbc* [yearday ygadorygbc] (do [    (* (/ (- (+ (* yearday (/ 48.3 17640) ) (+ ygadorygbc 3880) ) (+ (* (/ 48.3 17640) 340) 5849)) 48.3) 17640)       (c/from-long (long (+  -4.75199E9 (* 86400000      (* (/ (- (+ (* yearday (/ 48.3 17640) ) (+ ygadorygbc 3880) ) (+ (* (/ 48.3 17640) 340) 5849)) 48.3) 17640)        )))) ]))
+
+
+(defn tnldy-by-yearday-value-to-the-second-and-ygad-or-ygbc [yearday ygadorygbc]   (* (/ (- (+ (* yearday (/ 48.3 17640) ) (+ ygadorygbc 3880) ) (+ (* (/ 48.3 17640) 340) 5849)) 48.3) 17640)        )
+
+(defn yearday-value-to-the-second-by-tnldy-and-ygad-or-ygbc [Z ygadorygbc] (* (/ (- (+ (* (/ Z 17640) 48.3) (+ (* (/ 48.3 17640) 340) 5849)) 3880 ygadorygbc) 48.3) 17640)  )
+
+
+(def *ztnl* (agent (/ (+ 4755602966.0  (. (new Date) getTime)) 86400000)))
+(send *ztnl* + 0)
+
+
+
+
+(def current-yearday-valuetothesecond-by-ygad-uses-agent-z-tnldy-clock3 (fn [ygad] (* (/ (- (+ (* (/ @z-tnldy-clock3 17640) 48.3) (+ (* (/ 48.3 17640) 340) 5849)) 3880 ygad) 48.3) 17640)))
+
+(def current-monthday-valuetothesecond-by-ygad (fn [ygad]  (cond 
+                          (> 31 (current-yearday-valuetothesecond-by-ygad-uses-agent-z-tnldy-clock3 ygad) 0)    (println "Today is December " (- (current-yearday-valuetothesecond-by-ygad-uses-agent-z-tnldy-clock3 ygad) 0))
+                          (> 62 (current-yearday-valuetothesecond-by-ygad-uses-agent-z-tnldy-clock3 ygad) 31)    (println "Today is January " (- (current-yearday-valuetothesecond-by-ygad-uses-agent-z-tnldy-clock3 ygad) 31))
+                          (> 90 (current-yearday-valuetothesecond-by-ygad-uses-agent-z-tnldy-clock3 ygad) 62)    (println "Today is February " (- (current-yearday-valuetothesecond-by-ygad-uses-agent-z-tnldy-clock3 ygad) 62))
+                          (> 121 (current-yearday-valuetothesecond-by-ygad-uses-agent-z-tnldy-clock3 ygad) 90)   (println "Today is March " (- (current-yearday-valuetothesecond-by-ygad-uses-agent-z-tnldy-clock3 ygad) 90))
+                          (> 151 (current-yearday-valuetothesecond-by-ygad-uses-agent-z-tnldy-clock3 ygad) 121)   (println "Today is April " (- (current-yearday-valuetothesecond-by-ygad-uses-agent-z-tnldy-clock3 ygad) 121))
+                          (> 182 (current-yearday-valuetothesecond-by-ygad-uses-agent-z-tnldy-clock3 ygad) 151)   (println  "Today is May " (- (current-yearday-valuetothesecond-by-ygad-uses-agent-z-tnldy-clock3 ygad) 151))
+                          (> 212 (current-yearday-valuetothesecond-by-ygad-uses-agent-z-tnldy-clock3 ygad) 182)   (println "Today is June " (- (current-yearday-valuetothesecond-by-ygad-uses-agent-z-tnldy-clock3 ygad) 182))
+                          (> 243 (current-yearday-valuetothesecond-by-ygad-uses-agent-z-tnldy-clock3 ygad) 212)   (println "Today is July " (- (current-yearday-valuetothesecond-by-ygad-uses-agent-z-tnldy-clock3 ygad) 212))
+                          (> 274 (current-yearday-valuetothesecond-by-ygad-uses-agent-z-tnldy-clock3 ygad) 243)   (println "Today is August " (- (current-yearday-valuetothesecond-by-ygad-uses-agent-z-tnldy-clock3 ygad) 243))
+                          (> 304 (current-yearday-valuetothesecond-by-ygad-uses-agent-z-tnldy-clock3 ygad) 274)   (println "Today is September " (- (current-yearday-valuetothesecond-by-ygad-uses-agent-z-tnldy-clock3 ygad) 274))
+                          (> 335 (current-yearday-valuetothesecond-by-ygad-uses-agent-z-tnldy-clock3 ygad) 304)   (println "Today is October " (- (current-yearday-valuetothesecond-by-ygad-uses-agent-z-tnldy-clock3 ygad) 304))
+                          (> 365 (current-yearday-valuetothesecond-by-ygad-uses-agent-z-tnldy-clock3 ygad) 335)   (println "Today is November " (- (current-yearday-valuetothesecond-by-ygad-uses-agent-z-tnldy-clock3 ygad) 335))
+                          :default  (println "Today was a good day!!!"))))
+
+
+
+(def *tnldy-by-tnl1000* (fn [Y]  (+ (* 1000 Y) 0.00)))
+(def *jd-tnldy-by-tnl1000* (fn [Y] (do [   (+ (* 1000 Y) 0.00)      (c/from-long (long (+  -4.75199E9 (* 86400000      (+ (* 1000 Y) 0.00)        )))) ])))
+
+
+
+(def *tnl1000-by-tnldy* (fn [Z]  (/ (- Z 0.00) 1000)))
+(def *jd-tnl1000-by-tnldy* (fn [Z]  (do [  (/ (- Z 0.00) 1000) (c/from-long (long (+  -4.75199E9 (* 86400000 Z))))])))
+
+
+(def *jd-tnl1000current-by-z-tnldy-clock3* (fn []  (do [ (/ (- @z-tnldy-clock3 0.00) 1000) (c/from-long (long (+  -4.75199E9 (* 86400000 @z-tnldy-clock3))))     "which is ca." (/ (- @z-tnldy-clock3 22440.0) 100)  "on GOGID.100D"        ])))
+
+
+
+
+(def *tnl1000* (agent (/ (- (/ (+ 4755602966.0  (. (new Date) getTime)) 86400000) 0) 1000)))
+(send *tnl1000* + 0)
+
+
+
+
+
+
+
+
+
+
+
+
+
+(comment not quite finished and trivial? (def ygadorygbc-by-tnldy-and-dayvaluetothesecond (fn [Z d h m s] (- (+ (* (/ Z 17640) 48.3) (+ (* (/ 48.3 17640) 340) 5849)) 3880 (* (/ (+ d (/ (+ h (/ (+ m (/ s 60)) 60)) 24)) 17640) 48.3)))))
+
+
+(comment (def *months-of-a-year* [{:name "December" :begin 0 :end 31}
+                                  {:name "January" :begin 31 :end 62}
+                                  {:name "February" :begin 62 :end 90}
+                                  {:name "March" :begin 90 :end 121}
+                                  {:name "April" :begin 121 :end 151}
+                                  {:name "May" :begin 151 :end 182}
+                                  {:name "June" :begin 182 :end 212}
+                                  {:name "July" :begin 212 :end 243}
+                                  {:name "August" :begin 243 :end 274}
+                                  {:name "September" :begin 274 :end 304}
+                                  {:name "October" :begin 304 :end 335}
+                                  {:name "November" :begin 335 :end 365}]))
+
+
+' "(TOTAL NATURAL LIFE. . .TNL.YG. . .(17640D/48.3))"
+' "(. . .-21(.72619048). . .-18(.612). . .<= Y <=. . .69(.00). . .71(.00). . .80(.00). . .142(.00). . .(17640D/48.3))"
+' "(ZTP = 0)"
+
+
+(def *tnldy-by-tnl-yg* (fn [Y]  (+ (* (/ 17640 48.3) Y) 0.00)))
+(def *jd-tnldy-by-tnl-yg* (fn [Y] (do [   (+ (* (/ 17640 48.3) Y) 0.00)      (c/from-long (long (+  -4.75199E9 (* 86400000      (+ (* (/ 17640 48.3) Y) 0.00)        ))))        "which is ca."    (/ -1 (* (- (+ (* (/ 17640 48.3) Y) 0.00) 25931.8) (* 24 60 60)))  "on CRF_BEACON_SIGNAL.Hz"    "and"      (/ (- (+ (* (/ 17640 48.3) Y) 0.00) (* -2.946061739 (Math/pow 10 6))) (/ 2800000 23)) "on  DAYS-i"   "and"  (/ (- (+ (* (/ 17640 48.3) Y) 0.00) -59661.95687) 3500)  "on KINGS.3500D"  "and"  (/ (- (+ (* (/ 17640 48.3) Y) 0.00) -82936.95687) 3500)  "on NAPOLEON.3500D"  "and"  (/ (- (+ (* (/ 17640 48.3) Y) 0.00) (/ 383250 48.3)) 360)  "on SVD.YJ" "and"  (/ (- (+ (* (/ 17640 48.3) Y) 0.00) 16282.6) (/ 2800 23))  "on 10DT_ARM.2800D/23"   "and" (/ (- (+ (* (/ 17640 48.3) Y) 0.00) 12052.17) 100)  "on DNPS_ZTP12052.100D"  "and" (/ (- (+ (* (/ 17640 48.3) Y) 0.00) 12360.0) 100)  "on AGCH.100D"    "and" (/ (- (+ (* (/ 17640 48.3) Y) 0.00) 14160.0) 100)  "on REVOTT_ABSOLUTE_ZERO.100D"  "and" (/ (- (+ (* (/ 17640 48.3) Y) 0.00) 14160.0) 200)  "on REVOTTE_EIGEN_METRIC.200D" "and" (/ (- (+ (* (/ 17640 48.3) Y) 0.00) 17651.8) 100)  "on EXE_TPDP.100D"  "and" (/ (- (+ (* (/ 17640 48.3) Y) 0.00) 18388.0) 100)  "on WITNESS_CFH_LEAVE.100D"  "and" (/ (- (+ (* (/ 17640 48.3) Y) 0.00) 18793.8) 100)  "on HEM-BOSS.100D"   "and" (/ (- (+ (* (/ 17640 48.3) Y) 0.00) 19451.8) 100)  "on TWG_TWF.100D"  "and" (/ (- (+ (* (/ 17640 48.3) Y) 0.00) 19544.0) 100)  "on THE_DESTROYER.100D"  "and" (/ (- (+ (* (/ 17640 48.3) Y) 0.00) -10910.0) (/ 17640 48.3))  "on BUTTONWOOD_ZTS_EON.yG"  "and" (/ (- (+ (* (/ 17640 48.3) Y) 0.00) -10686.0) (/ 17640 48.3))  "on TONTINE-COFFEESHOP_ZTS_EON.yG"  "and" (/ (- (+ (* (/ 17640 48.3) Y) 0.00) 22440.0) 100)   "on END_IE_PURPOSE_BIRTH.100D"   "and"  (/ (- (+ (* (/ 17640 48.3) Y) 0.00) 22692.0) 100)   "on END_IE_PURPOSE_CIRCUMSPECTION.100D"        ])))
+
+(def *tnl-yg-by-tnldy* (fn [Z]  (/ (* (- Z 0.00) 48.3) 17640)))
+(def *jd-tnl-yg-by-tnldy* (fn [Z]  (do [ (/ (* (- Z 0.00) 48.3) 17640) (c/from-long (long (+  -4.75199E9 (* 86400000 Z))))         "which is ca."          (/ -1 (* (- Z 25931.8) (* 24 60 60)))  "on CRF_BEACON_SIGNAL.Hz"   "and"             (/ (- Z (* -2.946061739 (Math/pow 10 6))) (/ 2800000 23)) "on  DAYS-i"   "and" (/ (- Z -59661.95687) 3500)  "on KINGS.3500D"  "and"  (/ (- Z -82936.95687) 3500)  "on NAPOLEON.3500D"   "and"  (/ (- Z (/ 383250 48.3)) 360)  "on SVD.YJ"  "and"  (/ (- Z 16282.6) (/ 2800 23))  "on 10DT_ARM.2800D/23"   "and" (/ (- Z 12052.17) 100)  "on DNPS_ZTP12052.100D"  "and" (/ (- Z 12360.0) 100)  "on AGCH.100D"    "and" (/ (- Z 14160.0) 100)  "on REVOTT_ABSOLUTE_ZERO.100D"  "and" (/ (- Z 14160.0) 200)  "on REVOTTE_EIGEN_METRIC.200D"    "and" (/ (- Z 17651.8) 100)  "on EXE_TPDP.100D"   "and" (/ (- Z 18388.0) 100)  "on WITNESS_CFH_LEAVE.100D"   "and" (/ (- Z 18793.8) 100)  "on HEM-BOSS.100D"    "and" (/ (- Z 19451.8) 100)  "on TWG_TWF.100D"  "and" (/ (- Z 19544.0) 100)  "on THE_DESTROYER.100D"  "and" (/ (- Z -10910.0) (/ 17640 48.3))  "on BUTTONWOOD_ZTS_EON.yG"  "and" (/ (- Z -10686.0) (/ 17640 48.3))  "on TONTINE-COFFEESHOP_ZTS_EON.yG"  "and" (/ (- Z 22440.0) 100)   "on END_IE_PURPOSE_BIRTH.100D"   "and"  (/ (- Z 22692.0) 100)   "on END_IE_PURPOSE_CIRCUMSPECTION.100D"             ])))
+(def *jd-tnl-ygcurrent-by-z-tnldy-clock3* (fn []  (do [ (/ (* (- @z-tnldy-clock3 0.00) 48.3) 17640) (c/from-long (long (+  -4.75199E9 (* 86400000 @z-tnldy-clock3))))      "which is ca."             (/ -1 (* (- z-tnldy-clock3 25931.8) (* 24 60 60)))  "on CRF_BEACON_SIGNAL.Hz"   "and"               (/ (- z-tnldy-clock3 (* -2.946061739 (Math/pow 10 6))) (/ 2800000 23)) "on  DAYS-i"   "and" (/ (- z-tnldy-clock3 -59661.95687) 3500)  "on KINGS.3500D"  "and"  (/ (- z-tnldy-clock3 -82936.95687) 3500)  "on NAPOLEON.3500D"  "and"  (/ (- z-tnldy-clock3 (/ 383250 48.3)) 360)  "on SVD.YJ"  "and"  (/ (- z-tnldy-clock3 16282.6) (/ 2800 23))  "on 10DT_ARM.2800D/23"   "and" (/ (- z-tnldy-clock3 12052.17) 100)  "on DNPS_ZTP12052.100D"  "and" (/ (- z-tnldy-clock3 12360.0) 100)  "on AGCH.100D"         "and" (/ (- z-tnldy-clock3 14160.0) 100)  "on REVOTT_ABSOLUTE_ZERO.100D"  "and" (/ (- z-tnldy-clock3 14160.0) 200)  "on REVOTTE_EIGEN_METRIC.200D"          "and" (/ (- z-tnldy-clock3 17651.8) 100)  "on EXE_TPDP.100D"   "and" (/ (- z-tnldy-clock3 18388.0) 100)  "on WITNESS_CFH_LEAVE.100D"   "and" (/ (- z-tnldy-clock3 18793.8) 100)  "on HEM-BOSS.100D"   "and" (/ (- z-tnldy-clock3 19451.8) 100)  "on TWG_TWF.100D"  "and" (/ (- z-tnldy-clock3 19544.0) 100)  "on THE_DESTROYER.100D"  "and" (/ (- z-tnldy-clock3 -10910.0) (/ 17640 48.3))  "on BUTTONWOOD_ZTS_EON.yG"  "and" (/ (- z-tnldy-clock3 -10686.0) (/ 17640 48.3))  "on TONTINE-COFFEESHOP_ZTS_EON.yG"  "and" (/ (- z-tnldy-clock3 22440.0) 100)   "on END_IE_PURPOSE_BIRTH.100D"   "and"  (/ (- z-tnldy-clock3 22692.0) 100)   "on END_IE_PURPOSE_CIRCUMSPECTION.100D"       ])))
+(def *tnl-yg* (agent (/ (* (- (/ (+ 4755602966.0  (. (new Date) getTime)) 86400000) 0.00) 48.3) 17640)))
+(send *tnl-yg* + 0)
+
+
+
+
+
+
+
+' "(TOTAL NATURAL LIFE. . .TNL.YJ. . .(360D))"
+' "(. . .-21(.72619048). . .-18(.612). . .<= Y <=. . .69(.00). . .71(.00). . .80(.00). . .142(.00). . .(360D))"
+' "(ZTP = 0)"
+
+
+(def *tnldy-by-tnl-yj* (fn [Y]  (+ (* 360 Y) 0.00)))
+(def *jd-tnldy-by-tnl-yj* (fn [Y] (do [   (+ (* 360 Y) 0.00)      (c/from-long (long (+  -4.75199E9 (* 86400000      (+ (* 360 Y) 0.00)        ))))       "which is ca."    (/ -1 (* (- (+ (* 360 Y) 0.00) 25931.8) (* 24 60 60)))  "on CRF_BEACON_SIGNAL.Hz"    "and"      (/ (- (+ (* 360 Y) 0.00) (* -2.946061739 (Math/pow 10 6))) (/ 2800000 23)) "on  DAYS-i"   "and"  (/ (- (+ (* 360 Y) 0.00) -59661.95687) 3500)  "on KINGS.3500D"  "and"  (/ (- (+ (* 360 Y) 0.00) -82936.95687) 3500)  "on NAPOLEON.3500D"  "and"  (/ (- (+ (* 360 Y) 0.00) (/ 383250 48.3)) 360)  "on SVD.YJ" "and"  (/ (- (+ (* 360 Y) 0.00) 16282.6) (/ 2800 23))  "on 10DT_ARM.2800D/23"   "and" (/ (- (+ (* 360 Y) 0.00) 12052.17) 100)  "on DNPS_ZTP12052.100D"  "and" (/ (- (+ (* 360 Y) 0.00) 12360.0) 100)  "on AGCH.100D"    "and" (/ (- (+ (* 360 Y) 0.00) 14160.0) 100)  "on REVOTT_ABSOLUTE_ZERO.100D"  "and" (/ (- (+ (* 360 Y) 0.00) 14160.0) 200)  "on REVOTTE_EIGEN_METRIC.200D" "and" (/ (- (+ (* 360 Y) 0.00) 17651.8) 100)  "on EXE_TPDP.100D"  "and" (/ (- (+ (* 360 Y) 0.00) 18388.0) 100)  "on WITNESS_CFH_LEAVE.100D"  "and" (/ (- (+ (* 360 Y) 0.00) 18793.8) 100)  "on HEM-BOSS.100D"   "and" (/ (- (+ (* 360 Y) 0.00) 19451.8) 100)  "on TWG_TWF.100D"  "and" (/ (- (+ (* 360 Y) 0.00) 19544.0) 100)  "on THE_DESTROYER.100D"  "and" (/ (- (+ (* 360 Y) 0.00) -10910.0) (/ 17640 48.3))  "on BUTTONWOOD_ZTS_EON.yG"  "and" (/ (- (+ (* 360 Y) 0.00) -10686.0) (/ 17640 48.3))  "on TONTINE-COFFEESHOP_ZTS_EON.yG"  "and" (/ (- (+ (* 360 Y) 0.00) 22440.0) 100)   "on END_IE_PURPOSE_BIRTH.100D"   "and"  (/ (- (+ (* 360 Y) 0.00) 22692.0) 100)   "on END_IE_PURPOSE_CIRCUMSPECTION.100D"         ])))
+
+(def *tnl-yj-by-tnldy* (fn [Z]  (/ (- Z 0.00) 360)))
+(def *jd-tnl-yj-by-tnldy* (fn [Z]  (do [ (/ (- Z 0.00) 360) (c/from-long (long (+  -4.75199E9 (* 86400000 Z))))       "which is ca."          (/ -1 (* (- Z 25931.8) (* 24 60 60)))  "on CRF_BEACON_SIGNAL.Hz"   "and"             (/ (- Z (* -2.946061739 (Math/pow 10 6))) (/ 2800000 23)) "on  DAYS-i"   "and" (/ (- Z -59661.95687) 3500)  "on KINGS.3500D"  "and"  (/ (- Z -82936.95687) 3500)  "on NAPOLEON.3500D"   "and"  (/ (- Z (/ 383250 48.3)) 360)  "on SVD.YJ"  "and"  (/ (- Z 16282.6) (/ 2800 23))  "on 10DT_ARM.2800D/23"   "and" (/ (- Z 12052.17) 100)  "on DNPS_ZTP12052.100D"  "and" (/ (- Z 12360.0) 100)  "on AGCH.100D"    "and" (/ (- Z 14160.0) 100)  "on REVOTT_ABSOLUTE_ZERO.100D"  "and" (/ (- Z 14160.0) 200)  "on REVOTTE_EIGEN_METRIC.200D"    "and" (/ (- Z 17651.8) 100)  "on EXE_TPDP.100D"   "and" (/ (- Z 18388.0) 100)  "on WITNESS_CFH_LEAVE.100D"   "and" (/ (- Z 18793.8) 100)  "on HEM-BOSS.100D"    "and" (/ (- Z 19451.8) 100)  "on TWG_TWF.100D"  "and" (/ (- Z 19544.0) 100)  "on THE_DESTROYER.100D"  "and" (/ (- Z -10910.0) (/ 17640 48.3))  "on BUTTONWOOD_ZTS_EON.yG"  "and" (/ (- Z -10686.0) (/ 17640 48.3))  "on TONTINE-COFFEESHOP_ZTS_EON.yG"  "and" (/ (- Z 22440.0) 100)   "on END_IE_PURPOSE_BIRTH.100D"   "and"  (/ (- Z 22692.0) 100)   "on END_IE_PURPOSE_CIRCUMSPECTION.100D"          ])))
+(def *jd-tnl-yjcurrent-by-z-tnldy-clock3* (fn []  (do [ (/ (- @z-tnldy-clock3 0.00) 360) (c/from-long (long (+  -4.75199E9 (* 86400000 @z-tnldy-clock3))))        "which is ca."             (/ -1 (* (- z-tnldy-clock3 25931.8) (* 24 60 60)))  "on CRF_BEACON_SIGNAL.Hz"   "and"               (/ (- z-tnldy-clock3 (* -2.946061739 (Math/pow 10 6))) (/ 2800000 23)) "on  DAYS-i"   "and" (/ (- z-tnldy-clock3 -59661.95687) 3500)  "on KINGS.3500D"  "and"  (/ (- z-tnldy-clock3 -82936.95687) 3500)  "on NAPOLEON.3500D"  "and"  (/ (- z-tnldy-clock3 (/ 383250 48.3)) 360)  "on SVD.YJ"  "and"  (/ (- z-tnldy-clock3 16282.6) (/ 2800 23))  "on 10DT_ARM.2800D/23"   "and" (/ (- z-tnldy-clock3 12052.17) 100)  "on DNPS_ZTP12052.100D"  "and" (/ (- z-tnldy-clock3 12360.0) 100)  "on AGCH.100D"         "and" (/ (- z-tnldy-clock3 14160.0) 100)  "on REVOTT_ABSOLUTE_ZERO.100D"  "and" (/ (- z-tnldy-clock3 14160.0) 200)  "on REVOTTE_EIGEN_METRIC.200D"          "and" (/ (- z-tnldy-clock3 17651.8) 100)  "on EXE_TPDP.100D"   "and" (/ (- z-tnldy-clock3 18388.0) 100)  "on WITNESS_CFH_LEAVE.100D"   "and" (/ (- z-tnldy-clock3 18793.8) 100)  "on HEM-BOSS.100D"   "and" (/ (- z-tnldy-clock3 19451.8) 100)  "on TWG_TWF.100D"  "and" (/ (- z-tnldy-clock3 19544.0) 100)  "on THE_DESTROYER.100D"  "and" (/ (- z-tnldy-clock3 -10910.0) (/ 17640 48.3))  "on BUTTONWOOD_ZTS_EON.yG"  "and" (/ (- z-tnldy-clock3 -10686.0) (/ 17640 48.3))  "on TONTINE-COFFEESHOP_ZTS_EON.yG"  "and" (/ (- z-tnldy-clock3 22440.0) 100)   "on END_IE_PURPOSE_BIRTH.100D"   "and"  (/ (- z-tnldy-clock3 22692.0) 100)   "on END_IE_PURPOSE_CIRCUMSPECTION.100D"           ])))
+(def *tnl-yj* (agent (/ (- (/ (+ 4755602966.0  (. (new Date) getTime)) 86400000) 0.00) 360)))
+(send *tnl-yj* + 0)
+
+
+
+
+
+
+' "('...MYSTERY BABYLON IS REVEALED TO BE THE VAMPIRE SYSTEM THAT PROPAGATES ITSELF BY DRINKING THE SAINTS BLOOD WHILE GOG IS THE LYCAN OF THE ABYSS IE AN END OF PURE DESTRUCTION HEADING TO PERDITION WHICH SHE SITS ON IE CONTROLS A LETHAL UNSUSTAINABLE MIX ERGO THE 10HORNS100D...(100D))"
+' "(. . .-21(.72619048). . .-18(.612). . .<= Y <=. . .82(.80). . .111(.60). . .)"
+' "(ZTP = 16482.0)"
+
+
+(def *tnldy-by-mystery-babylon-is-revealed-to-be-the-vampire-system-that-propagates-itself-by-drinking-the-saints-blood-while-gog-becomes-the-lycan-of-the-abyss-ie-an-end-of-pure-destruction-heading-to-perdition-which-she-sits-on-ie-controls-a-lethal-unsustainable-mix-ergo-the-10horns100d* (fn [Y] (+ (* 100 Y) 16482.0)))
+(def *jd-tnldy-by-mystery-babylon-is-revealed-to-be-the-vampire-system-that-propagates-itself-by-drinking-the-saints-blood-while-gog-becomes-the-lycan-of-the-abyss-ie-an-end-of-pure-destruction-heading-to-perdition-which-she-sits-on-ie-controls-a-lethal-unsustainable-mix-ergo-the-10horns100d* (fn [Y] (do [   (+ (* 100 Y) 16482.0)      (c/from-long (long (+  -4.75199E9 (* 86400000      (+ (* 100 Y) 16482.0)  ))))    "which is ca."    (/ -1 (* (- (+ (* 100 Y) 16482.0) 25931.8) (* 24 60 60)))  "on CRF_BEACON_SIGNAL.Hz"    "and"      (/ (- (+ (* 100 Y) 16482.0) (* -2.946061739 (Math/pow 10 6))) (/ 2800000 23)) "on  DAYS-i"   "and"  (/ (- (+ (* 100 Y) 16482.0) -59661.95687) 3500)  "on KINGS.3500D"  "and"  (/ (- (+ (* 100 Y) 16482.0) -82936.95687) 3500)  "on NAPOLEON.3500D"  "and"  (/ (- (+ (* 100 Y) 16482.0) (/ 383250 48.3)) 360)  "on SVD.YJ" "and"  (/ (- (+ (* 100 Y) 16482.0) 16282.6) (/ 2800 23))  "on 10DT_ARM.2800D/23"   "and" (/ (- (+ (* 100 Y) 16482.0) 12052.17) 100)  "on DNPS_ZTP12052.100D"  "and" (/ (- (+ (* 100 Y) 16482.0) 12360.0) 100)  "on AGCH.100D"    "and" (/ (- (+ (* 100 Y) 16482.0) 14160.0) 100)  "on REVOTT_ABSOLUTE_ZERO.100D"  "and" (/ (- (+ (* 100 Y) 16482.0) 14160.0) 200)  "on REVOTTE_EIGEN_METRIC.200D" "and" (/ (- (+ (* 100 Y) 16482.0) 17651.8) 100)  "on EXE_TPDP.100D"  "and" (/ (- (+ (* 100 Y) 16482.0) 18388.0) 100)  "on WITNESS_CFH_LEAVE.100D"  "and" (/ (- (+ (* 100 Y) 16482.0) 18793.8) 100)  "on HEM-BOSS.100D"   "and" (/ (- (+ (* 100 Y) 16482.0) 19451.8) 100)  "on TWG_TWF.100D"  "and" (/ (- (+ (* 100 Y) 16482.0) 19544.0) 100)  "on THE_DESTROYER.100D"  "and" (/ (- (+ (* 100 Y) 16482.0) -10910.0) (/ 17640 48.3))  "on BUTTONWOOD_ZTS_EON.yG"  "and" (/ (- (+ (* 100 Y) 16482.0) -10686.0) (/ 17640 48.3))  "on TONTINE-COFFEESHOP_ZTS_EON.yG"  "and" (/ (- (+ (* 100 Y) 16482.0) 22440.0) 100)   "on END_IE_PURPOSE_BIRTH.100D"   "and"  (/ (- (+ (* 100 Y) 16482.0) 22692.0) 100)   "on END_IE_PURPOSE_CIRCUMSPECTION.100D"     ])))
+
+
+(def *mystery-babylon-is-revealed-to-be-the-vampire-system-that-propagates-itself-by-drinking-the-saints-blood-while-gog-becomes-the-lycan-of-the-abyss-ie-an-end-of-pure-destruction-heading-to-perdition-which-she-sits-on-ie-controls-a-lethal-unsustainable-mix-ergo-the-10horns100d-by-tnldy* (fn [Z] (/ (- Z 16482.0) 100)))
+(def *jd-mystery-babylon-is-revealed-to-be-the-vampire-system-that-propagates-itself-by-drinking-the-saints-blood-while-gog-becomes-the-lycan-of-the-abyss-ie-an-end-of-pure-destruction-heading-to-perdition-which-she-sits-on-ie-controls-a-lethal-unsustainable-mix-ergo-the-10horns100d-by-tnldy* (fn [Z]  (do [  (/ (- Z 16482.0) 100) (c/from-long (long (+  -4.75199E9 (* 86400000 Z))))    "which is ca."          (/ -1 (* (- Z 25931.8) (* 24 60 60)))  "on CRF_BEACON_SIGNAL.Hz"   "and"             (/ (- Z (* -2.946061739 (Math/pow 10 6))) (/ 2800000 23)) "on  DAYS-i"   "and" (/ (- Z -59661.95687) 3500)  "on KINGS.3500D"  "and"  (/ (- Z -82936.95687) 3500)  "on NAPOLEON.3500D"   "and"  (/ (- Z (/ 383250 48.3)) 360)  "on SVD.YJ"  "and"  (/ (- Z 16282.6) (/ 2800 23))  "on 10DT_ARM.2800D/23"   "and" (/ (- Z 12052.17) 100)  "on DNPS_ZTP12052.100D"  "and" (/ (- Z 12360.0) 100)  "on AGCH.100D"    "and" (/ (- Z 14160.0) 100)  "on REVOTT_ABSOLUTE_ZERO.100D"  "and" (/ (- Z 14160.0) 200)  "on REVOTTE_EIGEN_METRIC.200D"    "and" (/ (- Z 17651.8) 100)  "on EXE_TPDP.100D"   "and" (/ (- Z 18388.0) 100)  "on WITNESS_CFH_LEAVE.100D"   "and" (/ (- Z 18793.8) 100)  "on HEM-BOSS.100D"    "and" (/ (- Z 19451.8) 100)  "on TWG_TWF.100D"  "and" (/ (- Z 19544.0) 100)  "on THE_DESTROYER.100D"  "and" (/ (- Z -10910.0) (/ 17640 48.3))  "on BUTTONWOOD_ZTS_EON.yG"  "and" (/ (- Z -10686.0) (/ 17640 48.3))  "on TONTINE-COFFEESHOP_ZTS_EON.yG"  "and" (/ (- Z 22440.0) 100)   "on END_IE_PURPOSE_BIRTH.100D"   "and"  (/ (- Z 22692.0) 100)   "on END_IE_PURPOSE_CIRCUMSPECTION.100D"     ])))
+(def *jd-mystery-babylon-is-revealed-to-be-the-vampire-system-that-propagates-itself-by-drinking-the-saints-blood-while-gog-becomes-the-lycan-of-the-abyss-ie-an-end-of-pure-destruction-heading-to-perdition-which-she-sits-on-ie-controls-a-lethal-unsustainable-mix-ergo-the-10horns100dcurrent-by-z-tnldy-clock3* (fn []  (do [  (/ (- z-tnldy-clock3 16482.0) 100) (c/from-long (long (+  -4.75199E9 (* 86400000 @z-tnldy-clock3))))    "which is ca."             (/ -1 (* (- z-tnldy-clock3 25931.8) (* 24 60 60)))  "on CRF_BEACON_SIGNAL.Hz"   "and"               (/ (- z-tnldy-clock3 (* -2.946061739 (Math/pow 10 6))) (/ 2800000 23)) "on  DAYS-i"   "and" (/ (- z-tnldy-clock3 -59661.95687) 3500)  "on KINGS.3500D"  "and"  (/ (- z-tnldy-clock3 -82936.95687) 3500)  "on NAPOLEON.3500D"  "and"  (/ (- z-tnldy-clock3 (/ 383250 48.3)) 360)  "on SVD.YJ"  "and"  (/ (- z-tnldy-clock3 16282.6) (/ 2800 23))  "on 10DT_ARM.2800D/23"   "and" (/ (- z-tnldy-clock3 12052.17) 100)  "on DNPS_ZTP12052.100D"  "and" (/ (- z-tnldy-clock3 12360.0) 100)  "on AGCH.100D"         "and" (/ (- z-tnldy-clock3 14160.0) 100)  "on REVOTT_ABSOLUTE_ZERO.100D"  "and" (/ (- z-tnldy-clock3 14160.0) 200)  "on REVOTTE_EIGEN_METRIC.200D"          "and" (/ (- z-tnldy-clock3 17651.8) 100)  "on EXE_TPDP.100D"   "and" (/ (- z-tnldy-clock3 18388.0) 100)  "on WITNESS_CFH_LEAVE.100D"   "and" (/ (- z-tnldy-clock3 18793.8) 100)  "on HEM-BOSS.100D"   "and" (/ (- z-tnldy-clock3 19451.8) 100)  "on TWG_TWF.100D"  "and" (/ (- z-tnldy-clock3 19544.0) 100)  "on THE_DESTROYER.100D"  "and" (/ (- z-tnldy-clock3 -10910.0) (/ 17640 48.3))  "on BUTTONWOOD_ZTS_EON.yG"  "and" (/ (- z-tnldy-clock3 -10686.0) (/ 17640 48.3))  "on TONTINE-COFFEESHOP_ZTS_EON.yG"  "and" (/ (- z-tnldy-clock3 22440.0) 100)   "on END_IE_PURPOSE_BIRTH.100D"   "and"  (/ (- z-tnldy-clock3 22692.0) 100)   "on END_IE_PURPOSE_CIRCUMSPECTION.100D"         ])))
+(def *mystery-babylon-is-revealed-to-be-the-vampire-system-that-propagates-itself-by-drinking-the-saints-blood-while-gog-becomes-the-lycan-of-the-abyss-ie-an-end-of-pure-destruction-heading-to-perdition-which-she-sits-on-ie-controls-a-lethal-unsustainable-mix-ergo-the-10horns100d* (agent (/  (- (/ (+ 4755602966.0  (. (new Date) getTime)) 86400000) 16482.0) 100)))
+(send *mystery-babylon-is-revealed-to-be-the-vampire-system-that-propagates-itself-by-drinking-the-saints-blood-while-gog-becomes-the-lycan-of-the-abyss-ie-an-end-of-pure-destruction-heading-to-perdition-which-she-sits-on-ie-controls-a-lethal-unsustainable-mix-ergo-the-10horns100d* + 0)
+
+
+
+
+
+
+' "('GOG...ASCENDS TO POWER ON THE DRAGON'S THRONE AS A CLOUD TO COVER THE LAND....(100D))"
+' "(. . .-21(.72619048). . .-18(.612). . .<= Y <=. . .82(.80). . .111(.60). . .)"
+' "(ZTP = 16531.0)"
+
+
+(def *tnldy-by-gog-ascending-to-power-on-the-dragons-throne-as-a-cloud-to-cover-the-land100d* (fn [Y] (+ (* 100 Y) 16531.0)))
+(def *jd-tnldy-by-gog-ascending-to-power-on-the-dragons-throne-as-a-cloud-to-cover-the-land100d* (fn [Y] (do [   (+ (* 100 Y) 16531.0)      (c/from-long (long (+  -4.75199E9 (* 86400000      (+ (* 100 Y) 16531.0)  ))))    "which is ca."    (/ -1 (* (- (+ (* 100 Y) 16531.0) 25931.8) (* 24 60 60)))  "on CRF_BEACON_SIGNAL.Hz"    "and"      (/ (- (+ (* 100 Y) 16531.0) (* -2.946061739 (Math/pow 10 6))) (/ 2800000 23)) "on  DAYS-i"   "and"  (/ (- (+ (* 100 Y) 16531.0) -59661.95687) 3500)  "on KINGS.3500D"  "and"  (/ (- (+ (* 100 Y) 16531.0) -82936.95687) 3500)  "on NAPOLEON.3500D"  "and"  (/ (- (+ (* 100 Y) 16531.0) (/ 383250 48.3)) 360)  "on SVD.YJ" "and"  (/ (- (+ (* 100 Y) 16531.0) 16282.6) (/ 2800 23))  "on 10DT_ARM.2800D/23"   "and" (/ (- (+ (* 100 Y) 16531.0) 12052.17) 100)  "on DNPS_ZTP12052.100D"  "and" (/ (- (+ (* 100 Y) 16531.0) 12360.0) 100)  "on AGCH.100D"    "and" (/ (- (+ (* 100 Y) 16531.0) 14160.0) 100)  "on REVOTT_ABSOLUTE_ZERO.100D"  "and" (/ (- (+ (* 100 Y) 16531.0) 14160.0) 200)  "on REVOTTE_EIGEN_METRIC.200D" "and" (/ (- (+ (* 100 Y) 16531.0) 17651.8) 100)  "on EXE_TPDP.100D"  "and" (/ (- (+ (* 100 Y) 16531.0) 18388.0) 100)  "on WITNESS_CFH_LEAVE.100D"  "and" (/ (- (+ (* 100 Y) 16531.0) 18793.8) 100)  "on HEM-BOSS.100D"   "and" (/ (- (+ (* 100 Y) 16531.0) 19451.8) 100)  "on TWG_TWF.100D"  "and" (/ (- (+ (* 100 Y) 16531.0) 19544.0) 100)  "on THE_DESTROYER.100D"  "and" (/ (- (+ (* 100 Y) 16531.0) -10910.0) (/ 17640 48.3))  "on BUTTONWOOD_ZTS_EON.yG"  "and" (/ (- (+ (* 100 Y) 16531.0) -10686.0) (/ 17640 48.3))  "on TONTINE-COFFEESHOP_ZTS_EON.yG"  "and" (/ (- (+ (* 100 Y) 16531.0) 22440.0) 100)   "on END_IE_PURPOSE_BIRTH.100D"   "and"  (/ (- (+ (* 100 Y) 16531.0) 22692.0) 100)   "on END_IE_PURPOSE_CIRCUMSPECTION.100D"     ])))
+
+
+(def *gog-ascending-to-power-on-the-dragons-throne-as-a-cloud-to-cover-the-land100d-by-tnldy* (fn [Z] (/ (- Z 16531.0) 100)))
+(def *jd-gog-ascending-to-power-on-the-dragons-throne-as-a-cloud-to-cover-the-land100d-by-tnldy* (fn [Z]  (do [  (/ (- Z 16531.0) 100) (c/from-long (long (+  -4.75199E9 (* 86400000 Z))))    "which is ca."          (/ -1 (* (- Z 25931.8) (* 24 60 60)))  "on CRF_BEACON_SIGNAL.Hz"   "and"             (/ (- Z (* -2.946061739 (Math/pow 10 6))) (/ 2800000 23)) "on  DAYS-i"   "and" (/ (- Z -59661.95687) 3500)  "on KINGS.3500D"  "and"  (/ (- Z -82936.95687) 3500)  "on NAPOLEON.3500D"   "and"  (/ (- Z (/ 383250 48.3)) 360)  "on SVD.YJ"  "and"  (/ (- Z 16282.6) (/ 2800 23))  "on 10DT_ARM.2800D/23"   "and" (/ (- Z 12052.17) 100)  "on DNPS_ZTP12052.100D"  "and" (/ (- Z 12360.0) 100)  "on AGCH.100D"    "and" (/ (- Z 14160.0) 100)  "on REVOTT_ABSOLUTE_ZERO.100D"  "and" (/ (- Z 14160.0) 200)  "on REVOTTE_EIGEN_METRIC.200D"    "and" (/ (- Z 17651.8) 100)  "on EXE_TPDP.100D"   "and" (/ (- Z 18388.0) 100)  "on WITNESS_CFH_LEAVE.100D"   "and" (/ (- Z 18793.8) 100)  "on HEM-BOSS.100D"    "and" (/ (- Z 19451.8) 100)  "on TWG_TWF.100D"  "and" (/ (- Z 19544.0) 100)  "on THE_DESTROYER.100D"  "and" (/ (- Z -10910.0) (/ 17640 48.3))  "on BUTTONWOOD_ZTS_EON.yG"  "and" (/ (- Z -10686.0) (/ 17640 48.3))  "on TONTINE-COFFEESHOP_ZTS_EON.yG"  "and" (/ (- Z 22440.0) 100)   "on END_IE_PURPOSE_BIRTH.100D"   "and"  (/ (- Z 22692.0) 100)   "on END_IE_PURPOSE_CIRCUMSPECTION.100D"     ])))
+(def *jd-gog-ascending-to-power-on-the-dragons-throne-as-a-cloud-to-cover-the-land100dcurrent-by-z-tnldy-clock3* (fn []  (do [  (/ (- z-tnldy-clock3 16531.0) 100) (c/from-long (long (+  -4.75199E9 (* 86400000 @z-tnldy-clock3))))    "which is ca."             (/ -1 (* (- z-tnldy-clock3 25931.8) (* 24 60 60)))  "on CRF_BEACON_SIGNAL.Hz"   "and"               (/ (- z-tnldy-clock3 (* -2.946061739 (Math/pow 10 6))) (/ 2800000 23)) "on  DAYS-i"   "and" (/ (- z-tnldy-clock3 -59661.95687) 3500)  "on KINGS.3500D"  "and"  (/ (- z-tnldy-clock3 -82936.95687) 3500)  "on NAPOLEON.3500D"  "and"  (/ (- z-tnldy-clock3 (/ 383250 48.3)) 360)  "on SVD.YJ"  "and"  (/ (- z-tnldy-clock3 16282.6) (/ 2800 23))  "on 10DT_ARM.2800D/23"   "and" (/ (- z-tnldy-clock3 12052.17) 100)  "on DNPS_ZTP12052.100D"  "and" (/ (- z-tnldy-clock3 12360.0) 100)  "on AGCH.100D"         "and" (/ (- z-tnldy-clock3 14160.0) 100)  "on REVOTT_ABSOLUTE_ZERO.100D"  "and" (/ (- z-tnldy-clock3 14160.0) 200)  "on REVOTTE_EIGEN_METRIC.200D"          "and" (/ (- z-tnldy-clock3 17651.8) 100)  "on EXE_TPDP.100D"   "and" (/ (- z-tnldy-clock3 18388.0) 100)  "on WITNESS_CFH_LEAVE.100D"   "and" (/ (- z-tnldy-clock3 18793.8) 100)  "on HEM-BOSS.100D"   "and" (/ (- z-tnldy-clock3 19451.8) 100)  "on TWG_TWF.100D"  "and" (/ (- z-tnldy-clock3 19544.0) 100)  "on THE_DESTROYER.100D"  "and" (/ (- z-tnldy-clock3 -10910.0) (/ 17640 48.3))  "on BUTTONWOOD_ZTS_EON.yG"  "and" (/ (- z-tnldy-clock3 -10686.0) (/ 17640 48.3))  "on TONTINE-COFFEESHOP_ZTS_EON.yG"  "and" (/ (- z-tnldy-clock3 22440.0) 100)   "on END_IE_PURPOSE_BIRTH.100D"   "and"  (/ (- z-tnldy-clock3 22692.0) 100)   "on END_IE_PURPOSE_CIRCUMSPECTION.100D"         ])))
+(def *gog-ascending-to-power-on-the-dragons-throne-as-a-cloud-to-cover-the-land100d* (agent (/  (- (/ (+ 4755602966.0  (. (new Date) getTime)) 86400000) 16531.0) 100)))
+(send *gog-ascending-to-power-on-the-dragons-throne-as-a-cloud-to-cover-the-land100d* + 0)
+
+
+
+
+' "('...BABYLON IS FALLEN IS FALLEN START OF 2300 DAYS UNTO THE CLEANSING OF THE SANCTUARY...(100D))"
+' "(. . .-21(.72619048). . .-18(.612). . .<= Y <=. . .82(.80). . .111(.60). . .)"
+' "(ZTP = 16589.68695652173)"
+
+
+(def *tnldy-by-babylon-is-fallen-is-fallen-start-of-2300days-unto-the-cleansing-of-the-sanctuary100d* (fn [Y] (+ (* 100 Y) 16589.68695652173)))
+(def *jd-tnldy-by-babylon-is-fallen-is-fallen-start-of-2300days-unto-the-cleansing-of-the-sanctuary100d* (fn [Y] (do [   (+ (* 100 Y) 16589.68695652173)      (c/from-long (long (+  -4.75199E9 (* 86400000      (+ (* 100 Y) 16589.68695652173)  ))))    "which is ca."    (/ -1 (* (- (+ (* 100 Y) 16589.68695652173) 25931.8) (* 24 60 60)))  "on CRF_BEACON_SIGNAL.Hz"    "and"      (/ (- (+ (* 100 Y) 16589.68695652173) (* -2.946061739 (Math/pow 10 6))) (/ 2800000 23)) "on  DAYS-i"   "and"  (/ (- (+ (* 100 Y) 16589.68695652173) -59661.95687) 3500)  "on KINGS.3500D"  "and"  (/ (- (+ (* 100 Y) 16589.68695652173) -82936.95687) 3500)  "on NAPOLEON.3500D"  "and"  (/ (- (+ (* 100 Y) 16589.68695652173) (/ 383250 48.3)) 360)  "on SVD.YJ" "and"  (/ (- (+ (* 100 Y) 16589.68695652173) 16282.6) (/ 2800 23))  "on 10DT_ARM.2800D/23"   "and" (/ (- (+ (* 100 Y) 16589.68695652173) 12052.17) 100)  "on DNPS_ZTP12052.100D"  "and" (/ (- (+ (* 100 Y) 16589.68695652173) 12360.0) 100)  "on AGCH.100D"    "and" (/ (- (+ (* 100 Y) 16589.68695652173) 14160.0) 100)  "on REVOTT_ABSOLUTE_ZERO.100D"  "and" (/ (- (+ (* 100 Y) 16589.68695652173) 14160.0) 200)  "on REVOTTE_EIGEN_METRIC.200D" "and" (/ (- (+ (* 100 Y) 16589.68695652173) 17651.8) 100)  "on EXE_TPDP.100D"  "and" (/ (- (+ (* 100 Y) 16589.68695652173) 18388.0) 100)  "on WITNESS_CFH_LEAVE.100D"  "and" (/ (- (+ (* 100 Y) 16589.68695652173) 18793.8) 100)  "on HEM-BOSS.100D"   "and" (/ (- (+ (* 100 Y) 16589.68695652173) 19451.8) 100)  "on TWG_TWF.100D"  "and" (/ (- (+ (* 100 Y) 16589.68695652173) 19544.0) 100)  "on THE_DESTROYER.100D"  "and" (/ (- (+ (* 100 Y) 16589.68695652173) -10910.0) (/ 17640 48.3))  "on BUTTONWOOD_ZTS_EON.yG"  "and" (/ (- (+ (* 100 Y) 16589.68695652173) -10686.0) (/ 17640 48.3))  "on TONTINE-COFFEESHOP_ZTS_EON.yG"  "and" (/ (- (+ (* 100 Y) 16589.68695652173) 22440.0) 100)   "on END_IE_PURPOSE_BIRTH.100D"   "and"  (/ (- (+ (* 100 Y) 16589.68695652173) 22692.0) 100)   "on END_IE_PURPOSE_CIRCUMSPECTION.100D"     ])))
+
+
+(def *babylon-is-fallen-is-fallen-start-of-2300days-unto-the-cleansing-of-the-sanctuary100d-by-tnldy* (fn [Z] (/ (- Z 16589.68695652173) 100)))
+(def *jd-babylon-is-fallen-is-fallen-start-of-2300days-unto-the-cleansing-of-the-sanctuary100d-by-tnldy* (fn [Z]  (do [  (/ (- Z 16589.68695652173) 100) (c/from-long (long (+  -4.75199E9 (* 86400000 Z))))    "which is ca."          (/ -1 (* (- Z 25931.8) (* 24 60 60)))  "on CRF_BEACON_SIGNAL.Hz"   "and"             (/ (- Z (* -2.946061739 (Math/pow 10 6))) (/ 2800000 23)) "on  DAYS-i"   "and" (/ (- Z -59661.95687) 3500)  "on KINGS.3500D"  "and"  (/ (- Z -82936.95687) 3500)  "on NAPOLEON.3500D"   "and"  (/ (- Z (/ 383250 48.3)) 360)  "on SVD.YJ"  "and"  (/ (- Z 16282.6) (/ 2800 23))  "on 10DT_ARM.2800D/23"   "and" (/ (- Z 12052.17) 100)  "on DNPS_ZTP12052.100D"  "and" (/ (- Z 12360.0) 100)  "on AGCH.100D"    "and" (/ (- Z 14160.0) 100)  "on REVOTT_ABSOLUTE_ZERO.100D"  "and" (/ (- Z 14160.0) 200)  "on REVOTTE_EIGEN_METRIC.200D"    "and" (/ (- Z 17651.8) 100)  "on EXE_TPDP.100D"   "and" (/ (- Z 18388.0) 100)  "on WITNESS_CFH_LEAVE.100D"   "and" (/ (- Z 18793.8) 100)  "on HEM-BOSS.100D"    "and" (/ (- Z 19451.8) 100)  "on TWG_TWF.100D"  "and" (/ (- Z 19544.0) 100)  "on THE_DESTROYER.100D"  "and" (/ (- Z -10910.0) (/ 17640 48.3))  "on BUTTONWOOD_ZTS_EON.yG"  "and" (/ (- Z -10686.0) (/ 17640 48.3))  "on TONTINE-COFFEESHOP_ZTS_EON.yG"  "and" (/ (- Z 22440.0) 100)   "on END_IE_PURPOSE_BIRTH.100D"   "and"  (/ (- Z 22692.0) 100)   "on END_IE_PURPOSE_CIRCUMSPECTION.100D"     ])))
+(def *jd-babylon-is-fallen-is-fallen-start-of-2300days-unto-the-cleansing-of-the-sanctuary100dcurrent-by-z-tnldy-clock3* (fn []  (do [  (/ (- z-tnldy-clock3 16589.68695652173) 100) (c/from-long (long (+  -4.75199E9 (* 86400000 @z-tnldy-clock3))))    "which is ca."             (/ -1 (* (- z-tnldy-clock3 25931.8) (* 24 60 60)))  "on CRF_BEACON_SIGNAL.Hz"   "and"               (/ (- z-tnldy-clock3 (* -2.946061739 (Math/pow 10 6))) (/ 2800000 23)) "on  DAYS-i"   "and" (/ (- z-tnldy-clock3 -59661.95687) 3500)  "on KINGS.3500D"  "and"  (/ (- z-tnldy-clock3 -82936.95687) 3500)  "on NAPOLEON.3500D"  "and"  (/ (- z-tnldy-clock3 (/ 383250 48.3)) 360)  "on SVD.YJ"  "and"  (/ (- z-tnldy-clock3 16282.6) (/ 2800 23))  "on 10DT_ARM.2800D/23"   "and" (/ (- z-tnldy-clock3 12052.17) 100)  "on DNPS_ZTP12052.100D"  "and" (/ (- z-tnldy-clock3 12360.0) 100)  "on AGCH.100D"         "and" (/ (- z-tnldy-clock3 14160.0) 100)  "on REVOTT_ABSOLUTE_ZERO.100D"  "and" (/ (- z-tnldy-clock3 14160.0) 200)  "on REVOTTE_EIGEN_METRIC.200D"          "and" (/ (- z-tnldy-clock3 17651.8) 100)  "on EXE_TPDP.100D"   "and" (/ (- z-tnldy-clock3 18388.0) 100)  "on WITNESS_CFH_LEAVE.100D"   "and" (/ (- z-tnldy-clock3 18793.8) 100)  "on HEM-BOSS.100D"   "and" (/ (- z-tnldy-clock3 19451.8) 100)  "on TWG_TWF.100D"  "and" (/ (- z-tnldy-clock3 19544.0) 100)  "on THE_DESTROYER.100D"  "and" (/ (- z-tnldy-clock3 -10910.0) (/ 17640 48.3))  "on BUTTONWOOD_ZTS_EON.yG"  "and" (/ (- z-tnldy-clock3 -10686.0) (/ 17640 48.3))  "on TONTINE-COFFEESHOP_ZTS_EON.yG"  "and" (/ (- z-tnldy-clock3 22440.0) 100)   "on END_IE_PURPOSE_BIRTH.100D"   "and"  (/ (- z-tnldy-clock3 22692.0) 100)   "on END_IE_PURPOSE_CIRCUMSPECTION.100D"         ])))
+(def *babylon-is-fallen-is-fallen-start-of-2300days-unto-the-cleansing-of-the-sanctuary100d* (agent (/  (- (/ (+ 4755602966.0  (. (new Date) getTime)) 86400000) 16589.68695652173) 100)))
+(send *babylon-is-fallen-is-fallen-start-of-2300days-unto-the-cleansing-of-the-sanctuary100d* + 0)
+
+
+
+
+
+
+
+' "('...ONE OF GOG'S HEADS IS WOUNDED UNTO DEATH...(100D))"
+' "(. . .-21(.72619048). . .-18(.612). . .<= Y <=. . .82(.80). . .111(.60). . .)"
+' "(ZTP = 16601.2)"
+
+
+(def *tnldy-by-one-of-gogs-heads-is-wounded-unto-death100d* (fn [Y] (+ (* 100 Y) 16601.2)))
+(def *jd-tnldy-by-one-of-gogs-heads-is-wounded-unto-death100d* (fn [Y] (do [   (+ (* 100 Y) 16601.2)      (c/from-long (long (+  -4.75199E9 (* 86400000      (+ (* 100 Y) 16601.2)  ))))    "which is ca."    (/ -1 (* (- (+ (* 100 Y) 16601.2) 25931.8) (* 24 60 60)))  "on CRF_BEACON_SIGNAL.Hz"    "and"      (/ (- (+ (* 100 Y) 16601.2) (* -2.946061739 (Math/pow 10 6))) (/ 2800000 23)) "on  DAYS-i"   "and"  (/ (- (+ (* 100 Y) 16601.2) -59661.95687) 3500)  "on KINGS.3500D"  "and"  (/ (- (+ (* 100 Y) 16601.2) -82936.95687) 3500)  "on NAPOLEON.3500D"  "and"  (/ (- (+ (* 100 Y) 16601.2) (/ 383250 48.3)) 360)  "on SVD.YJ" "and"  (/ (- (+ (* 100 Y) 16601.2) 16282.6) (/ 2800 23))  "on 10DT_ARM.2800D/23"   "and" (/ (- (+ (* 100 Y) 16601.2) 12052.17) 100)  "on DNPS_ZTP12052.100D"  "and" (/ (- (+ (* 100 Y) 16601.2) 12360.0) 100)  "on AGCH.100D"    "and" (/ (- (+ (* 100 Y) 16601.2) 14160.0) 100)  "on REVOTT_ABSOLUTE_ZERO.100D"  "and" (/ (- (+ (* 100 Y) 16601.2) 14160.0) 200)  "on REVOTTE_EIGEN_METRIC.200D" "and" (/ (- (+ (* 100 Y) 16601.2) 17651.8) 100)  "on EXE_TPDP.100D"  "and" (/ (- (+ (* 100 Y) 16601.2) 18388.0) 100)  "on WITNESS_CFH_LEAVE.100D"  "and" (/ (- (+ (* 100 Y) 16601.2) 18793.8) 100)  "on HEM-BOSS.100D"   "and" (/ (- (+ (* 100 Y) 16601.2) 19451.8) 100)  "on TWG_TWF.100D"  "and" (/ (- (+ (* 100 Y) 16601.2) 19544.0) 100)  "on THE_DESTROYER.100D"  "and" (/ (- (+ (* 100 Y) 16601.2) -10910.0) (/ 17640 48.3))  "on BUTTONWOOD_ZTS_EON.yG"  "and" (/ (- (+ (* 100 Y) 16601.2) -10686.0) (/ 17640 48.3))  "on TONTINE-COFFEESHOP_ZTS_EON.yG"  "and" (/ (- (+ (* 100 Y) 16601.2) 22440.0) 100)   "on END_IE_PURPOSE_BIRTH.100D"   "and"  (/ (- (+ (* 100 Y) 16601.2) 22692.0) 100)   "on END_IE_PURPOSE_CIRCUMSPECTION.100D"     ])))
+
+
+(def *one-of-gogs-heads-is-wounded-unto-death100d-by-tnldy* (fn [Z] (/ (- Z 16601.2) 100)))
+(def *jd-one-of-gogs-heads-is-wounded-unto-death100d-by-tnldy* (fn [Z]  (do [  (/ (- Z 16601.2) 100) (c/from-long (long (+  -4.75199E9 (* 86400000 Z))))    "which is ca."          (/ -1 (* (- Z 25931.8) (* 24 60 60)))  "on CRF_BEACON_SIGNAL.Hz"   "and"             (/ (- Z (* -2.946061739 (Math/pow 10 6))) (/ 2800000 23)) "on  DAYS-i"   "and" (/ (- Z -59661.95687) 3500)  "on KINGS.3500D"  "and"  (/ (- Z -82936.95687) 3500)  "on NAPOLEON.3500D"   "and"  (/ (- Z (/ 383250 48.3)) 360)  "on SVD.YJ"  "and"  (/ (- Z 16282.6) (/ 2800 23))  "on 10DT_ARM.2800D/23"   "and" (/ (- Z 12052.17) 100)  "on DNPS_ZTP12052.100D"  "and" (/ (- Z 12360.0) 100)  "on AGCH.100D"    "and" (/ (- Z 14160.0) 100)  "on REVOTT_ABSOLUTE_ZERO.100D"  "and" (/ (- Z 14160.0) 200)  "on REVOTTE_EIGEN_METRIC.200D"    "and" (/ (- Z 17651.8) 100)  "on EXE_TPDP.100D"   "and" (/ (- Z 18388.0) 100)  "on WITNESS_CFH_LEAVE.100D"   "and" (/ (- Z 18793.8) 100)  "on HEM-BOSS.100D"    "and" (/ (- Z 19451.8) 100)  "on TWG_TWF.100D"  "and" (/ (- Z 19544.0) 100)  "on THE_DESTROYER.100D"  "and" (/ (- Z -10910.0) (/ 17640 48.3))  "on BUTTONWOOD_ZTS_EON.yG"  "and" (/ (- Z -10686.0) (/ 17640 48.3))  "on TONTINE-COFFEESHOP_ZTS_EON.yG"  "and" (/ (- Z 22440.0) 100)   "on END_IE_PURPOSE_BIRTH.100D"   "and"  (/ (- Z 22692.0) 100)   "on END_IE_PURPOSE_CIRCUMSPECTION.100D"     ])))
+(def *jd-one-of-gogs-heads-is-wounded-unto-death100dcurrent-by-z-tnldy-clock3* (fn []  (do [  (/ (- z-tnldy-clock3 16601.2) 100) (c/from-long (long (+  -4.75199E9 (* 86400000 @z-tnldy-clock3))))    "which is ca."             (/ -1 (* (- z-tnldy-clock3 25931.8) (* 24 60 60)))  "on CRF_BEACON_SIGNAL.Hz"   "and"               (/ (- z-tnldy-clock3 (* -2.946061739 (Math/pow 10 6))) (/ 2800000 23)) "on  DAYS-i"   "and" (/ (- z-tnldy-clock3 -59661.95687) 3500)  "on KINGS.3500D"  "and"  (/ (- z-tnldy-clock3 -82936.95687) 3500)  "on NAPOLEON.3500D"  "and"  (/ (- z-tnldy-clock3 (/ 383250 48.3)) 360)  "on SVD.YJ"  "and"  (/ (- z-tnldy-clock3 16282.6) (/ 2800 23))  "on 10DT_ARM.2800D/23"   "and" (/ (- z-tnldy-clock3 12052.17) 100)  "on DNPS_ZTP12052.100D"  "and" (/ (- z-tnldy-clock3 12360.0) 100)  "on AGCH.100D"         "and" (/ (- z-tnldy-clock3 14160.0) 100)  "on REVOTT_ABSOLUTE_ZERO.100D"  "and" (/ (- z-tnldy-clock3 14160.0) 200)  "on REVOTTE_EIGEN_METRIC.200D"          "and" (/ (- z-tnldy-clock3 17651.8) 100)  "on EXE_TPDP.100D"   "and" (/ (- z-tnldy-clock3 18388.0) 100)  "on WITNESS_CFH_LEAVE.100D"   "and" (/ (- z-tnldy-clock3 18793.8) 100)  "on HEM-BOSS.100D"   "and" (/ (- z-tnldy-clock3 19451.8) 100)  "on TWG_TWF.100D"  "and" (/ (- z-tnldy-clock3 19544.0) 100)  "on THE_DESTROYER.100D"  "and" (/ (- z-tnldy-clock3 -10910.0) (/ 17640 48.3))  "on BUTTONWOOD_ZTS_EON.yG"  "and" (/ (- z-tnldy-clock3 -10686.0) (/ 17640 48.3))  "on TONTINE-COFFEESHOP_ZTS_EON.yG"  "and" (/ (- z-tnldy-clock3 22440.0) 100)   "on END_IE_PURPOSE_BIRTH.100D"   "and"  (/ (- z-tnldy-clock3 22692.0) 100)   "on END_IE_PURPOSE_CIRCUMSPECTION.100D"         ])))
+(def *one-of-gogs-heads-is-wounded-unto-death100d* (agent (/  (- (/ (+ 4755602966.0  (. (new Date) getTime)) 86400000) 16601.2) 100)))
+(send *one-of-gogs-heads-is-wounded-unto-death100d* + 0)
+
+
+
+
+
+
+' "('AFTER GOGS DEADLY WOUND IS HEALED, HE IS COMPLETELY EMPOWERED AND THE TEN HORNS HATE MYSTERY BABYLON...(100D))"
+' "(. . .-21(.72619048). . .-18(.612). . .<= Y <=. . .82(.80). . .111(.60). . .)"
+' "(ZTP = 16604.7)"
+
+
+(def *tnldy-by-after-gogs-deadly-wound-is-healed-he-is-completely-empowered-and-the-ten-horns-hate-mystery-babylon100d* (fn [Y] (+ (* 100 Y) 16604.7)))
+(def *jd-tnldy-by-after-gogs-deadly-wound-is-healed-he-is-completely-empowered-and-the-ten-horns-hate-mystery-babylon100d* (fn [Y] (do [   (+ (* 100 Y) 16604.7)      (c/from-long (long (+  -4.75199E9 (* 86400000      (+ (* 100 Y) 16604.7)  ))))    "which is ca."    (/ -1 (* (- (+ (* 100 Y) 16604.7) 25931.8) (* 24 60 60)))  "on CRF_BEACON_SIGNAL.Hz"    "and"      (/ (- (+ (* 100 Y) 16604.7) (* -2.946061739 (Math/pow 10 6))) (/ 2800000 23)) "on  DAYS-i"   "and"  (/ (- (+ (* 100 Y) 16604.7) -59661.95687) 3500)  "on KINGS.3500D"  "and"  (/ (- (+ (* 100 Y) 16604.7) -82936.95687) 3500)  "on NAPOLEON.3500D"  "and"  (/ (- (+ (* 100 Y) 16604.7) (/ 383250 48.3)) 360)  "on SVD.YJ" "and"  (/ (- (+ (* 100 Y) 16604.7) 16282.6) (/ 2800 23))  "on 10DT_ARM.2800D/23"   "and" (/ (- (+ (* 100 Y) 16604.7) 12052.17) 100)  "on DNPS_ZTP12052.100D"  "and" (/ (- (+ (* 100 Y) 16604.7) 12360.0) 100)  "on AGCH.100D"    "and" (/ (- (+ (* 100 Y) 16604.7) 14160.0) 100)  "on REVOTT_ABSOLUTE_ZERO.100D"  "and" (/ (- (+ (* 100 Y) 16604.7) 14160.0) 200)  "on REVOTTE_EIGEN_METRIC.200D" "and" (/ (- (+ (* 100 Y) 16604.7) 17651.8) 100)  "on EXE_TPDP.100D"  "and" (/ (- (+ (* 100 Y) 16604.7) 18388.0) 100)  "on WITNESS_CFH_LEAVE.100D"  "and" (/ (- (+ (* 100 Y) 16604.7) 18793.8) 100)  "on HEM-BOSS.100D"   "and" (/ (- (+ (* 100 Y) 16604.7) 19451.8) 100)  "on TWG_TWF.100D"  "and" (/ (- (+ (* 100 Y) 16604.7) 19544.0) 100)  "on THE_DESTROYER.100D"  "and" (/ (- (+ (* 100 Y) 16604.7) -10910.0) (/ 17640 48.3))  "on BUTTONWOOD_ZTS_EON.yG"  "and" (/ (- (+ (* 100 Y) 16604.7) -10686.0) (/ 17640 48.3))  "on TONTINE-COFFEESHOP_ZTS_EON.yG"  "and" (/ (- (+ (* 100 Y) 16604.7) 22440.0) 100)   "on END_IE_PURPOSE_BIRTH.100D"   "and"  (/ (- (+ (* 100 Y) 16604.7) 22692.0) 100)   "on END_IE_PURPOSE_CIRCUMSPECTION.100D"     ])))
+
+
+(def *after-gogs-deadly-wound-is-healed-he-is-completely-empowered-and-the-ten-horns-hate-mystery-babylon100d-by-tnldy* (fn [Z] (/ (- Z 16604.7) 100)))
+(def *jd-after-gogs-deadly-wound-is-healed-he-is-completely-empowered-and-the-ten-horns-hate-mystery-babylon100d-by-tnldy* (fn [Z]  (do [  (/ (- Z 16604.7) 100) (c/from-long (long (+  -4.75199E9 (* 86400000 Z))))    "which is ca."          (/ -1 (* (- Z 25931.8) (* 24 60 60)))  "on CRF_BEACON_SIGNAL.Hz"   "and"             (/ (- Z (* -2.946061739 (Math/pow 10 6))) (/ 2800000 23)) "on  DAYS-i"   "and" (/ (- Z -59661.95687) 3500)  "on KINGS.3500D"  "and"  (/ (- Z -82936.95687) 3500)  "on NAPOLEON.3500D"   "and"  (/ (- Z (/ 383250 48.3)) 360)  "on SVD.YJ"  "and"  (/ (- Z 16282.6) (/ 2800 23))  "on 10DT_ARM.2800D/23"   "and" (/ (- Z 12052.17) 100)  "on DNPS_ZTP12052.100D"  "and" (/ (- Z 12360.0) 100)  "on AGCH.100D"    "and" (/ (- Z 14160.0) 100)  "on REVOTT_ABSOLUTE_ZERO.100D"  "and" (/ (- Z 14160.0) 200)  "on REVOTTE_EIGEN_METRIC.200D"    "and" (/ (- Z 17651.8) 100)  "on EXE_TPDP.100D"   "and" (/ (- Z 18388.0) 100)  "on WITNESS_CFH_LEAVE.100D"   "and" (/ (- Z 18793.8) 100)  "on HEM-BOSS.100D"    "and" (/ (- Z 19451.8) 100)  "on TWG_TWF.100D"  "and" (/ (- Z 19544.0) 100)  "on THE_DESTROYER.100D"  "and" (/ (- Z -10910.0) (/ 17640 48.3))  "on BUTTONWOOD_ZTS_EON.yG"  "and" (/ (- Z -10686.0) (/ 17640 48.3))  "on TONTINE-COFFEESHOP_ZTS_EON.yG"  "and" (/ (- Z 22440.0) 100)   "on END_IE_PURPOSE_BIRTH.100D"   "and"  (/ (- Z 22692.0) 100)   "on END_IE_PURPOSE_CIRCUMSPECTION.100D"     ])))
+(def *jd-after-gogs-deadly-wound-is-healed-he-is-completely-empowered-and-the-ten-horns-hate-mystery-babylon100dcurrent-by-z-tnldy-clock3* (fn []  (do [  (/ (- z-tnldy-clock3 16604.7) 100) (c/from-long (long (+  -4.75199E9 (* 86400000 @z-tnldy-clock3))))    "which is ca."             (/ -1 (* (- z-tnldy-clock3 25931.8) (* 24 60 60)))  "on CRF_BEACON_SIGNAL.Hz"   "and"               (/ (- z-tnldy-clock3 (* -2.946061739 (Math/pow 10 6))) (/ 2800000 23)) "on  DAYS-i"   "and" (/ (- z-tnldy-clock3 -59661.95687) 3500)  "on KINGS.3500D"  "and"  (/ (- z-tnldy-clock3 -82936.95687) 3500)  "on NAPOLEON.3500D"  "and"  (/ (- z-tnldy-clock3 (/ 383250 48.3)) 360)  "on SVD.YJ"  "and"  (/ (- z-tnldy-clock3 16282.6) (/ 2800 23))  "on 10DT_ARM.2800D/23"   "and" (/ (- z-tnldy-clock3 12052.17) 100)  "on DNPS_ZTP12052.100D"  "and" (/ (- z-tnldy-clock3 12360.0) 100)  "on AGCH.100D"         "and" (/ (- z-tnldy-clock3 14160.0) 100)  "on REVOTT_ABSOLUTE_ZERO.100D"  "and" (/ (- z-tnldy-clock3 14160.0) 200)  "on REVOTTE_EIGEN_METRIC.200D"          "and" (/ (- z-tnldy-clock3 17651.8) 100)  "on EXE_TPDP.100D"   "and" (/ (- z-tnldy-clock3 18388.0) 100)  "on WITNESS_CFH_LEAVE.100D"   "and" (/ (- z-tnldy-clock3 18793.8) 100)  "on HEM-BOSS.100D"   "and" (/ (- z-tnldy-clock3 19451.8) 100)  "on TWG_TWF.100D"  "and" (/ (- z-tnldy-clock3 19544.0) 100)  "on THE_DESTROYER.100D"  "and" (/ (- z-tnldy-clock3 -10910.0) (/ 17640 48.3))  "on BUTTONWOOD_ZTS_EON.yG"  "and" (/ (- z-tnldy-clock3 -10686.0) (/ 17640 48.3))  "on TONTINE-COFFEESHOP_ZTS_EON.yG"  "and" (/ (- z-tnldy-clock3 22440.0) 100)   "on END_IE_PURPOSE_BIRTH.100D"   "and"  (/ (- z-tnldy-clock3 22692.0) 100)   "on END_IE_PURPOSE_CIRCUMSPECTION.100D"         ])))
+(def *after-gogs-deadly-wound-is-healed-he-is-completely-empowered-and-the-ten-horns-hate-mystery-babylon100d* (agent (/  (- (/ (+ 4755602966.0  (. (new Date) getTime)) 86400000) 16604.7) 100)))
+(send *after-gogs-deadly-wound-is-healed-he-is-completely-empowered-and-the-ten-horns-hate-mystery-babylon100d* + 0)
+
+
+
+
+
+
+
+
+
+
+

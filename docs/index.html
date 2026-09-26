@@ -1,0 +1,601 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Alien Corridor Support System</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+  :root {
+    --bg: #06090f;
+    --bg2: #0a101a;
+    --panel: #0d1522;
+    --panel2: #111c2d;
+    --line: #1d2c42;
+    --txt: #c8d6e8;
+    --dim: #64788f;
+    --acc: #37e0a5;
+    --acc2: #46b8ff;
+    --warn: #ffb454;
+    --err: #ff6b7a;
+    --mono: "JetBrains Mono","Fira Code",Consolas,Menlo,monospace;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body { height: 100%; }
+  body {
+    background:
+      radial-gradient(1200px 500px at 70% -10%, #0d2036 0%, transparent 60%),
+      radial-gradient(900px 400px at 10% 110%, #0b2417 0%, transparent 55%),
+      var(--bg);
+    color: var(--txt);
+    font-family: "Inter","Segoe UI",system-ui,sans-serif;
+    font-size: 14px;
+    display: flex; flex-direction: column;
+    overflow: hidden;
+  }
+
+  /* ---------- header ---------- */
+  header {
+    display: flex; align-items: center; gap: 18px;
+    padding: 10px 18px;
+    border-bottom: 1px solid var(--line);
+    background: linear-gradient(180deg, #0c1420, #090f18);
+    flex: 0 0 auto;
+  }
+  .glyph {
+    width: 34px; height: 34px; border-radius: 8px;
+    background: linear-gradient(135deg, #0f3b2c, #123650);
+    border: 1px solid #23543f;
+    display: flex; align-items: center; justify-content: center;
+    color: var(--acc); font-family: var(--mono); font-weight: 700; font-size: 15px;
+    text-shadow: 0 0 12px var(--acc);
+  }
+  h1 { font-size: 15px; letter-spacing: 2.5px; font-weight: 600; color: #e8f2ff; }
+  h1 small { display: block; letter-spacing: 1px; font-size: 10px; color: var(--dim); font-weight: 400; margin-top: 2px; }
+  .badge {
+    font-family: var(--mono); font-size: 11px; padding: 4px 10px;
+    border: 1px solid var(--acc); color: var(--acc); border-radius: 20px;
+    text-transform: uppercase; letter-spacing: 1px;
+  }
+  .badge.bank { border-color: var(--warn); color: var(--warn); }
+  #otherTree { font-size: 11px; color: var(--acc2); text-decoration: none; }
+  #otherTree:hover { text-decoration: underline; }
+  .spacer { flex: 1; }
+  .ticker { text-align: right; font-family: var(--mono); }
+  .ticker .val { font-size: 18px; color: var(--acc); text-shadow: 0 0 14px rgba(55,224,165,.45); }
+  .ticker .lbl { font-size: 9px; color: var(--dim); letter-spacing: 1.5px; text-transform: uppercase; }
+
+  /* ---------- layout ---------- */
+  main { flex: 1 1 auto; display: flex; min-height: 0; }
+  #sidebar {
+    width: 340px; flex: 0 0 auto; display: flex; flex-direction: column;
+    border-right: 1px solid var(--line); background: var(--bg2); min-height: 0;
+  }
+  #search {
+    margin: 10px; padding: 8px 12px; background: var(--panel); color: var(--txt);
+    border: 1px solid var(--line); border-radius: 6px; font-family: var(--mono); font-size: 12px;
+    outline: none;
+  }
+  #search:focus { border-color: var(--acc2); }
+  #nslist { flex: 1; overflow-y: auto; padding: 0 8px 20px; }
+  .group-h {
+    font-size: 10px; letter-spacing: 2px; color: var(--dim); text-transform: uppercase;
+    padding: 12px 6px 4px; border-bottom: 1px solid var(--line); margin-bottom: 4px;
+  }
+  .nsitem {
+    padding: 6px 8px; border-radius: 6px; cursor: pointer;
+    font-family: var(--mono); font-size: 11.5px; color: #9fb4cc;
+    display: flex; align-items: center; gap: 6px;
+    white-space: nowrap; overflow: hidden;
+  }
+  .nsitem:hover { background: var(--panel2); color: #dbe8f7; }
+  .nsitem.sel { background: #13293d; color: #eaf4ff; outline: 1px solid #1f4b6e; }
+  .nsitem .dot { width: 7px; height: 7px; border-radius: 50%; background: #2a3b52; flex: 0 0 auto; }
+  .nsitem.loaded .dot { background: var(--acc); box-shadow: 0 0 8px var(--acc); }
+  .nsitem .nm { overflow: hidden; text-overflow: ellipsis; }
+
+  #content { flex: 1; display: flex; flex-direction: column; min-width: 0; min-height: 0; }
+  nav { display: flex; gap: 4px; padding: 8px 14px 0; border-bottom: 1px solid var(--line); background: var(--bg2); }
+  nav button {
+    background: none; border: none; border-bottom: 2px solid transparent;
+    color: var(--dim); padding: 8px 14px; cursor: pointer; font-size: 12px;
+    letter-spacing: 1.5px; text-transform: uppercase; font-family: inherit;
+  }
+  nav button.on { color: var(--acc); border-bottom-color: var(--acc); }
+  nav button:hover { color: var(--txt); }
+  .tab { flex: 1; overflow-y: auto; padding: 16px 20px; display: none; min-height: 0; }
+  .tab.on { display: block; }
+
+  /* ---------- module tab ---------- */
+  .mod-head { display: flex; align-items: center; gap: 14px; flex-wrap: wrap; margin-bottom: 14px; }
+  .mod-head h2 { font-family: var(--mono); font-size: 15px; color: #eaf4ff; font-weight: 500; word-break: break-all; }
+  button.act {
+    background: linear-gradient(180deg, #10402f, #0c3324); color: var(--acc);
+    border: 1px solid #1d5c42; border-radius: 6px; padding: 7px 16px;
+    font-family: var(--mono); font-size: 12px; cursor: pointer; letter-spacing: 1px;
+  }
+  button.act:hover { filter: brightness(1.25); }
+  button.act:disabled { opacity: .45; cursor: wait; }
+  button.act.blue { background: linear-gradient(180deg,#0e2f4d,#0b2540); color: var(--acc2); border-color: #1b4d78; }
+  button.mini {
+    background: var(--panel2); color: var(--acc2); border: 1px solid var(--line);
+    border-radius: 5px; padding: 4px 10px; font-family: var(--mono); font-size: 11px; cursor: pointer;
+  }
+  button.mini:hover { border-color: var(--acc2); }
+  .status { font-family: var(--mono); font-size: 11px; color: var(--dim); }
+  .status.ok { color: var(--acc); }
+  .status.bad { color: var(--err); }
+
+  .varcard {
+    background: var(--panel); border: 1px solid var(--line); border-radius: 8px;
+    margin-bottom: 10px; padding: 10px 14px;
+  }
+  .varcard .vrow { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
+  .vname { font-family: var(--mono); font-size: 12px; color: #d9e7fa; word-break: break-all; flex: 1; min-width: 220px; }
+  .chip {
+    font-family: var(--mono); font-size: 9.5px; padding: 2px 8px; border-radius: 10px;
+    text-transform: uppercase; letter-spacing: 1px; flex: 0 0 auto;
+  }
+  .chip.fn    { background: #0d2f4e; color: var(--acc2); }
+  .chip.agent { background: #123b2c; color: var(--acc); }
+  .chip.atom  { background: #123b2c; color: var(--acc); }
+  .chip.ref   { background: #123b2c; color: var(--acc); }
+  .chip.value { background: #2c2a12; color: var(--warn); }
+  .argrow { display: flex; gap: 8px; margin-top: 8px; flex-wrap: wrap; align-items: center; }
+  .argrow input {
+    background: var(--bg); border: 1px solid var(--line); color: var(--txt);
+    font-family: var(--mono); font-size: 12px; padding: 6px 9px; border-radius: 5px; width: 170px; outline: none;
+  }
+  .argrow input:focus { border-color: var(--acc); }
+  .preview { font-family: var(--mono); font-size: 11px; color: var(--dim); margin-top: 6px; word-break: break-all; }
+  .result { margin-top: 10px; display: none; }
+  .result.show { display: block; }
+  pre.out {
+    background: #04070c; border: 1px solid var(--line); border-radius: 6px;
+    padding: 10px 12px; font-family: var(--mono); font-size: 11.5px; line-height: 1.55;
+    white-space: pre-wrap; word-break: break-word; overflow-x: auto; max-height: 420px; overflow-y: auto;
+    color: #b9cde6;
+  }
+  pre.out .vlabel { color: var(--dim); }
+  .htmlrender {
+    background: #fff; border-radius: 6px; padding: 12px; margin-top: 8px;
+    max-height: 420px; overflow: auto; color: #000;
+  }
+
+  /* ---------- source ---------- */
+  #srccode { font-size: 11.5px; max-height: none; }
+
+  /* ---------- console ---------- */
+  .console-wrap { display: flex; gap: 16px; height: 100%; min-height: 0; }
+  .console-left { flex: 1.4; display: flex; flex-direction: column; min-width: 0; }
+  .console-right { flex: 1; display: flex; flex-direction: column; min-width: 0; }
+  #consoleLog { flex: 1; overflow-y: auto; margin-bottom: 10px; }
+  .clog-in, .clog-out { font-family: var(--mono); font-size: 11.5px; padding: 6px 10px; border-radius: 6px; margin-bottom: 6px; white-space: pre-wrap; word-break: break-word; }
+  .clog-in  { background: #0e1d31; color: #cfe4ff; border-left: 3px solid var(--acc2); }
+  .clog-out { background: #071209; color: #bfe8cf; border-left: 3px solid var(--acc); }
+  .clog-out.err { background: #1d0b0f; color: #ffc4cb; border-left-color: var(--err); }
+  #evalbox {
+    background: var(--bg); border: 1px solid var(--line); border-radius: 6px; color: var(--txt);
+    font-family: var(--mono); font-size: 12.5px; padding: 10px; width: 100%; height: 92px; resize: vertical; outline: none;
+  }
+  #evalbox:focus { border-color: var(--acc); }
+  .console-right h3, .hint { font-size: 10px; letter-spacing: 2px; text-transform: uppercase; color: var(--dim); margin: 6px 0; }
+  #histSearch { margin: 0 0 8px; padding: 6px 10px; background: var(--panel); color: var(--txt); border: 1px solid var(--line); border-radius: 6px; font-family: var(--mono); font-size: 11px; outline: none; }
+  #histList { flex: 1; overflow-y: auto; }
+  .hitem {
+    font-family: var(--mono); font-size: 10.5px; color: #93a9c4; padding: 5px 8px;
+    border-bottom: 1px solid #101a29; cursor: pointer; white-space: pre-wrap; word-break: break-all;
+  }
+  .hitem:hover { background: var(--panel2); color: #dbe8f7; }
+
+  /* ---------- clocks ---------- */
+  .clockgrid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 14px; margin-bottom: 18px; }
+  .clockcard { background: var(--panel); border: 1px solid var(--line); border-radius: 10px; padding: 16px; }
+  .clockcard .cl { font-size: 10px; letter-spacing: 2px; text-transform: uppercase; color: var(--dim); margin-bottom: 8px; }
+  .clockcard .cv { font-family: var(--mono); font-size: 24px; color: var(--acc); text-shadow: 0 0 16px rgba(55,224,165,.35); word-break: break-all; }
+  .clockcard .cs { font-family: var(--mono); font-size: 10px; color: var(--dim); margin-top: 8px; }
+  .about p { max-width: 860px; line-height: 1.7; margin-bottom: 12px; color: #a9bcd4; }
+  .about code { font-family: var(--mono); color: var(--acc); font-size: 12px; }
+  .about h2 { font-size: 13px; letter-spacing: 2px; text-transform: uppercase; color: #e8f2ff; margin: 20px 0 8px; }
+  .empty { color: var(--dim); font-family: var(--mono); font-size: 12px; padding: 30px; text-align: center; }
+  ::-webkit-scrollbar { width: 9px; height: 9px; }
+  ::-webkit-scrollbar-thumb { background: #1c2a3f; border-radius: 5px; }
+  ::-webkit-scrollbar-track { background: transparent; }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="glyph">Λ|C</div>
+  <h1>ALIEN CORRIDOR SUPPORT SYSTEM
+    <small>3PP-NOAH84 · MDQNM TIME MACHINES &amp; CLOCKS · ENGINE PRESERVED VERBATIM</small>
+  </h1>
+  <span class="badge" id="treeBadge">…</span>
+  <a id="otherTree" href="#" style="display:none">switch tree ⇄</a>
+  <div class="spacer"></div>
+  <div class="ticker">
+    <div class="val" id="tickerVal">—</div>
+    <div class="lbl" id="tickerLbl">TNL·1000D CORRIDOR CLOCK</div>
+  </div>
+</header>
+
+<main>
+  <div id="sidebar">
+    <input id="search" placeholder="⌕ filter 90 modules…" autocomplete="off">
+    <div id="nslist"><div class="empty">scanning engine…</div></div>
+  </div>
+
+  <div id="content">
+    <nav>
+      <button data-tab="module" class="on">Module</button>
+      <button data-tab="source">Source</button>
+      <button data-tab="console">Console</button>
+      <button data-tab="clocks">Clocks</button>
+      <button data-tab="about">About</button>
+    </nav>
+
+    <div class="tab on" id="tab-module">
+      <div class="empty">Select a module from the corridor manifest on the left,<br>then LOAD it to expose its clocks, matrices and enumerations.</div>
+    </div>
+
+    <div class="tab" id="tab-source">
+      <div class="empty">Select a module to view its unmodified Clojure source.</div>
+    </div>
+
+    <div class="tab" id="tab-console">
+      <div class="console-wrap">
+        <div class="console-left">
+          <div id="consoleLog"><div class="empty">Full Clojure REPL against the live engine.<br>Evaluate anything — exactly as the author did in Counterclockwise.</div></div>
+          <textarea id="evalbox" placeholder="(require 'org.threeppnoah.mdqnm.sfo22.tnl-onethousand-d :reload)  …  Ctrl+Enter to evaluate" spellcheck="false"></textarea>
+          <div class="hint" style="margin-top:6px">CTRL+ENTER · EVALUATES IN PERSISTENT NAMESPACE acss.console</div>
+        </div>
+        <div class="console-right">
+          <h3>Author's original REPL history (recovered)</h3>
+          <input id="histSearch" placeholder="⌕ search history…" autocomplete="off">
+          <div id="histList"><div class="empty">loading…</div></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="tab" id="tab-clocks">
+      <div class="clockgrid">
+        <div class="clockcard">
+          <div class="cl">Engine clock · z-tnldy-clock3 (sfo22 agent)</div>
+          <div class="cv" id="engineClock">not engaged</div>
+          <div class="cs" id="engineClockSub">Load sfo22 to engage the engine's own clock agent.</div>
+        </div>
+        <div class="clockcard">
+          <div class="cl">Live TNL·1000D projection (GUI-side, read-only)</div>
+          <div class="cv" id="projClock">—</div>
+          <div class="cs">(4703008911.6524158… + now<sub>ms</sub>) ÷ 86 400 000 — same formula the engine seals into its agents at load time.</div>
+        </div>
+        <div class="clockcard">
+          <div class="cl">Alien corridor · core completion matrix 1 (sfo23, ZTP 10800)</div>
+          <div class="cv" id="ccm1">—</div>
+          <div class="cs">(Z − 10800) ÷ 240 · projection; use sfo23 module for the sealed engine value.</div>
+        </div>
+      </div>
+      <div style="display:flex;gap:10px;flex-wrap:wrap;margin-bottom:14px">
+        <button class="act" id="engageBtn">ENGAGE ENGINE CLOCK (load sfo22)</button>
+        <button class="act blue" id="enumBtn">RUN FULL SFO CLOCK ENUMERATION (global.calc01)</button>
+      </div>
+      <pre class="out" id="clockOut" style="display:none"></pre>
+    </div>
+
+    <div class="tab about" id="tab-about">
+      <h2>What this is</h2>
+      <p>The <b>Alien Corridor Support System</b> is a GUI cockpit for the original <code>3PP-NOAH84 / MDQNM</code> Clojure project (time machines, clocks, corridor matrices, data alphabets, gematria ciphers and clock enumerations across ~90 namespaces).</p>
+      <h2>Preservation guarantee</h2>
+      <p>Not one tittle of the original Clojure is altered. The complete original folder lives verbatim in <code>engine/</code> (verified byte-identical to the source). This GUI is a separate process layer that loads those files unchanged with <code>(require … :reload)</code> — the same mechanism the author's Eclipse Counterclockwise REPL used — running on the project's own original stack: Clojure 1.7.0, clj-time 0.11.0, joda-time 2.8.2.</p>
+      <h2>This edition: in your browser</h2>
+      <p>This page runs the engine <b>without a JVM or a server</b>. The same unmodified <code>.clj</code> files are
+      read by SCI, a Clojure interpreter in the page, which supplies only what the JVM supplied: <code>java.util.Date</code>,
+      <code>clj-time</code>'s <code>from-long</code> and <code>local-now</code>, and agents. The API this GUI calls is answered
+      in the page itself. The JVM engine remains the reference; every module of both editions has been compared with it —
+      see <a href="fidelity.html">fidelity</a>. What differs, and why: numbers print the JavaScript way
+      (<code>16800</code> for <code>16800.0</code>; no exact ratios), a character literal such as <code>\n</code> is the
+      one-letter string <code>"n"</code>, clocks read this device's clock and re-seal whenever the page is reloaded,
+      and each visitor's engine is their own.</p>
+      <h2>Two editions</h2>
+      <p>The source folder contains two distinct editions of the engine that differ in nearly every file: the primary <code>mdqnm</code> tree and the <code>mdqnmshulammitebanksystem</code> tree. Each runs in its own JVM so their same-named namespaces never contaminate each other. Launch with <code>./run.sh primary</code>, <code>./run.sh bank</code>, or <code>./run.sh both</code>.</p>
+      <h2>How to use</h2>
+      <p>① Pick a module in the left manifest and LOAD it (top-level agents are created and sealed to the current instant, exactly as on a REPL load). ② Invoke its functions — enumerations print full reports; corridor matrices take a Y or Z argument. ③ DEREF agents to read sealed clock values. ④ Or drop to the Console for raw REPL access, with the author's recovered command history alongside.</p>
+      <div class="status" id="metaLine" style="margin-top:18px"></div>
+    </div>
+  </div>
+</main>
+
+<script src="scittle-0.8.33.js"></script>
+<script src="acss-engine.js"></script>
+<script src="acss-browser.js"></script>
+<script>
+"use strict";
+/* ------------------------------------------------------------------ */
+/* helpers                                                             */
+const $ = s => document.querySelector(s);
+const esc = s => String(s).replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;").replace(/"/g,"&quot;");
+const ednStr = s => '"' + String(s).replace(/\\/g,"\\\\").replace(/"/g,'\\"') + '"';
+async function apiGet(p){ const r = await fetch(p); return r.json(); }
+async function apiPost(p, edn){ const r = await fetch(p, {method:"POST", body: edn}); return r.json(); }
+
+const state = { meta:null, namespaces:[], selected:null, vars:{}, loaded:{} };
+
+/* ------------------------------------------------------------------ */
+/* tabs                                                                */
+document.querySelectorAll("nav button").forEach(b => b.onclick = () => {
+  document.querySelectorAll("nav button").forEach(x => x.classList.remove("on"));
+  document.querySelectorAll(".tab").forEach(x => x.classList.remove("on"));
+  b.classList.add("on");
+  $("#tab-" + b.dataset.tab).classList.add("on");
+});
+function gotoTab(name){ document.querySelector('nav button[data-tab="'+name+'"]').click(); }
+
+/* ------------------------------------------------------------------ */
+/* meta + header                                                       */
+async function loadMeta(){
+  const m = await apiGet("/api/meta");
+  state.meta = m;
+  const bank = m.tree !== "primary";
+  const badge = $("#treeBadge");
+  badge.textContent = bank ? "SHULAMMITE BANK TREE" : "PRIMARY MDQNM TREE";
+  badge.classList.toggle("bank", bank);
+  if (m.otherPort || m.twinUrl) {
+    const a = $("#otherTree");
+    a.style.display = "";
+    a.href = m.twinUrl || ("http://127.0.0.1:" + m.otherPort + "/");
+    a.textContent = "switch to " + (bank ? "primary" : "bank") + " tree ⇄";
+  }
+  $("#metaLine").textContent =
+    "engine: " + m.srcRoot + "  ·  " + m.namespaceCount + " modules  ·  clojure " +
+    m.clojureVersion + " / java " + m.javaVersion + "  ·  port " + m.port;
+}
+
+/* ------------------------------------------------------------------ */
+/* namespace manifest                                                  */
+function groupOf(ns){
+  if (ns.indexOf("mdqnm.sfo") >= 0) return "SFO · STREAMS OF FUNCTIONAL ORACLES";
+  if (ns.indexOf("mdqnm.calc") >= 0) return "CALC · DATA ALPHABETS & CIPHERS";
+  if (ns.indexOf("mdqnm.computer") >= 0) return "COMPUTER · ENCODINGS & SIGNALLING";
+  if (ns.indexOf("mdqnm.global") >= 0) return "MDQNM GLOBAL";
+  if (ns.indexOf("threeppnoah.global") >= 0) return "GLOBAL COMPUTUS";
+  if (ns.indexOf("jomosuperprocess") >= 0) return "JOMO SUPERPROCESSES";
+  if (ns.indexOf("cognitiveradiofrequency") >= 0) return "COGNITIVE RADIO FREQUENCY";
+  return "OTHER";
+}
+const GROUP_ORDER = ["SFO · STREAMS OF FUNCTIONAL ORACLES","CALC · DATA ALPHABETS & CIPHERS",
+  "COMPUTER · ENCODINGS & SIGNALLING","MDQNM GLOBAL","GLOBAL COMPUTUS",
+  "JOMO SUPERPROCESSES","COGNITIVE RADIO FREQUENCY","OTHER"];
+
+function shortName(ns){ return ns.replace("org.threeppnoah.",""); }
+
+function renderNsList(){
+  const q = $("#search").value.trim().toLowerCase();
+  const groups = {};
+  state.namespaces.forEach(n => {
+    if (q && n.ns.toLowerCase().indexOf(q) < 0) return;
+    const g = groupOf(n.ns);
+    (groups[g] = groups[g] || []).push(n);
+  });
+  let html = "";
+  GROUP_ORDER.forEach(g => {
+    if (!groups[g]) return;
+    html += '<div class="group-h">' + g + " (" + groups[g].length + ")</div>";
+    groups[g].forEach(n => {
+      const cls = "nsitem" + ((state.loaded[n.ns]||n.loaded) ? " loaded":"") + (state.selected===n.ns ? " sel":"");
+      html += '<div class="'+cls+'" data-ns="'+esc(n.ns)+'" title="'+esc(n.ns)+'"><span class="dot"></span><span class="nm">'+esc(shortName(n.ns))+'</span></div>';
+    });
+  });
+  $("#nslist").innerHTML = html || '<div class="empty">no match</div>';
+  document.querySelectorAll(".nsitem").forEach(el => el.onclick = () => selectNs(el.dataset.ns));
+}
+$("#search").oninput = renderNsList;
+
+async function loadNamespaces(){
+  const r = await apiGet("/api/namespaces");
+  state.namespaces = r.namespaces;
+  r.namespaces.forEach(n => { if (n.loaded) state.loaded[n.ns] = true; });
+  renderNsList();
+}
+
+/* ------------------------------------------------------------------ */
+/* module tab                                                          */
+async function selectNs(ns){
+  state.selected = ns;
+  renderNsList();
+  renderModuleHead(ns, state.loaded[ns] ? "loaded — listing vars…" : "not loaded yet");
+  gotoTab("module");
+  loadSource(ns);
+  if (state.loaded[ns]) await refreshVars(ns);
+}
+
+function renderModuleHead(ns, statusTxt, statusCls){
+  $("#tab-module").innerHTML =
+    '<div class="mod-head"><h2>'+esc(ns)+'</h2>' +
+    '<button class="act" id="loadBtn">'+(state.loaded[ns]?"RELOAD":"LOAD")+' MODULE</button>' +
+    '<span class="status '+(statusCls||"")+'" id="modStatus">'+esc(statusTxt||"")+'</span></div>' +
+    '<div id="varlist"></div><pre class="out" id="loadOut" style="display:none"></pre>';
+  $("#loadBtn").onclick = () => loadModule(ns);
+}
+
+async function loadModule(ns){
+  const btn = $("#loadBtn"); btn.disabled = true;
+  $("#modStatus").textContent = "loading (top-level agents sealing to now)…";
+  const r = await apiPost("/api/load", "{:ns " + ednStr(ns) + "}");
+  btn.disabled = false;
+  if (r.ok) {
+    state.loaded[ns] = true;
+    $("#modStatus").textContent = "loaded in " + r.ms + " ms";
+    $("#modStatus").className = "status ok";
+    if (r.out && r.out.trim()) { const lo = $("#loadOut"); lo.style.display = "block"; lo.textContent = r.out; }
+    renderNsList();
+    await refreshVars(ns);
+  } else {
+    $("#modStatus").textContent = "load failed: " + r.error;
+    $("#modStatus").className = "status bad";
+    if (r.out && r.out.trim()) { const lo = $("#loadOut"); lo.style.display = "block"; lo.textContent = r.out; }
+  }
+}
+
+async function refreshVars(ns){
+  const r = await apiGet("/api/vars?ns=" + encodeURIComponent(ns));
+  if (r.error) { $("#varlist").innerHTML = '<div class="empty">'+esc(r.error)+'</div>'; return; }
+  if ($("#modStatus")) { $("#modStatus").textContent = r.vars.length + " public vars exposed"; $("#modStatus").className = "status ok"; }
+  let html = "";
+  r.vars.forEach((v,i) => {
+    html += '<div class="varcard" id="vc'+i+'"><div class="vrow">' +
+            '<span class="vname">'+esc(v.name)+'</span>' +
+            '<span class="chip '+v.kind+'">'+v.kind+'</span>';
+    if (v.kind === "fn") {
+      const ar = (v.arities||[]).join(",");
+      html += '<span class="chip fn">arity '+esc(ar||"?")+'</span>';
+    }
+    html += '</div>';
+    if (v.kind === "fn") {
+      const n = (v.arities && v.arities.length) ? v.arities[0] : 0;
+      html += '<div class="argrow" id="args'+i+'">';
+      for (let a=0; a<n; a++) html += '<input placeholder="arg'+(a+1)+' (clojure expr)" data-arg>';
+      html += '<button class="mini" data-run="'+i+'">▶ RUN</button></div>';
+    } else if (v.kind === "agent" || v.kind === "atom" || v.kind === "ref") {
+      html += '<div class="argrow"><button class="mini" data-deref="'+i+'">◉ DEREF</button></div>';
+      if (v.preview) html += '<div class="preview">sealed: '+esc(v.preview)+'</div>';
+    } else if (v.preview) {
+      html += '<div class="preview">'+esc(v.preview)+'</div>';
+    }
+    html += '<div class="result" id="res'+i+'"></div></div>';
+  });
+  $("#varlist").innerHTML = html || '<div class="empty">no public vars</div>';
+  document.querySelectorAll("[data-run]").forEach(b => b.onclick = () => invokeVar(ns, r.vars[+b.dataset.run], +b.dataset.run));
+  document.querySelectorAll("[data-deref]").forEach(b => b.onclick = () => derefVar(ns, r.vars[+b.dataset.deref], +b.dataset.deref));
+}
+
+function showResult(i, r){
+  const el = $("#res"+i);
+  el.classList.add("show");
+  let html = "";
+  const body = (r.out && r.out.trim() ? esc(r.out) + "\n" : "");
+  if (r.ok) {
+    html = '<pre class="out">' + body + '<span class="vlabel">⇒ </span>' + esc(r.value) + '</pre>';
+    if (r.value && (r.value.indexOf("&lt;") >= 0 || /<\w+/.test(r.value))) {
+      html += '<button class="mini" data-render="'+i+'" style="margin-top:6px">⬒ RENDER AS HTML</button><div class="htmlrender" id="hr'+i+'" style="display:none"></div>';
+    }
+    html += '<div class="status ok" style="margin-top:4px">'+r.ms+' ms</div>';
+  } else {
+    html = '<pre class="out">'+body+'<span style="color:var(--err)">✗ '+esc(r.error)+'</span></pre>';
+  }
+  el.innerHTML = html;
+  const rb = el.querySelector("[data-render]");
+  if (rb) rb.onclick = () => {
+    const hr = $("#hr"+i);
+    hr.style.display = hr.style.display === "none" ? "block" : "none";
+    if (!hr.dataset.done) {
+      let v = r.value;
+      if (v.length > 1 && v[0] === '"' && v[v.length-1] === '"')
+        v = v.slice(1,-1).replace(/\\"/g,'"').replace(/\\n/g,"\n").replace(/\\\\/g,"\\");
+      hr.innerHTML = v; hr.dataset.done = "1";
+    }
+  };
+}
+
+async function invokeVar(ns, v, i){
+  const args = Array.prototype.map.call(document.querySelectorAll("#args"+i+" [data-arg]"), x => x.value || "nil");
+  const edn = "{:ns "+ednStr(ns)+" :name "+ednStr(v.name)+" :args ["+args.map(ednStr).join(" ")+"]}";
+  $("#res"+i).classList.add("show");
+  $("#res"+i).innerHTML = '<div class="status">running…</div>';
+  showResult(i, await apiPost("/api/invoke", edn));
+}
+async function derefVar(ns, v, i){
+  const edn = "{:ns "+ednStr(ns)+" :name "+ednStr(v.name)+"}";
+  showResult(i, await apiPost("/api/deref", edn));
+}
+
+/* ------------------------------------------------------------------ */
+/* source tab                                                          */
+async function loadSource(ns){
+  $("#tab-source").innerHTML = '<div class="mod-head"><h2>'+esc(ns)+'</h2><span class="status">unmodified engine source</span></div><pre class="out" id="srccode">loading…</pre>';
+  const r = await apiGet("/api/source?ns=" + encodeURIComponent(ns));
+  $("#srccode").textContent = r.source || r.error || "";
+}
+
+/* ------------------------------------------------------------------ */
+/* console tab                                                         */
+const evalbox = $("#evalbox");
+evalbox.addEventListener("keydown", e => {
+  if (e.key === "Enter" && (e.ctrlKey || e.metaKey)) { e.preventDefault(); runEval(); }
+});
+async function runEval(){
+  const code = evalbox.value.trim();
+  if (!code) return;
+  const log = $("#consoleLog");
+  if (log.querySelector(".empty")) log.innerHTML = "";
+  const inEl = document.createElement("div"); inEl.className = "clog-in"; inEl.textContent = code; log.appendChild(inEl);
+  const outEl = document.createElement("div"); outEl.className = "clog-out"; outEl.textContent = "…"; log.appendChild(outEl);
+  log.scrollTop = log.scrollHeight;
+  const r = await apiPost("/api/eval", "{:code " + ednStr(code) + "}");
+  outEl.textContent = (r.out && r.out.trim() ? r.out + "\n" : "") + (r.ok ? "⇒ " + r.value : "✗ " + r.error);
+  if (!r.ok) outEl.classList.add("err");
+  log.scrollTop = log.scrollHeight;
+  evalbox.value = "";
+}
+
+let historyAll = [];
+async function loadHistory(){
+  const r = await apiGet("/api/history");
+  historyAll = (r.author || []).slice().reverse();
+  renderHistory();
+}
+function renderHistory(){
+  const q = $("#histSearch").value.trim().toLowerCase();
+  const items = historyAll.filter(h => !q || h.toLowerCase().indexOf(q) >= 0).slice(0, 400);
+  $("#histList").innerHTML = items.length
+    ? items.map(h => '<div class="hitem">'+esc(h)+'</div>').join("")
+    : '<div class="empty">no history entries'+(q?" match":"")+'</div>';
+  document.querySelectorAll(".hitem").forEach((el,i) => el.onclick = () => { evalbox.value = items[i]; evalbox.focus(); });
+}
+$("#histSearch").oninput = renderHistory;
+
+/* ------------------------------------------------------------------ */
+/* clocks tab                                                          */
+const TNL_OFFSET = 4703008911.6524158066013043478202;
+function tnlNow(){ return (TNL_OFFSET + Date.now()) / 86400000; }
+setInterval(() => {
+  $("#tickerVal").textContent = tnlNow().toFixed(7);
+  $("#projClock").textContent = tnlNow().toFixed(9);
+  $("#ccm1").textContent = ((tnlNow() - 10800.0) / 240).toFixed(9);
+}, 120);
+
+async function pollEngineClock(){
+  const r = await apiGet("/api/clock");
+  if (r.loaded) {
+    $("#engineClock").textContent = r.tnldy.toFixed(9);
+    $("#engineClockSub").textContent = "agent value sealed at namespace load · deref of z-tnldy-clock3";
+    $("#tickerLbl").textContent = "TNL·1000D CORRIDOR CLOCK · ENGINE ENGAGED";
+  }
+}
+$("#engageBtn").onclick = async () => {
+  $("#engageBtn").disabled = true;
+  const r = await apiPost("/api/load", '{:ns "org.threeppnoah.mdqnm.sfo22.tnl-onethousand-d"}');
+  $("#engageBtn").disabled = false;
+  if (r.ok) { state.loaded["org.threeppnoah.mdqnm.sfo22.tnl-onethousand-d"] = true; renderNsList(); await pollEngineClock(); }
+  else { $("#engineClockSub").textContent = "load failed: " + r.error; }
+};
+$("#enumBtn").onclick = async () => {
+  const out = $("#clockOut");
+  out.style.display = "block";
+  out.textContent = "loading org.threeppnoah.global.calc01.current-sfo-clockvalues and running full enumeration…";
+  $("#enumBtn").disabled = true;
+  const l = await apiPost("/api/load", '{:ns "org.threeppnoah.global.calc01.current-sfo-clockvalues"}');
+  if (!l.ok) { out.textContent = "load failed: " + l.error + "\n" + (l.out||""); $("#enumBtn").disabled = false; return; }
+  state.loaded["org.threeppnoah.global.calc01.current-sfo-clockvalues"] = true;
+  state.loaded["org.threeppnoah.mdqnm.sfo22.tnl-onethousand-d"] = true;
+  renderNsList(); pollEngineClock();
+  const r = await apiPost("/api/invoke",
+    '{:ns "org.threeppnoah.global.calc01.current-sfo-clockvalues" :name "*sfo-clockvalues-enumeration-expects-nothing-as-input*" :args []}');
+  $("#enumBtn").disabled = false;
+  out.textContent = r.ok ? (r.out || "(no output)") : "✗ " + r.error + "\n" + (r.out||"");
+};
+
+/* ------------------------------------------------------------------ */
+loadMeta(); loadNamespaces(); loadHistory();
+setInterval(pollEngineClock, 5000); pollEngineClock();
+</script>
+</body>
+</html>
