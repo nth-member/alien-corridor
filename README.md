@@ -65,6 +65,16 @@ The engine's author REPL command histories. `docs/acss-browser.js` serves
 `docs/data/history-<tree>.json` if one is added, and shows an empty history panel otherwise. Also left
 out: crash logs, build output and the original archive.
 
+## The nth-member sites
+
+| site | repository | what it is |
+|---|---|---|
+| https://nth-member.github.io/revott/ | nth-member/revott | REVOTT atop GDELT: the field at every node of an instance |
+| https://nth-member.github.io/gdelt/ | nth-member/gdelt | what GDELT was reading on a given day |
+| https://nth-member.github.io/member/ | nth-member/member | the nth member: REVOTT's numerator, its introspection and its journal |
+| https://nth-member.github.io/gematria/ | nth-member/gematria | H-Gematria/ASCII: the two name-value programs in the browser |
+| https://nth-member.github.io/alien-corridor/ | nth-member/alien-corridor | the Alien Corridor Support System (MDQNM engine) in the browser |
+
 ## Licence
 
 The engine is under the Eclipse Public License 1.0 (`LICENSE`, from the engine itself). scittle is
