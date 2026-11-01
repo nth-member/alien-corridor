@@ -72,6 +72,20 @@ The engine's author REPL command histories. `docs/acss-browser.js` serves
 `docs/data/history-<tree>.json` if one is added, and shows an empty history panel otherwise. Also left
 out: crash logs, build output and the original archive.
 
+## Refreshing the sites
+
+One command, on the computer that keeps the sites, refreshes every 3PP-NOAH site whose data changes: JOMO
+SFO-WAM's feeds, REVOTT stamps, then GDELT into the GDELT day sources, REVOTT, the nth member,
+H-Gematria/ASCII and IPPROTO.
+
+```bash
+cd ~ && ./refresh-all.sh --push     # refresh and publish every updatable site
+cd ~ && ./refresh-all.sh            # refresh and commit, push nothing
+cd ~ && ./refresh-all.sh --check    # what GDELT has that is new; changes nothing
+```
+
+JOMO SFO-WAM's feeds and REVOTT stamps also refresh themselves every 15 minutes, from cron.
+
 ## The nth-member sites
 
 | site | repository | what it is |
