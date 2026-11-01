@@ -46,6 +46,13 @@ module's clock frozen at the instant the JVM loaded it. The per-module results a
 - Integers are exact to 2⁵³, not 2⁶³.
 - A bare `\n` character literal, which Clojure reads as the letter n, prints as the string `"n"`.
 - Clocks read the visitor's device clock, and re-seal whenever the page is reloaded.
+- Dates are read from Nsukka. The engine writes each date as `(c/from-long (long (+ ORIGIN (* 86400000 Z))))`;
+  the JVM printed that uniform epoch in UTC. Here each prints the instant at which the Nsukka/Yg clock
+  (`docs/nsukka-yg-clock.js`) reads the same Z: the engine's own year, Yg = 17640/48.3 days (sfo10), laid on
+  Nsukka's calendar from 1 December 00:00 and recalibrated at every Yg year, in Nsukka time (+01:00). A Z
+  passed over at a recalibration prints `no instant`; one met twice prints both. `local-now` prints Nsukka
+  time on any device. Each edition's from-long origin is read from its own sources by `tools/build.py`
+  (`docs/data/clock-<tree>.json`), and `compare.js` reads every JVM date through the same rule.
 - Some error messages use SCI's wording.
 
 Reproducing the comparison:

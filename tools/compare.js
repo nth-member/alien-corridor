@@ -20,7 +20,18 @@ global.Date = FakeDate;
 global.window = globalThis; global.self = globalThis;
 global.document = { addEventListener() {}, querySelectorAll() { return []; }, readyState: "complete", currentScript: null, getElementsByTagName() { return []; } };
 vm.runInThisContext(fs.readFileSync(path.join(DOCS, "scittle-0.8.33.js"), "utf8"));
+vm.runInThisContext(fs.readFileSync(path.join(DOCS, "nsukka-yg-clock.js"), "utf8"));
 vm.runInThisContext(fs.readFileSync(path.join(DOCS, "acss-engine.js"), "utf8"));
+
+// Dates. The JVM printed each from-long date as the uniform epoch of the edition's from-long origin, in UTC;
+// the browser prints the instant at which the Nsukka/Yg clock reads the same Z (acss-engine.js, iso). Each
+// JVM date is read through that same rule before comparing, so every date it printed is checked against its
+// Nsukka/Yg instant, exactly where the JVM's own milliseconds were exact.
+ACSS.fromLongOrigin = JSON.parse(fs.readFileSync(path.join(DOCS, "data", `clock-${tree}.json`), "utf8")).from_long_origin_ms;
+const isoMs = iso => Date.parse(iso.replace(/^(-?)(\d+)-/, (m, sg, y) => (sg ? "-" : "+") + y.padStart(6, "0") + "-"));
+const N = s => s == null ? s : s
+  .replace(/(#object\[org\.joda\.time\.DateTime 0x[0-9a-f]+ ")([^"]+Z)("\])/g, (_, a, iso, b) => a + ACSS.iso(isoMs(iso), "tnldy") + b)
+  .replace(/(?<![\d"-])(-?\d{4,}-\d\d-\d\dT\d\d:\d\d:\d\d\.\d{3}Z)/g, iso => ACSS.iso(isoMs(iso), "tnldy"));
 
 const nsFile = ns => SRC + ns.replace(/-/g, "_").replace(/\./g, "/") + ".clj";
 const E = ACSS.Engine({ isEngineNs: ns => ns.startsWith("org.threeppnoah"),
@@ -32,8 +43,9 @@ function tokens(s) {
   if (s == null) return [];
   s = s.replace(/#object\[(clojure\.lang\.Agent) 0x[0-9a-f]+ /g, "#object[$1 0x ");   // identity hashes differ on every run
   // Joda's ISO years (-0446, 40922) are not all Date.parse-able: widen them first.
-  s = s.replace(DT, (_, a, b) => { const iso = a || b.replace(/-00:00$/, "Z"); const w = iso.replace(/^(-?)(\d+)-/, (m, sg, y) => (sg ? "-" : "+") + y.padStart(6, "0") + "-");
-    return " DT(" + Date.parse(w) + ") "; });
+  s = s.replace(DT, (_, a, b) => { const text = a || b.replace(/-00:00$/, "Z");
+    if (!/^-?\d+-\d\d-\d\dT/.test(text)) return " " + JSON.stringify(text) + " ";      // "no instant: ..."
+    return text.split(" and ").map(iso => " DT(" + isoMs(iso) + ") ").join(" and "); });       // one instant, or two
   s = s.replace(/(?<![\d"-])(\d{4}-\d\d-\d\dT\d\d:\d\d:\d\d\.\d{3}(?:Z|[+-]\d\d:\d\d))/g, (_, iso) => " DT(" + Date.parse(iso) + ") ");
   s = s.replace(/(-?\d+)\/(\d+)(?![\d.])/g, (m, a, b) => String(Number(a) / Number(b)));   // JVM ratios
   return s.match(/DT\(-?\d+\)|-?\d+(?:\.\d+)?(?:[eE][+-]?\d+)?|"(?:[^"\\]|\\.)*"|[^\s\d"]+/g) || [];
@@ -67,14 +79,14 @@ for (const [ns, ref] of Object.entries(REF)) {
   const ld = E.load(ns);
   FROZEN = null;
   const H = s => (s || "").replace(/ 0x[0-9a-f]+ /g, " 0x ");
-  const r = { load: ld.ok ? "ok" : "FAIL: " + ld.error, outExact: H(ld.out) === H(ref.load.out),
-              outValue: ld.ok && same(ref.load.out, ld.out, EXACT),
-              outClock: ld.ok && same(ref.load.out, ld.out, CLOCK),
+  const r = { load: ld.ok ? "ok" : "FAIL: " + ld.error, outExact: H(ld.out) === H(N(ref.load.out)),
+              outValue: ld.ok && same(N(ref.load.out), ld.out, EXACT),
+              outClock: ld.ok && same(N(ref.load.out), ld.out, CLOCK),
               outLinesJVM: (ref.load.out || "").split("\n").length, outLinesSCI: (ld.out || "").split("\n").length,
               vars: 0, varsMissing: [], agentsExact: 0, agentsClock: 0, agentsDiff: [],
               inv: 0, invExact: 0, invClock: 0, invBothFail: 0, invDiff: [] };
   if (!r.outExact && ld.ok) {
-    const a = (ref.load.out || "").split("\n"), b = (ld.out || "").split("\n");
+    const a = (N(ref.load.out) || "").split("\n"), b = (ld.out || "").split("\n");
     const k = a.findIndex((l, i) => l !== b[i]);
     r.firstOutDiff = { line: k, jvm: (a[k] || "").slice(0, 200), sci: (b[k] || "").slice(0, 200) };
   }
@@ -88,8 +100,8 @@ for (const [ns, ref] of Object.entries(REF)) {
       if (!s) { r.varsMissing.push(v.name); continue; }
       if (v.kind === "agent") {
         if (s.kind !== "agent") { r.agentsDiff.push({ name: v.name, why: "kind " + s.kind }); continue; }
-        if (same(v.preview, s.pv, EXACT)) r.agentsExact++;
-        else if (same(v.preview, s.pv, CLOCK)) r.agentsClock++;
+        if (same(N(v.preview), s.pv, EXACT)) r.agentsExact++;
+        else if (same(N(v.preview), s.pv, CLOCK)) r.agentsClock++;
         else r.agentsDiff.push({ name: v.name, jvm: (v.preview || "").slice(0, 120), sci: (s.pv || "").slice(0, 120) });
       }
     }
@@ -102,9 +114,9 @@ for (const [ns, ref] of Object.entries(REF)) {
         if (je === se) r.invSameError = (r.invSameError || 0) + 1;
         else (r.invErrDiff = r.invErrDiff || []).push({ fn: key, jvm: (iv.error || "").slice(0, 120), sci: (res.error || "").slice(0, 120) });
         continue; }
-      if (iv.ok && res.ok && same(iv.value, res.value, EXACT)) { r.invExact++; continue; }
-      if (iv.ok && res.ok && same(iv.value, res.value, CLOCK)) { r.invClock++; continue; }
-      r.invDiff.push({ fn: key, jvm: iv.ok ? (iv.value || "").slice(0, 160) : "ERR " + iv.error,
+      if (iv.ok && res.ok && same(N(iv.value), res.value, EXACT)) { r.invExact++; continue; }
+      if (iv.ok && res.ok && same(N(iv.value), res.value, CLOCK)) { r.invClock++; continue; }
+      r.invDiff.push({ fn: key, jvm: iv.ok ? (N(iv.value) || "").slice(0, 160) : "ERR " + iv.error,
                        sci: res.ok ? (res.value || "").slice(0, 160) : "ERR " + res.error });
     }
   }

@@ -264,9 +264,11 @@
           <div class="cs" id="engineClockSub">Load sfo22 to engage the engine's own clock agent.</div>
         </div>
         <div class="clockcard">
-          <div class="cl">Live TNL·1000D projection (GUI-side, read-only)</div>
+          <div class="cl">Live TNLDY · Nsukka/Yg clock (GUI-side, read-only)</div>
           <div class="cv" id="projClock">—</div>
-          <div class="cs">(4703008911.6524158… + now<sub>ms</sub>) ÷ 86 400 000 — same formula the engine seals into its agents at load time.</div>
+          <div class="cs" id="projNow">—</div>
+          <div class="cs">Z = (yG − 1969)·Yg − 340 + days since 1 December 00:00 Nsukka, Yg = 17640/48.3 days: the engine's
+            own year (sfo10), laid on Nsukka's calendar and recalibrated at every Yg year.</div>
         </div>
         <div class="clockcard">
           <div class="cl">Alien corridor · core completion matrix 1 (sfo23, ZTP 10800)</div>
@@ -305,6 +307,7 @@
 </main>
 
 <script src="scittle-0.8.33.js"></script>
+<script src="nsukka-yg-clock.js"></script>
 <script src="acss-engine.js"></script>
 <script src="acss-browser.js"></script>
 <script>
@@ -554,19 +557,31 @@ $("#histSearch").oninput = renderHistory;
 
 /* ------------------------------------------------------------------ */
 /* clocks tab                                                          */
-const TNL_OFFSET = 4703008911.6524158066013043478202;
-function tnlNow(){ return (TNL_OFFSET + Date.now()) / 86400000; }
+// TNLDY now, on the Nsukka/Yg clock (nsukka-yg-clock.js), and the engine's sealed clock beside it.
+const Yg = window.NsukkaYg;
+function tnlNow(){ return Yg.zNow(); }
 setInterval(() => {
+  const now = Date.now(), r = Yg.reading(now), nx = Yg.nextRecalibration(now);
   $("#tickerVal").textContent = tnlNow().toFixed(7);
   $("#projClock").textContent = tnlNow().toFixed(9);
+  $("#projNow").textContent = "Nsukka " + Yg.nsukka(now).slice(0, 19) + " · Yg " + r.yg + ", yearday " + r.yearday.toFixed(6) +
+    " · next recalibration " + Yg.nsukka(nx.at).slice(0, 16) + " Nsukka (" + nx.stepText + ")";
   $("#ccm1").textContent = ((tnlNow() - 10800.0) / 240).toFixed(9);
 }, 120);
+// How far an edition's live-clock constant sits from the Nsukka/Yg clock in the current Yg year.
+function clockOffset(constant){
+  const yg = Yg.ygOf(Date.now()), s = Yg.startMs(yg), exact = Yg.zOf(s).num / Yg.YG_DEN - s;
+  const d = Number(constant) - exact, a = Math.abs(d);
+  return (d < 0 ? "−" : "+") + (a < 60000 ? (a / 1000).toFixed(3) + " s" : (a / 3600000).toFixed(3) + " h");
+}
 
 async function pollEngineClock(){
   const r = await apiGet("/api/clock");
   if (r.loaded) {
     $("#engineClock").textContent = r.tnldy.toFixed(9);
-    $("#engineClockSub").textContent = "agent value sealed at namespace load · deref of z-tnldy-clock3";
+    const c = Object.keys(r.liveConstants || {})[0];
+    $("#engineClockSub").textContent = "agent value sealed at namespace load · deref of z-tnldy-clock3" +
+      (c ? " · its constant reads " + clockOffset(c) + " from the Nsukka/Yg clock" : "");
     $("#tickerLbl").textContent = "TNL·1000D CORRIDOR CLOCK · ENGINE ENGAGED";
   }
 }

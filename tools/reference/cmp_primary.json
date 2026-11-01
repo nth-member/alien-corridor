@@ -93,8 +93,8 @@
    "invDiff": [
     {
      "fn": "*ranges-of-sfobb-instance-values-but-optimized-for-hemboss-expects-coeffyj-coeffyg-sfobb-ztp1-ztp2*/5",
-     "jvm": "[{:title [\"output for this SFO BB position are as follows\" [\"FROM TNLDY\" 23 \"AT\" #object[org.joda.time.DateTime 0x7c7c0ce2 \"1969-11-30T11:28:41.740Z\"] \"which is",
-     "sci": "[{:title [\"output for this SFO BB position are as follows\" [\"FROM TNLDY\" 23 \"AT\" #object[org.joda.time.DateTime 0x6218c94a \"1969-11-30T11:28:41.740Z\"] \"which is"
+     "jvm": "[{:title [\"output for this SFO BB position are as follows\" [\"FROM TNLDY\" 23 \"AT\" #object[org.joda.time.DateTime 0x7c7c0ce2 \"1969-11-29T00:00:00.000+01:00\"] \"whi",
+     "sci": "[{:title [\"output for this SFO BB position are as follows\" [\"FROM TNLDY\" 23 \"AT\" #object[org.joda.time.DateTime 0x39347839 \"1969-11-29T00:00:00.000+01:00\"] \"whi"
     }
    ]
   },

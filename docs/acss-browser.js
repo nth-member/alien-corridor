@@ -18,7 +18,7 @@
   const sc = window.scittle.core;
   const SRC = {};                 // ns -> source text
   const loaded = {};              // ns -> {ms, at}
-  let NSLIST = [], NSSET = new Set(), ARITIES = {}, E = null, HISTORY = null;
+  let NSLIST = [], NSSET = new Set(), ARITIES = {}, E = null, HISTORY = null, CLOCK = null;
   const session = [];
 
   const REQ = /\(require\s+'([A-Za-z0-9.\-]+)\s*:reload\)/g;
@@ -37,6 +37,10 @@
     NSSET = new Set(NSLIST.map(n => n.ns));
     ARITIES = await (await netFetch("data/arities-" + TREE + ".json")).json();
     try { const h = await netFetch("data/history-" + TREE + ".json"); if (h.ok) HISTORY = await h.json(); } catch (e) { /* not published */ }
+    // The edition's own clock constants (tools/build.py reads them from its sources): its dates are read
+    // back to Z on its from-long origin and printed on the Nsukka/Yg clock (acss-engine.js, iso).
+    CLOCK = await (await netFetch("data/clock-" + TREE + ".json")).json();
+    window.ACSS.fromLongOrigin = CLOCK.from_long_origin_ms;
     E = window.ACSS.Engine({ isEngineNs: ns => NSSET.has(ns), source: ns => (ns in SRC ? SRC[ns] : null) });
     sc.eval_string("(ns acss.console)");
   })();
@@ -124,7 +128,8 @@
       let v = null;
       try { if (loaded["org.threeppnoah.mdqnm.sfo22.tnl-onethousand-d"])
               v = sc.eval_string("(deref org.threeppnoah.mdqnm.sfo22.tnl-onethousand-d/z-tnldy-clock3)"); } catch (e) { v = null; }
-      return { loaded: typeof v === "number", tnldy: typeof v === "number" ? v : null, now: Date.now() };
+      return { loaded: typeof v === "number", tnldy: typeof v === "number" ? v : null, now: Date.now(),
+               liveConstants: CLOCK ? CLOCK.live_clock_constants_ms : {} };
     },
   };
 

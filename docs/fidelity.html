@@ -52,6 +52,13 @@ Each module's clock was frozen at the instant the JVM loaded it, so sealed value
   as the letter <code>n</code>, not a newline — is the one-letter string <code>"n"</code>, and prints as such where the JVM prints <code>\n</code>.</li>
 <li><b>Clocks.</b> Agents seal to this device's clock at the moment of loading, and re-seal whenever the page is reloaded.
   Functions that read the clock when called (<code>*ztnldy*</code>) return the reading of that moment.</li>
+<li><b>Dates, read from Nsukka.</b> The engine writes every date as <code>(c/from-long (long (+ ORIGIN (* 86400000 Z))))</code>,
+  and the JVM printed that uniform epoch in UTC. Here each date is the instant at which the Nsukka/Yg clock reads the same
+  <code>Z</code>: the engine's own year, Yg = 17640/48.3 days (sfo10), laid on Nsukka's calendar from 1 December 00:00 and
+  recalibrated at every Yg year, printed in Nsukka time (<code>+01:00</code>). A <code>Z</code> in the 5/23 day passed over at a
+  recalibration prints <code>no instant</code>; one in the 18/23 day met twice prints both. <code>local-now</code> prints Nsukka time
+  on any device. The comparison reads each JVM date through the same rule, so every date it printed is checked against
+  its Nsukka/Yg instant.</li>
 <li><b>Error wording.</b> Failures raise the JVM's exception where the engine's behaviour depends on it
   (<code>ClassCastException</code> for arithmetic on an agent; <code>Agent is failed, needs restart</code>). Other errors
   carry SCI's wording: <code>24.5 is not ISeqable</code> for the JVM's <code>Don't know how to create ISeq from: java.lang.Double</code>.</li>
