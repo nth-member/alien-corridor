@@ -1,0 +1,512 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Feed · Alien Corridor</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+  :root {
+    --bg: #06090f; --bg2: #0a101a; --panel: #0d1522; --panel2: #111c2d; --line: #1d2c42;
+    --txt: #c8d6e8; --dim: #64788f; --acc: #37e0a5; --acc2: #46b8ff; --warn: #ffb454; --err: #ff6b7a;
+    --past: #b18cff; --mono: "JetBrains Mono","Fira Code",Consolas,Menlo,monospace;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    background: radial-gradient(1000px 420px at 70% -10%, #0d2036 0%, transparent 60%), var(--bg);
+    color: var(--txt); font-family: "Inter","Segoe UI",system-ui,sans-serif; font-size: 14px; min-height: 100vh;
+  }
+  a { color: var(--acc2); }
+  header {
+    display: flex; align-items: center; gap: 14px; padding: 10px 16px; border-bottom: 1px solid var(--line);
+    background: linear-gradient(180deg, #0c1420, #090f18); position: sticky; top: 0; z-index: 2;
+  }
+  .glyph {
+    width: 32px; height: 32px; border-radius: 8px; flex: 0 0 auto; background: linear-gradient(135deg, #0f3b2c, #123650);
+    border: 1px solid #23543f; display: flex; align-items: center; justify-content: center;
+    color: var(--acc); font-family: var(--mono); font-weight: 700; font-size: 14px; text-shadow: 0 0 12px var(--acc);
+  }
+  h1 { font-size: 14px; letter-spacing: 2.5px; font-weight: 600; color: #e8f2ff; }
+  h1 small { display: block; letter-spacing: 1px; font-size: 10px; color: var(--dim); font-weight: 400; margin-top: 2px; }
+  .spacer { flex: 1; }
+  .ticker { text-align: right; font-family: var(--mono); }
+  .ticker .val { font-size: 16px; color: var(--acc); text-shadow: 0 0 14px rgba(55,224,165,.45); }
+  .ticker .lbl { font-size: 9px; color: var(--dim); letter-spacing: 1.5px; text-transform: uppercase; }
+  main { max-width: 980px; margin: 0 auto; padding: 14px 16px 40px; }
+  .card { background: var(--panel); border: 1px solid var(--line); border-radius: 8px; padding: 12px 14px; margin-bottom: 12px; }
+  .cl { font-size: 10px; letter-spacing: 2px; text-transform: uppercase; color: var(--dim); margin-bottom: 8px; }
+  .vname { font-family: var(--mono); font-size: 12.5px; color: #d9e7fa; word-break: break-all; }
+  .nsname { font-family: var(--mono); font-size: 11px; color: var(--dim); word-break: break-all; margin-bottom: 4px; }
+  .chip { font-family: var(--mono); font-size: 9.5px; padding: 2px 8px; border-radius: 10px; text-transform: uppercase; letter-spacing: 1px; white-space: nowrap; }
+  .chip.fn { background: #0d2f4e; color: var(--acc2); }
+  .chip.agent { background: #123b2c; color: var(--acc); }
+  .row { display: flex; gap: 8px; align-items: center; flex-wrap: wrap; }
+  input.arg, input.tz {
+    background: var(--bg); border: 1px solid var(--line); color: var(--txt); font-family: var(--mono); font-size: 12px;
+    padding: 6px 9px; border-radius: 5px; width: 170px; outline: none;
+  }
+  input.arg:focus, input.tz:focus { border-color: var(--acc); }
+  button.mini {
+    background: var(--panel2); color: var(--acc2); border: 1px solid var(--line); border-radius: 5px;
+    padding: 5px 11px; font-family: var(--mono); font-size: 11px; cursor: pointer;
+  }
+  button.mini:hover { border-color: var(--acc2); }
+  button.mini:disabled { opacity: .45; cursor: default; }
+  pre.out {
+    background: #04070c; border: 1px solid var(--line); border-radius: 6px; padding: 9px 11px; margin-top: 8px;
+    font-family: var(--mono); font-size: 11.5px; line-height: 1.55; white-space: pre-wrap; word-break: break-word;
+    max-height: 260px; overflow: auto; color: #b9cde6;
+  }
+  .status { font-family: var(--mono); font-size: 11px; color: var(--dim); margin-top: 6px; }
+  .status.bad { color: var(--err); }
+  .zbig { font-family: var(--mono); font-size: 26px; color: var(--acc); text-shadow: 0 0 16px rgba(55,224,165,.3); word-break: break-all; }
+  .badge { font-family: var(--mono); font-size: 11px; padding: 3px 10px; border-radius: 20px; letter-spacing: 1.5px; border: 1px solid; }
+  .badge.present { color: var(--acc); border-color: var(--acc); }
+  .badge.past { color: var(--past); border-color: var(--past); }
+  .badge.future { color: var(--warn); border-color: var(--warn); }
+  .sub { font-family: var(--mono); font-size: 11.5px; color: #9fb4cc; margin-top: 6px; line-height: 1.6; word-break: break-word; }
+  .note { font-size: 11.5px; color: var(--dim); margin-top: 6px; line-height: 1.6; }
+  .fhead { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 6px; margin-bottom: 8px; }
+  .fhead .cl { margin: 0; }
+  .chips { display: flex; flex-wrap: wrap; gap: 4px; margin-bottom: 8px; }
+  .fchip {
+    font-family: var(--mono); font-size: 9.5px; padding: 3px 8px; cursor: pointer; text-transform: uppercase; letter-spacing: .5px;
+    background: transparent; border: 1px solid var(--line); color: var(--dim); border-radius: 3px;
+  }
+  .fchip.on { background: rgba(55,224,165,.1); border-color: rgba(55,224,165,.35); color: var(--acc); }
+  .fchip.reload { color: var(--acc); border-color: rgba(55,224,165,.3); }
+  .tier { font-size: 11.5px; color: #a9bcd4; line-height: 1.6; padding: 7px 10px; border-left: 2px solid var(--line); margin-bottom: 10px; background: rgba(255,255,255,.015); }
+  .it { padding: 4px 9px; margin-bottom: 2px; background: rgba(200,214,232,.025); border-left: 2px solid var(--line); font-size: 12px; }
+  .it a { color: #e9c46a; text-decoration: none; }
+  .it a:hover { text-decoration: underline; }
+  .it .meta { color: var(--dim); font-size: 10px; margin-left: 8px; font-family: var(--mono); }
+  .it .live { color: var(--acc); }
+  .it .sum { color: #8095ad; font-size: 11px; margin-top: 2px; }
+  .src { margin-bottom: 10px; }
+  .src .sh { display: flex; justify-content: space-between; gap: 8px; margin-bottom: 3px; font-size: 11.5px; }
+  .src .sh b { color: #e9c46a; font-weight: 600; }
+  .src .sh .p { color: var(--dim); font-weight: 400; margin-left: 6px; }
+  .src .sh .n { font-family: var(--mono); font-size: 10px; color: var(--acc); white-space: nowrap; }
+  .quiet { font-size: 11px; color: var(--dim); line-height: 1.6; margin-top: 8px; }
+  details.gday { margin-bottom: 4px; }
+  details.gday summary { cursor: pointer; font-family: var(--mono); font-size: 11.5px; color: #9fb4cc; padding: 3px 0; }
+  .empty { color: var(--dim); font-family: var(--mono); font-size: 12px; padding: 18px; text-align: center; }
+  @media (max-width: 600px) { .ticker { display: none; } .zbig { font-size: 21px; } input.arg { width: 100%; } }
+</style>
+<script src="https://3pp-noah.github.io/usage.js" defer></script>
+</head>
+<body>
+<header>
+  <div class="glyph">Λ|C</div>
+  <h1>FEED<small id="treeLine">ALIEN CORRIDOR SUPPORT SYSTEM</small></h1>
+  <div class="spacer"></div>
+  <div class="ticker"><div class="val" id="nowZ">—</div><div class="lbl">TNLDY now · Nsukka/Yg clock</div></div>
+</header>
+<main>
+  <div class="card" id="what"><div class="empty">starting the engine…</div></div>
+  <div class="card" id="call" style="display:none"></div>
+  <div class="card" id="tz" style="display:none"></div>
+  <div class="card" id="feed" style="display:none"></div>
+</main>
+
+<!-- acss-feed.js first: it gives the window the clock the engine reads, before anything else reads it -->
+<script src="acss-feed.js"></script>
+<script src="scittle-0.8.33.js"></script>
+<script src="nsukka-yg-clock.js"></script>
+<script src="acss-engine.js"></script>
+<script src="https://nth-member.github.io/revott-stamps/stamp.js"></script>
+<script>
+"use strict";
+/* The FEED window: one agent or function of the engine, read at a TNLDY -- past, present or future -- and the
+   knowledge-server feeds at that TNLDY, in JOMO SFO-WAM's feed regime (its 12 domains, Latest / By source).
+
+     present  JOMO SFO-WAM's live snapshot (refreshed every 15 minutes), with the archive behind it
+     past     the archive of every item those feeds carried, dated once (REVOTT STAMPS), from the first
+              reading (2026-09-28); before it, GDELT's day sources from 2013-04-01, at day precision
+     future   ahead: the window opens when its first instant comes, and the feed goes live then
+
+   An item belongs to the window when its TNLDY, on the Nsukka/Yg clock, lies within ± the window of the
+   TNLDY the call names (acss-feed.js says which that is). */
+const $ = s => document.querySelector(s);
+const esc = s => String(s).replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;");
+const F = window.ACSSFeed, Yg = window.NsukkaYg, RealDate = F.RealDate, now = () => RealDate.now();
+
+const Q = new URLSearchParams(location.search);
+const TREE = Q.get("tree") === "bank" ? "bank" : "primary";
+const NS = Q.get("ns") || "", NAME = Q.get("name") || "", KIND = Q.get("kind") === "agent" ? "agent" : "fn";
+let ARGS = [];
+try { const a = JSON.parse(Q.get("args") || "[]"); if (Array.isArray(a)) ARGS = a.map(x => String(x)); } catch (e) { /* none */ }
+
+const SITE = location.hostname === "nth-member.github.io" ? "../" : "https://nth-member.github.io/";
+const STAMPS = SITE + "revott-stamps/data/", GDELT_DAYS = SITE + "gdelt/days/", GDELT_PAGE = "https://nth-member.github.io/gdelt/?date=";
+const SNAPSHOT = "https://3pp-noah.github.io/jomo-sfo-wam/feeds/all.json";
+// JOMO SFO-WAM's domains, in its order and words
+const DOMAINS = [["world","World"],["middle-east","Middle East"],["russia-eurasia","Russia & Eurasia"],["balkans","Balkans"],["asia","Asia"],
+  ["africa","Africa & Nigeria"],["geopolitical-analysis","Geopolitical analysis"],["defense-nuclear","Defence & nuclear"],
+  ["economic","Economic"],["religious","Religious"],["science-technology","Science & technology"],["sports","Sports"]];
+const domainLabel = d => (DOMAINS.find(([k]) => k === d) || [d, d])[1];
+const WINDOWS = [[10, "±10 min"], [60, "±1 h"], [360, "±6 h"], [1440, "±1 d"], [10080, "±7 d"]];
+const LITERAL = /^[+-]?(\d+\.?\d*|\.\d+)([eE][+-]?\d+)?$/;
+const FROM = {
+  argument: "the TNLDY its first argument (Z) sends it to",
+  value: "the TNLDY the call returns",
+  clock: KIND === "agent" ? "the engine's clock, which this agent reads" : "the engine's clock, which this call reads",
+  date: "the TNLDY of the first date the call writes",
+};
+
+const S = {
+  session: null, params: null, rule: null, moves: false, clock: null,   // clock: null = the present; a number = set by hand
+  args: ARGS.slice(), call: null, z: null, from: null, ran: false, nextEval: 0,
+  w: 60, view: "latest", domain: "all", snap: null, arch: null, busy: false, err: null, idx: null, srcs: null, sig: "",
+};
+const zClock = () => (S.clock == null ? F.zNow() : S.clock);
+
+/* ---------- time in words ---------- */
+const pad = n => String(n).padStart(2, "0");
+function dur(ms) {
+  const s = Math.floor(Math.abs(ms) / 1000), d = Math.floor(s / 86400), h = Math.floor(s % 86400 / 3600), m = Math.floor(s % 3600 / 60);
+  if (d >= 730) return Math.round(d / 365.2425) + " years";
+  if (d >= 1) return d + " d " + pad(h) + " h";
+  if (h >= 1) return h + " h " + pad(m) + " min";
+  if (m >= 1) return m + " min " + pad(s % 60) + " s";
+  return (s % 60) + " s";
+}
+const nsk = ms => Yg.nsukka(ms).slice(0, 19) + " Nsukka";
+function offTxt(days) {
+  const sec = days * 86400, a = Math.abs(sec), sg = sec < 0 ? "−" : "+";
+  if (a < 60) return sg + Math.round(a) + " s";
+  if (a < 3600) return sg + Math.round(a / 60) + " min";
+  if (a < 86400) return sg + Math.floor(a / 3600) + " h " + pad(Math.round(a % 3600 / 60)) ;
+  return sg + (a / 86400).toFixed(1) + " d";
+}
+function feedAge(iso) {
+  const m = Math.round((now() - Date.parse(iso)) / 60000);
+  return m < 60 ? Math.max(m, 0) + "m" : m < 2880 ? Math.round(m / 60) + "h" : Math.round(m / 1440) + "d";
+}
+/* The first (or last) instant of TNLDY z; a z passed over at a recalibration opens at the next Yg year. */
+function edgeMs(z, first) {
+  const at = F.instants(z);
+  if (at == null) return NaN;
+  if (at.length) return first ? at[0] : at[at.length - 1];
+  return Yg.startMs(1969 + Math.floor((z + 340) * 23 / 8400) + 1);
+}
+
+/* ---------- the engine ---------- */
+async function getJSON(url) {
+  const r = await fetch(url, { cache: "no-cache" });
+  if (!r.ok) throw new Error(url.split("/").slice(-2).join("/") + ": HTTP " + r.status);
+  return r.json();
+}
+async function start() {
+  if (!NS || !NAME) {
+    $("#what").innerHTML = '<div class="empty">Open a feed from an agent or a function in the <a href="./">Alien Corridor</a>: ' +
+      "its FEED button opens this window.</div>";
+    return;
+  }
+  const [list, clock] = await Promise.all([getJSON("data/namespaces-" + TREE + ".json"), getJSON("data/clock-" + TREE + ".json")]);
+  const paths = new Map(list.map(n => [n.ns, n.path]));
+  if (!paths.has(NS)) throw new Error("no module " + NS + " in the " + TREE + " edition");
+  const SRC = {}, REQ = /\(require\s+'([A-Za-z0-9.\-]+)\s*:reload\)/g;
+  await (async function fetchClosure(ns) {        // the module and every module its load requires
+    if (ns in SRC || !paths.has(ns)) return;
+    SRC[ns] = null;
+    const r = await fetch("engine/" + TREE + "/" + paths.get(ns)); if (!r.ok) throw new Error(ns + ": HTTP " + r.status);
+    SRC[ns] = await r.text();
+    await Promise.all([...SRC[ns].matchAll(REQ)].map(m => fetchClosure(m[1])));
+  })(NS);
+  window.ACSS.fromLongOrigin = clock.from_long_origin_ms;
+  await new Promise(r => setTimeout(r, 20));
+  const session = F.Session({ ns: NS, isEngineNs: ns => paths.has(ns), source: ns => (ns in SRC ? SRC[ns] : null),
+                              constant: Object.keys(clock.live_clock_constants_ms)[0], origin: clock.from_long_origin_ms });
+  const ld = session.load();
+  if (!ld.ok) throw new Error("the module did not load: " + ld.error);
+  const v = session.vars().find(x => x[0] === NAME);
+  if (!v || (KIND === "agent" ? v[1] !== "agent" : v[1] !== "fn")) throw new Error(NAME + " is not " + (KIND === "agent" ? "an agent" : "a function") + " of " + NS);
+  S.session = session;
+  if (KIND === "fn") { S.params = session.params(NAME); S.rule = F.tnldyRule(NAME, S.params); }
+  else { S.moves = true; S.from = "clock"; }
+  renderWhat(); renderCall();
+  $("#call").style.display = $("#tz").style.display = $("#feed").style.display = "";
+  // a call whose arguments are plain numbers runs at once; any other expression waits for RUN
+  if (KIND === "fn" && S.args.length === arity() && S.args.every(a => LITERAL.test(a.trim()))) run();
+  else if (KIND === "agent") evaluate();
+  setInterval(tick, 1000); tick();
+}
+const arity = () => (S.params ? S.params.length : S.args.length);
+
+function run() {
+  S.args = Array.from(document.querySelectorAll("#call [data-arg]"), x => x.value.trim() || "nil");
+  const t0 = now(), z = zClock();
+  S.call = S.session.callAt(NAME, S.args, z);
+  S.moves = S.rule === "clock" || S.session.movesWithClock(NAME, S.args, z);
+  S.ms = now() - t0; S.ran = true; S.nextEval = now() + Math.max(1000, 3 * S.ms);
+  const t = S.session.tnldyOf(NAME, S.rule, S.call, S.moves, z);
+  S.z = t.z; S.from = t.from; S.arch = null; S.sig = "";
+  renderCall(); tick();
+}
+/* Read again at the clock: every second for an agent or a call whose value moves with the clock. */
+function evaluate() {
+  const z = zClock(), t0 = now();
+  if (KIND === "agent") { S.call = S.session.agentAt(NAME, z); S.z = z; }
+  else {
+    S.call = S.session.callAt(NAME, S.args, z);
+    const t = S.session.tnldyOf(NAME, S.rule, S.call, true, z); S.z = t.z; S.from = t.from;
+  }
+  S.ms = now() - t0; S.ran = true; S.nextEval = now() + Math.max(1000, 3 * S.ms);
+  renderValue();
+}
+
+/* ---------- what, the call, its value ---------- */
+function renderWhat() {
+  $("#treeLine").textContent = "ALIEN CORRIDOR · " + (TREE === "bank" ? "SHULAMMITE BANK" : "PRIMARY MDQNM") + " TREE";
+  $("#what").innerHTML = '<div class="nsname">' + esc(NS) + '</div><div class="row"><span class="vname">' + esc(NAME) + "</span>" +
+    '<span class="chip ' + KIND + '">' + (KIND === "agent" ? "agent" : "fn") + "</span>" +
+    (KIND === "fn" ? '<span class="chip fn">arity ' + arity() + "</span>" : "") + "</div>" +
+    '<div class="note">This window runs its own copy of the engine, so it can read ' + (KIND === "agent" ? "this agent" : "this function") +
+    " with the engine's clock at any TNLDY, past, present or future; the page that opened it is untouched.</div>";
+  document.title = "Feed · " + NAME.replace(/^\*|\*$/g, "").slice(0, 60);
+}
+function renderCall() {
+  let h = '<div class="cl">' + (KIND === "agent" ? "The agent, read at the clock" : "The call") + "</div>";
+  if (KIND === "fn") {
+    const n = arity();
+    h += '<div class="row">';
+    for (let i = 0; i < n; i++)
+      h += '<input class="arg" data-arg placeholder="' + esc((S.params && S.params[i]) || "arg" + (i + 1)) + ' (clojure expr)" value="' + esc(S.args[i] || "") + '">';
+    h += '<button class="mini" id="runBtn">▶ RUN</button></div>';
+    if (!S.ran) h += '<div class="note">' + (n && S.args.length === n ? "Expressions other than plain numbers run when you press RUN." :
+      "Supply " + (n === 1 ? "its argument" : "its " + n + " arguments") + " and press RUN: they send TNLDY to the past, the present or the future.") + "</div>";
+  }
+  h += '<div id="valueBox"></div>';
+  $("#call").innerHTML = h;
+  const b = $("#runBtn"); if (b) b.onclick = run;
+  document.querySelectorAll("#call [data-arg]").forEach(el => el.addEventListener("keydown", e => { if (e.key === "Enter") run(); }));
+  renderValue();
+}
+function renderValue() {
+  const box = $("#valueBox"); if (!box || !S.call) return;
+  const r = S.call, body = r.out && r.out.trim() ? esc(r.out) + "\n" : "";
+  const html = '<pre class="out">' + body + (r.ok ? '<span style="color:var(--dim)">⇒ </span>' + esc(r.value) : '<span style="color:var(--err)">✗ ' + esc(r.error) + "</span>") + "</pre>" +
+    '<div class="status">' + (S.moves ? "read at the clock " + (S.clock == null ? "every " + Math.max(1, Math.round(Math.max(1000, 3 * S.ms) / 1000)) + " s" : "set by hand") +
+    " · the engine's clock reads " + r.engine.toFixed(9) : "its value does not move with the clock") + " · " + S.ms + " ms</div>";
+  if (box.dataset.h !== html) { box.innerHTML = html; box.dataset.h = html; }
+}
+
+/* ---------- the TNLDY ---------- */
+function renderTz() {
+  const z = S.z;
+  let h = '<div class="cl">The TNLDY this feed is tied to</div>';
+  if (KIND === "fn" && !S.ran) { $("#tz").innerHTML = h + '<div class="note">Not yet: the call has not run.</div>'; return; }
+  if (z == null) {
+    h += '<div class="note">' + (S.from === "argument" || S.from === "value" ? "This call gives no number for its TNLDY" + (S.call && !S.call.ok ? " (it failed)" : "") + "." :
+      "This call names no TNLDY: it neither takes nor returns one, does not read the clock, and writes no date.") +
+      " The feed follows the present.</div>";
+  }
+  const zz = z == null ? F.zNow() : z, at = F.instants(zz), t = now(), wd = S.w / 1440;
+  const a = edgeMs(zz - wd, true), b = edgeMs(zz + wd, false), reg = Number.isFinite(a) && Number.isFinite(b) ? F.regime(a, b, t) : null;
+  S.regime = reg; S.win = [a, b];
+  h += '<div class="row"><span class="zbig">' + zz.toFixed(6) + "</span>" + (reg ? '<span class="badge ' + reg + '">' + reg.toUpperCase() + "</span>" : "") + "</div>";
+  if (z != null) h += '<div class="sub">' + esc(FROM[S.from] || "") + (S.from === "clock" ? (S.clock == null ? " — the present" : " — set by hand") : "") + "</div>";
+  if (at == null) h += '<div class="sub">beyond the calendar: no instant can be given</div>';
+  else {
+    const r = at.length ? Yg.reading(at[0]) : null;
+    h += '<div class="sub">' + (at.length === 0 ? "no instant: this TNLDY is passed over at a Yg recalibration" :
+      at.map(nsk).join(" and ") + (at.length === 2 ? " (met twice, at a recalibration)" : "")) +
+      (r ? " · Yg " + r.yg + ", yearday " + r.yearday.toFixed(6) : "") + "</div>";
+    if (at.length) {
+      const d = at[0] - t;
+      h += '<div class="sub">' + (Math.abs(d) < 1000 ? "now" : d > 0 ? "in " + dur(d) : dur(d) + " ago") + "</div>";
+    }
+    if (Number.isFinite(a)) h += '<div class="sub" style="color:var(--dim)">window ' + nsk(a).slice(0, 16) + " → " + nsk(b).slice(0, 16) + " (" + (WINDOWS.find(w => w[0] === S.w) || [0, "±" + S.w + " min"])[1] + ")</div>";
+  }
+  if (S.from === "clock" || (KIND === "fn" && S.moves)) {
+    h += '<div class="row" style="margin-top:10px"><input class="tz" id="tzIn" placeholder="TNLDY, or Nsukka 2026-12-25 09:00" value="' + esc(S.tzText || "") + '">' +
+      '<button class="mini" id="tzGo">SET CLOCK</button><button class="mini" id="tzNow"' + (S.clock == null ? " disabled" : "") + ">NOW</button></div>" +
+      '<div class="note">Set the engine\'s clock to any TNLDY, past or future, and the ' + (KIND === "agent" ? "agent" : "call") + " is read there; NOW returns it to the present.</div>";
+  }
+  if ($("#tz").dataset.h !== h) {
+    const focused = document.activeElement && document.activeElement.id === "tzIn", v = focused ? $("#tzIn").value : null;
+    $("#tz").innerHTML = h; $("#tz").dataset.h = h;
+    const go = $("#tzGo");
+    if (go) {
+      go.onclick = setClock; $("#tzNow").onclick = () => { S.clock = null; S.tzText = ""; S.arch = null; S.sig = ""; evaluate(); tick(); };
+      $("#tzIn").addEventListener("keydown", e => { if (e.key === "Enter") setClock(); });
+      if (focused) { $("#tzIn").value = v; $("#tzIn").focus(); }
+    }
+  }
+}
+function setClock() {
+  const s = $("#tzIn").value.trim(); let z = null;
+  const d = s.match(/^(-?\d{1,4})-(\d\d)-(\d\d)(?:[ T](\d\d):(\d\d)(?::(\d\d))?)?$/);
+  if (d) {
+    const ms = Date.UTC(+d[1], +d[2] - 1, +d[3], +(d[4] || 0), +(d[5] || 0), +(d[6] || 0)) - 3600000;   // Nsukka, UTC+01:00
+    z = Yg.zOf(ms).z;
+  } else if (LITERAL.test(s)) z = Number(s);
+  if (z == null || !Number.isFinite(z)) { $("#tzIn").style.borderColor = "var(--err)"; return; }
+  S.clock = z; S.tzText = s; S.arch = null; S.sig = ""; evaluate(); tick();
+}
+
+/* ---------- the feeds ---------- */
+async function loadSnapshot() {
+  const feed = await getJSON(SNAPSHOT);
+  const items = [];
+  for (const i of feed.items) {
+    if (!i.date_published) continue;
+    const t = Date.parse(i.date_published);
+    items.push({ t, zi: Yg.zOf(t).z, source: i._jomo.source, title: i.title, url: i.url, summary: i.summary || "", live: true });
+  }
+  return { generated: feed._jomo.generated, sources: feed._jomo.sources, items, at: now() };
+}
+async function loadArchive(z, minutes) {
+  const memo = new Map(), load = name => { if (!memo.has(name)) memo.set(name, getJSON(STAMPS + name)); return memo.get(name); };
+  const rec = await Stamp.create(load).run({ y: { mode: "value", value: "0" }, x: { mode: "key", x: "0" }, ztp: F.zText(z),
+    unit_y: "1", unit_x: "1/1440", eps: String(minutes), domains: DOMAINS.map(d => d[0]), clock: "reconciled" });
+  const [idx, srcs] = await Promise.all([load("index.json"), load("sources.json")]);
+  const st = Object.values(rec.stamps)[0];
+  return { z, zt: F.zText(z), minutes, idx, srcs, status: st.status, window: st.window, coverage: st.coverage || null, gdelt: st.gdelt || null, at: now(),
+           items: (st.items || []).map(([off, t, how, source, title, url, note]) => ({ zi: z + Number(off) / 86400, t, how, source, title, url, note })) };
+}
+async function refresh(force) {
+  if (S.busy || S.z == null && !(KIND === "fn" && S.ran)) return;
+  const z = S.z == null ? F.zNow() : S.z, t = now(), [a, b] = S.win || [NaN, NaN];
+  if (!Number.isFinite(a) || S.regime === "future") return;
+  const live = S.z == null || (S.from === "clock" && S.clock == null) || (S.moves && S.clock == null);
+  const recent = b > t - 2 * 86400000, margin = live ? 3 : 0;
+  const wantSnap = b > t - 21 * 86400000 && (force || !S.snap || (recent && t - S.snap.at > 60000));
+  const wantArch = force || !S.arch || S.arch.minutes !== S.w + margin ||
+    (live ? Math.abs(z - S.arch.z) * 1440 > 2 : S.arch.zt !== F.zText(z)) || (recent && t - S.arch.at > 90000);
+  if (!wantSnap && !wantArch) return;
+  S.busy = true; S.err = null; renderFeed(true);
+  try {
+    const [snap, arch] = await Promise.all([wantSnap ? loadSnapshot().catch(e => { S.err = "JOMO's snapshot: " + e.message; return S.snap; }) : S.snap,
+                                            wantArch ? loadArchive(z, S.w + margin).catch(e => { S.err = "the archive: " + e.message; return S.arch; }) : S.arch]);
+    S.snap = snap; S.arch = arch;
+  } finally { S.busy = false; S.sig = ""; renderFeed(); }
+}
+
+function sourceInfo(id) {
+  const s = S.snap && S.snap.sources.find(x => x.id === id);
+  if (s) return s;
+  const a = S.arch && S.arch.srcs && S.arch.srcs[id];
+  return a ? { id, label: a[0], domain: a[1], perspective: a[2] } : { id, label: id, domain: "", perspective: "" };
+}
+function windowItems() {
+  const z = S.z == null ? F.zNow() : S.z, wd = S.w / 1440, out = [], seen = new Set();
+  if (S.arch) for (const it of S.arch.items) if (Math.abs(it.zi - z) <= wd + 1e-9) { out.push(it); seen.add(it.url); }
+  if (S.snap) {
+    const sum = new Map(S.snap.items.map(i => [i.url, i.summary]));
+    for (const it of out) if (!it.summary && sum.get(it.url)) it.summary = sum.get(it.url);
+    for (const it of S.snap.items) if (!seen.has(it.url) && Math.abs(it.zi - z) <= wd + 1e-9) { out.push(it); seen.add(it.url); }
+  }
+  return { z, items: out.filter(it => S.domain === "all" || sourceInfo(it.source).domain === S.domain) };
+}
+function tierNote() {
+  const [a, b] = S.win || [NaN, NaN], t = now(), idx = S.arch && S.arch.idx;
+  if (!Number.isFinite(a) || !Number.isFinite(b)) return "This TNLDY lies beyond the calendar: it has no instant, so no feed can be read for it.";
+  if (S.regime === "future") return "Ahead: this window opens in " + dur(a - t) + ", at " + nsk(a) + ". The feed goes live then, from JOMO SFO-WAM's snapshot (refreshed every 15 minutes).";
+  if (!idx) return S.busy ? "Reading the archive and JOMO SFO-WAM's snapshot…" : "";
+  const parts = [];
+  if (b < idx.archive_start) return "Before the archive, which begins " + nsk(idx.archive_start).slice(0, 16) + ": there is no record of this window — NULL, not zero.";
+  if (a < idx.archive_start) parts.push("The window begins before the archive (" + nsk(idx.archive_start).slice(0, 10) + "); that part has no record — NULL, not zero.");
+  if (a < idx.first_reading) parts.push("Before the feeds' first reading (" + nsk(idx.first_reading).slice(0, 16) + "): GDELT's day sources, at day precision — one list per day, not divided by domain.");
+  if (b >= idx.first_reading) parts.push("From the archive of every item JOMO SFO-WAM's feeds carried, each dated once on the Nsukka/Yg clock (REVOTT STAMPS)" +
+    (b > idx.as_of ? "; it runs to " + nsk(idx.as_of).slice(0, 16) + ", and the live snapshot fills the rest" : "") + ".");
+  if (S.regime === "present") parts.push("Live: re-read every minute; new items join as the feeds carry them.");
+  return parts.join(" ");
+}
+function row(it, z, withSource) {
+  const s = sourceInfo(it.source);
+  return '<div class="it"><a href="' + esc(it.url) + '" target="_blank" rel="noopener noreferrer">' + esc(it.title) + "</a>" +
+    '<span class="meta">' + (withSource ? esc(s.label) + " · " : "") + esc(Yg.nsukka(it.t).slice(5, 16)) + " · " + offTxt(it.zi - z) +
+    (it.live ? ' · <span class="live">live</span>' : "") + "</span>" + (it.summary ? '<div class="sum">' + esc(it.summary) + "</div>" : "") + "</div>";
+}
+function renderFeed(force) {
+  const box = $("#feed"); if (!box || box.style.display === "none") return;
+  if (KIND === "fn" && !S.ran) { box.innerHTML = '<div class="cl">Knowledge-server feeds</div><div class="note">They follow the call: run it first.</div>'; return; }
+  const { z, items } = windowItems(), t = now();
+  const sig = [S.view, S.domain, S.w, S.busy, S.err, S.regime, S.snap && S.snap.generated, S.arch && S.arch.at, items.length, items.map(i => i.url).join("|").length,
+               Math.floor(t / (S.regime === "future" ? 1000 : 30000))].join("·");
+  if (!force && sig === S.sig) return;
+  S.sig = sig;
+  const nSrc = S.snap ? S.snap.sources.length : S.arch && S.arch.srcs ? Object.keys(S.arch.srcs).length : null;
+  const chip = (attr, val, label, on) => '<button class="fchip' + (on ? " on" : "") + '" ' + attr + '="' + esc(val) + '">' + esc(label) + "</button>";
+  let h = '<div class="fhead"><div class="cl">Knowledge-server feeds' + (nSrc ? " · " + nSrc + " sources" : "") +
+    (S.snap ? " · snapshot " + feedAge(S.snap.generated) + " ago (" + S.snap.generated.replace("T", " ").slice(0, 16) + " UTC)" : "") +
+    (S.arch && S.arch.idx ? " · archive through " + nsk(S.arch.idx.as_of).slice(0, 16) : "") + "</div>" +
+    '<div class="row">' + chip("data-view", "latest", "Latest", S.view === "latest") + chip("data-view", "sources", "By source", S.view === "sources") +
+    '<button class="fchip reload" id="reload">' + (S.busy ? "LOADING…" : "RELOAD") + "</button></div></div>";
+  h += '<div class="chips">' + WINDOWS.map(([m, l]) => chip("data-w", m, l, S.w === m)).join("") + "</div>";
+  h += '<div class="chips">' + chip("data-domain", "all", "All", S.domain === "all") + DOMAINS.map(([k, l]) => chip("data-domain", k, l, S.domain === k)).join("") + "</div>";
+  const note = tierNote(); if (note) h += '<div class="tier">' + esc(note) + "</div>";
+  if (S.err) h += '<div class="status bad">Unavailable: ' + esc(S.err) + "</div>";
+  if (S.regime !== "future") {
+    if (S.view === "latest") {
+      const sorted = items.slice().sort((p, q) => q.t - p.t), shown = sorted.slice(0, 150);
+      const gdeltOnly = S.arch && S.arch.idx && S.win && S.win[1] < S.arch.idx.first_reading;   // the feeds had not begun
+      h += shown.map(it => row(it, z, true)).join("") || (S.busy || gdeltOnly ? "" : '<div class="quiet">No item of ' + (S.domain === "all" ? "any domain" : domainLabel(S.domain)) + " in this window.</div>");
+      if (sorted.length > shown.length) h += '<div class="quiet">' + (sorted.length - shown.length) + " more in this window; narrow it, or choose a domain or By source.</div>";
+    } else {
+      const by = new Map();
+      for (const it of items) { if (!by.has(it.source)) by.set(it.source, []); by.get(it.source).push(it); }
+      const order = (S.snap ? S.snap.sources.map(s => s.id) : []).concat(S.arch && S.arch.srcs ? Object.keys(S.arch.srcs) : []);
+      const ids = [...new Set(order)].filter(id => by.has(id));
+      for (const id of ids) {
+        const s = sourceInfo(id), list = by.get(id).sort((p, q) => q.t - p.t);
+        h += '<div class="src"><div class="sh"><span><b>' + esc(s.label) + '</b><span class="p">' + esc(s.perspective || "") + " · " + esc(domainLabel(s.domain)) +
+          (s.via === "Google News" ? " · via Google News" : "") + '</span></span><span class="n">' + list.length + " in the window</span></div>" +
+          list.slice(0, 5).map(it => row(it, z, false)).join("") + "</div>";
+      }
+      if (S.arch && S.arch.coverage) {
+        const inDom = id => id !== "gdelt" && (S.domain === "all" || sourceInfo(id).domain === S.domain) && !by.has(id);
+        const lab = ids2 => ids2.filter(inDom).map(id => sourceInfo(id).label).sort().join(", ");
+        const c = S.arch.coverage, q1 = lab(c.covered), q2 = lab(c.partly), q3 = lab(c.null);
+        if (q1) h += '<div class="quiet"><b>Read, nothing in the window:</b> ' + esc(q1) + "</div>";
+        if (q2) h += '<div class="quiet"><b>Read for part of the window, nothing in it:</b> ' + esc(q2) + "</div>";
+        if (q3) h += '<div class="quiet"><b>Not being read then (NULL, not zero):</b> ' + esc(q3) + "</div>";
+      }
+      if (!ids.length && !S.busy && !(S.arch && S.arch.gdelt)) h += '<div class="quiet">No source has an item in this window.</div>';
+    }
+    if (S.arch && S.arch.gdelt && S.arch.gdelt.length) {
+      h += '<div class="cl" style="margin-top:12px">GDELT\'s day sources · ' + S.arch.gdelt.length + " day" + (S.arch.gdelt.length > 1 ? "s" : "") + "</div>" +
+        S.arch.gdelt.slice(0, 15).map((d, i) => '<details class="gday" data-day="' + d + '"' + (i === 0 && S.arch.gdelt.length <= 3 ? " open" : "") + '><summary>' + d +
+          " · the 250 sources GDELT cited most that day</summary><div class=\"gl\"></div></details>").join("") +
+        (S.arch.gdelt.length > 15 ? '<div class="quiet">' + (S.arch.gdelt.length - 15) + " more days: narrow the window.</div>" : "");
+    }
+  }
+  const open = new Set(Array.from(box.querySelectorAll("details.gday[open]"), d => d.dataset.day));
+  box.innerHTML = h;
+  box.querySelectorAll("[data-view]").forEach(b => b.onclick = () => { S.view = b.dataset.view; renderFeed(true); });
+  box.querySelectorAll("[data-domain]").forEach(b => b.onclick = () => { S.domain = b.dataset.domain; renderFeed(true); });
+  box.querySelectorAll("[data-w]").forEach(b => b.onclick = () => { S.w = +b.dataset.w; tick(); refresh(); renderFeed(true); });
+  $("#reload").onclick = () => refresh(true);
+  box.querySelectorAll("details.gday").forEach(d => {
+    if (open.has(d.dataset.day)) d.open = true;
+    d.ontoggle = () => d.open && gdeltDay(d); if (d.open) gdeltDay(d);
+  });
+}
+const GDELT = new Map();
+async function gdeltDay(el) {
+  const d = el.dataset.day, box = el.querySelector(".gl");
+  if (box.dataset.done) return;
+  box.innerHTML = '<div class="quiet">loading…</div>';
+  try {
+    if (!GDELT.has(d)) GDELT.set(d, getJSON(GDELT_DAYS + d + ".json"));
+    const j = await GDELT.get(d);
+    box.innerHTML = '<div class="quiet">' + j.rows.toLocaleString() + " event rows, " + j.distinct_urls.toLocaleString() + ' distinct sources · <a href="' + esc(GDELT_PAGE + d) +
+      '" target="_blank" rel="noopener">the day in GDELT ↗</a></div>' +
+      j.top.map(x => '<div class="it"><a href="' + esc(x.u) + '" target="_blank" rel="noopener noreferrer">' + esc(x.u.replace(/^https?:\/\/(www\.)?/, "").slice(0, 140)) +
+        '</a><span class="meta">' + esc(x.d) + " · " + x.n.toLocaleString() + " rows</span></div>").join("");
+    box.dataset.done = "1";
+  } catch (e) { box.innerHTML = '<div class="status bad">' + esc(e.message) + "</div>"; GDELT.delete(d); }
+}
+
+/* ---------- the clock: once a second ---------- */
+function tick() {
+  $("#nowZ").textContent = F.zNow().toFixed(7);
+  if (!S.session) return;
+  if ((KIND === "agent" || S.moves) && S.ran && now() >= S.nextEval) evaluate();
+  renderTz(); refresh(); renderFeed();
+}
+start().catch(e => { $("#what").innerHTML = '<div class="status bad">' + esc(e.message || e) + "</div>"; });
+</script>
+</body>
+</html>

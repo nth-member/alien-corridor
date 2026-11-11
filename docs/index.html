@@ -270,6 +270,7 @@
           <div class="cs" id="projNow">—</div>
           <div class="cs">Z = (yG − 1969)·Yg − 340 + days since 1 December 00:00 Nsukka, Yg = 17640/48.3 days: the engine's
             own year (sfo10), laid on Nsukka's calendar and recalibrated at every Yg year.</div>
+          <div style="margin-top:10px"><button class="mini" id="clockFeedBtn">⧉ FEED · the feeds at this TNLDY</button></div>
         </div>
         <div class="clockcard">
           <div class="cl">Alien corridor · core completion matrix 1 (sfo23, ZTP 10800)</div>
@@ -302,6 +303,14 @@
       <p>The source folder contains two distinct editions of the engine that differ in nearly every file: the primary <code>mdqnm</code> tree and the <code>mdqnmshulammitebanksystem</code> tree. Each runs in its own JVM so their same-named namespaces never contaminate each other. Launch with <code>./run.sh primary</code>, <code>./run.sh bank</code>, or <code>./run.sh both</code>.</p>
       <h2>How to use</h2>
       <p>① Pick a module in the left manifest and LOAD it (top-level agents are created and sealed to the current instant, exactly as on a REPL load). ② Invoke its functions — enumerations print full reports; corridor matrices take a Y or Z argument. ③ DEREF agents to read sealed clock values. ④ Or drop to the Console for raw REPL access, with the author's recovered command history alongside.</p>
+      <h2>Feeds at a TNLDY</h2>
+      <p>Every agent, and every function once its arguments are supplied, has a <b>⧉ FEED</b> button. It opens a window
+      that reads the agent or the call at the TNLDY it names — the TNLDY a function's arguments send it to, past,
+      present or future; for an agent, and any call that reads the engine's clock, the clock itself, which can be set to
+      any TNLDY — and shows the knowledge-server feeds at that TNLDY in JOMO SFO-WAM's feed regime: its domains, Latest or
+      By source. The present is JOMO SFO-WAM's live snapshot, refreshed every 15 minutes; the past is the archive of every
+      item those feeds carried (REVOTT STAMPS), and before the feeds' first reading GDELT's day sources; the future is
+      ahead, and goes live when its window opens. The window runs its own copy of the engine, so this page is untouched.</p>
       <div class="status" id="metaLine" style="margin-top:18px"></div>
     </div>
   </div>
@@ -457,9 +466,11 @@ async function refreshVars(ns){
       const n = (v.arities && v.arities.length) ? v.arities[0] : 0;
       html += '<div class="argrow" id="args'+i+'">';
       for (let a=0; a<n; a++) html += '<input placeholder="arg'+(a+1)+' (clojure expr)" data-arg>';
-      html += '<button class="mini" data-run="'+i+'">▶ RUN</button></div>';
+      html += '<button class="mini" data-run="'+i+'">▶ RUN</button>' +
+              '<button class="mini" data-feed="'+i+'"'+(n ? ' disabled title="supply the arguments first"' : '')+'>⧉ FEED</button></div>';
     } else if (v.kind === "agent" || v.kind === "atom" || v.kind === "ref") {
-      html += '<div class="argrow"><button class="mini" data-deref="'+i+'">◉ DEREF</button></div>';
+      html += '<div class="argrow"><button class="mini" data-deref="'+i+'">◉ DEREF</button>' +
+              (v.kind === "agent" ? '<button class="mini" data-feed="'+i+'">⧉ FEED</button>' : '') + '</div>';
       if (v.preview) html += '<div class="preview">sealed: '+esc(v.preview)+'</div>';
     } else if (v.preview) {
       html += '<div class="preview">'+esc(v.preview)+'</div>';
@@ -469,6 +480,29 @@ async function refreshVars(ns){
   $("#varlist").innerHTML = html || '<div class="empty">no public vars</div>';
   document.querySelectorAll("[data-run]").forEach(b => b.onclick = () => invokeVar(ns, r.vars[+b.dataset.run], +b.dataset.run));
   document.querySelectorAll("[data-deref]").forEach(b => b.onclick = () => derefVar(ns, r.vars[+b.dataset.deref], +b.dataset.deref));
+  document.querySelectorAll("[data-feed]").forEach(b => b.onclick = () => openFeed(ns, r.vars[+b.dataset.feed].name, r.vars[+b.dataset.feed].kind, +b.dataset.feed));
+  // a function's FEED waits for its arguments
+  document.querySelectorAll(".argrow[id^=args]").forEach(row => row.addEventListener("input", () => {
+    const fb = row.querySelector("[data-feed]");
+    if (fb) { fb.disabled = !Array.prototype.every.call(row.querySelectorAll("[data-arg]"), x => x.value.trim()); fb.title = fb.disabled ? "supply the arguments first" : ""; }
+  }));
+}
+
+/* FEED: a window of its own (feed.html) that reads the agent, or the function with the arguments supplied,
+   at the TNLDY it names -- past, present or future -- with the knowledge-server feeds at that TNLDY. */
+function openFeed(ns, name, kind, i){
+  const args = i == null ? [] : Array.prototype.map.call(document.querySelectorAll("#args"+i+" [data-arg]"), x => x.value.trim());
+  const q = new URLSearchParams({ tree: (state.meta && state.meta.tree) || "primary", ns, name, kind: kind === "agent" ? "agent" : "fn" });
+  if (args.length) q.set("args", JSON.stringify(args));
+  const key = ns + "/" + name + "/" + args.join("\u0001");
+  let h = 0; for (let k = 0; k < key.length; k++) h = (h * 31 + key.charCodeAt(k)) | 0;
+  const url = "feed.html?" + q.toString();
+  const w = window.open(url, "acss-feed-" + (h >>> 0).toString(36), "popup,width=900,height=940");
+  if (!w && i != null) {
+    const el = $("#res"+i);
+    el.classList.add("show");
+    el.innerHTML = '<div class="status">The browser kept the window from opening: <a href="'+esc(url)+'" target="_blank" rel="noopener">open the feed ↗</a></div>';
+  }
 }
 
 function showResult(i, r){
@@ -586,6 +620,7 @@ async function pollEngineClock(){
     $("#tickerLbl").textContent = "TNL·1000D CORRIDOR CLOCK · ENGINE ENGAGED";
   }
 }
+$("#clockFeedBtn").onclick = () => openFeed("org.threeppnoah.mdqnm.sfo22.tnl-onethousand-d", "z-tnldy-clock3", "agent", null);
 $("#engageBtn").onclick = async () => {
   $("#engageBtn").disabled = true;
   const r = await apiPost("/api/load", '{:ns "org.threeppnoah.mdqnm.sfo22.tnl-onethousand-d"}');

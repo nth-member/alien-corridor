@@ -4,10 +4,11 @@ The 3PP-NOAH84 / MDQNM engine and its GUI, running **entirely in the browser**: 
 nothing to install. Both editions are included: the primary `mdqnm` tree and the Shulammite bank tree
 (`?tree=bank`).
 
-The GUI is the Alien Corridor Support System's own, with three additions:
+The GUI is the Alien Corridor Support System's own, with four additions:
 - the script tags that load the in-page engine;
 - the tree switch, which is now a page parameter rather than a second port;
-- a paragraph stating what runs.
+- a paragraph stating what runs;
+- the ⧉ FEED buttons, which open the feeds at a TNLDY (below).
 
 It calls the same `/api/*` endpoints it called on the JVM server. `docs/acss-browser.js` answers them
 inside the page, in the same shapes.
@@ -65,6 +66,57 @@ Reproducing the comparison:
 
 `tools/reference/ref_*.json`, the raw JVM captures (13 MB), are gitignored; the comparison results are
 kept.
+
+## Feeds at a TNLDY
+
+Every agent, and every function once its arguments are supplied, has a **⧉ FEED** button. It opens
+`docs/feed.html` in a window of its own, which runs its own copy of the engine and reads that agent or call
+at the TNLDY it names, past, present or future. The window also shows the knowledge-server feeds at that
+TNLDY in JOMO SFO-WAM's feed regime: its twelve domains, the Latest and By source views, and RELOAD.
+
+**The TNLDY a call names.** `docs/acss-feed.js` follows the engine's own conventions:
+
+| the call | its TNLDY |
+|---|---|
+| a function whose first parameter is `Z` (`*…-by-tnldy*` and its kin) | the value of that argument |
+| a `*tnldy-by-…*` function | the number it returns, or the first element of its vector |
+| an agent, a `*…current-by-z-tnldy-clock3*` function, or any call whose value moves with the clock | the engine's clock: the present, or any TNLDY it is set to |
+| any other call that writes a date | the TNLDY of the first date it writes |
+
+A call that does none of these names no TNLDY, and its feed follows the present.
+
+**The engine's clock at a TNLDY Z.** During an evaluation, `(new Date)` reads the millisecond *m* at which
+(C + *m*) / 86 400 000 = Z, where C is the edition's live-clock constant, so the engine's clocks read Z.
+`clj-time`'s `now` and `local-now` read Z's instant on the Nsukka/Yg clock. An agent read at Z re-evaluates its
+own `def` and `send` forms with the clock at Z. Agents are the only things the engine seals at load, so this
+gives the value a load at that instant would seal. A function read at Z first re-reads every agent its
+namespace and the namespaces it requires seal, then runs the call with the clock at Z.
+
+**The feeds at Z.** An item belongs to the window when its TNLDY on the Nsukka/Yg clock lies within ± the
+window (10 minutes to 7 days) of Z.
+
+| Z's window | the feeds |
+|---|---|
+| present | JOMO SFO-WAM's live snapshot (refreshed every 15 minutes), re-read every minute, with the archive behind it |
+| past, from 2026-09-28 05:32 Nsukka | the archive of every item those feeds carried, each dated once (REVOTT STAMPS, read with its own `stamp.js`) |
+| past, 2013-04-01 to 2026-09-28 | GDELT's day sources, at day precision |
+| past, before 2013-04-01 | none: NULL, not zero |
+| future | ahead: a countdown, then live when the window opens |
+
+**Checked.** `node tools/feed-check.js primary|bank` loads every module with the engine's clock at a past, the
+present and a future TNLDY. Every agent read at that TNLDY from its own forms matches what the load sealed:
+2,271/2,271 (primary) and 1,263/1,263 (bank). Every function is then called once per arity with the reference
+arguments. Wherever a call whose TNLDY is its argument or its value also writes a date, that date's TNLDY is
+the same one: 1,383/1,383 (primary) and 713/713 (bank). Of the 3,421 primary calls, 1,365 name their argument,
+1,381 their value, 667 the clock, 1 a date, and 7 no TNLDY. `node tools/feed-browser.mjs` runs the window in
+headless Firefox against the live feeds:
+- an agent at the present, and with its clock set into the past;
+- calls in the archive, in GDELT's tier, before the archive and in the future;
+- calls that name no TNLDY, and calls that read the clock;
+- the main page's FEED buttons.
+
+A link's expression arguments (anything but plain numbers) run only when RUN is pressed, and a name that is
+not one of the module's vars is refused.
 
 ## Not included
 

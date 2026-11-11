@@ -1,0 +1,1033 @@
+{
+ "tree": "primary",
+ "agents": {
+  "checked": 2271,
+  "same": 2271,
+  "differ": []
+ },
+ "functions": {
+  "calls": 3421,
+  "from": {
+   "argument": 1365,
+   "clock": 667,
+   "value": 1381,
+   "date": 1,
+   "none": 7
+  },
+  "dated": 1383,
+  "datedAgree": 1383,
+  "disagree": [],
+  "none": [
+   {
+    "ns": "kilosecond-generator",
+    "fn": "cjtl-kilosecond-timestamp-token-generator-expects-sec-min-hour-yeardaynotvaluetosecond-and-yglongformieygadplus3880",
+    "args": [
+     "24.5",
+     "7",
+     "3",
+     "2",
+     "1"
+    ],
+    "z": null,
+    "ok": true
+   },
+   {
+    "ns": "mdqnm-timemachines-and-clocks",
+    "fn": "mdqnm-execution-of-selected-sfos",
+    "args": [
+     "24.5"
+    ],
+    "z": null,
+    "ok": false
+   },
+   {
+    "ns": "mdqnm-abbreviated-timemachines-and-clocks",
+    "fn": "mdqnm-execution-of-selected-sfos2",
+    "args": [
+     "24.5"
+    ],
+    "z": null,
+    "ok": false
+   },
+   {
+    "ns": "greatwhitethrone-untothejudgement-untotherest-thejoyofourlord",
+    "fn": "*days-i-by-great-white-throne-unto-the-judgement-unto-the-rest-the-joy-of-our-lord*",
+    "args": [
+     "24.5"
+    ],
+    "z": null,
+    "ok": true
+   },
+   {
+    "ns": "greatwhitethrone-untothejudgement-untotherest-thejoyofourlord",
+    "fn": "*great-white-throne-unto-the-judgement-unto-the-rest-the-joy-of-our-lord-by-days-i*",
+    "args": [
+     "24.5"
+    ],
+    "z": null,
+    "ok": true
+   },
+   {
+    "ns": "napoleon-and-the-kings",
+    "fn": "*Ykings*",
+    "args": [
+     "24.5"
+    ],
+    "z": null,
+    "ok": true
+   },
+   {
+    "ns": "napoleon-and-the-kings",
+    "fn": "*Ynapoleon*",
+    "args": [
+     "24.5"
+    ],
+    "z": null,
+    "ok": true
+   }
+  ],
+  "date": [
+   {
+    "ns": "per-sfo-bb-instance-range-computus-optimized-for-hemboss-years",
+    "fn": "*ranges-of-sfobb-instance-values-but-optimized-for-hemboss-expects-coeffyj-coeffyg-sfobb-ztp1-ztp2*",
+    "args": [
+     "24.5",
+     "7",
+     "3",
+     "2",
+     "1"
+    ],
+    "z": 23.0000000004973,
+    "ok": true
+   }
+  ],
+  "clock": [
+   {
+    "ns": "current-sfo-clockvalues",
+    "fn": "*sfo-clockvalues-enumeration-expects-nothing-as-input*",
+    "args": [],
+    "z": 20822.650837,
+    "ok": true
+   },
+   {
+    "ns": "x-sfo-bbs-sparse",
+    "fn": "*this-function-can-recreate-any-onedimensional-sfo-and-expects-coefficientforyvalue-and-ztp*",
+    "args": [
+     "24.5",
+     "7"
+    ],
+    "z": 20822.650837,
+    "ok": true
+   },
+   {
+    "ns": "x-sfo-bbs-sparse",
+    "fn": "*this-function-can-recreate-any-onedimensional-sfo-and-expects-coefficientforyvalue-and-ztp-bw-bb0pt00-and-bb25pt928*",
+    "args": [
+     "24.5",
+     "7"
+    ],
+    "z": 20822.650837,
+    "ok": true
+   },
+   {
+    "ns": "x-sfo-bbs-sparse",
+    "fn": "*this-function-can-recreate-any-onedimensional-sfo-and-expects-coefficientforyvalue-and-ztp-bw-bb25pt928-and-bb241pt20*",
+    "args": [
+     "24.5",
+     "7"
+    ],
+    "z": 20822.650837,
+    "ok": true
+   },
+   {
+    "ns": "x-sfo-bbs-sparse",
+    "fn": "*this-function-can-recreate-any-onedimensional-sfo-and-expects-coefficientforyvalue-and-ztp-bw-bbm147pt60-and-bb0pt00*",
+    "args": [
+     "24.5",
+     "7"
+    ],
+    "z": 20822.650837,
+    "ok": true
+   },
+   {
+    "ns": "revott-building-blocks-and-babylon-microscale-precision-chronicle-agents-etc",
+    "fn": "*jd-gods-great-army-microscale-lightcone-of-the-last-end-of-babylon-the-greatcurrent-by-z-tnldy-clock3*",
+    "args": [],
+    "z": 20822.650837,
+    "ok": true
+   },
+   {
+    "ns": "revott-building-blocks-and-babylon-microscale-precision-chronicle-agents-etc",
+    "fn": "*jd-last-end-of-mystery-babylon-the-great-with-microscale-precisioncurrent-by-z-tnldy-clock3*",
+    "args": [],
+    "z": 20822.650837,
+    "ok": true
+   },
+   {
+    "ns": "revott-building-blocks-and-babylon-microscale-precision-chronicle-agents-etc",
+    "fn": "*jd-the-annihilation-that-is-of-gog840ddiv23current-by-z-tnldy-clock3*",
+    "args": [],
+    "z": 20822.650837,
+    "ok": true
+   },
+   {
+    "ns": "phd-qual-rand-seven-d",
+    "fn": "*jd-doctoral-one-dimensional-slicecurrent-by-z-tnldy-clock3*",
+    "args": [],
+    "z": 20822.650837,
+    "ok": true
+   },
+   {
+    "ns": "phd-qual-rand-seven-d",
+    "fn": "*jd-doctoral-quality-fully-developedcurrent-by-z-tnldy-clock3*",
+    "args": [],
+    "z": 20822.650837,
+    "ok": true
+   },
+   {
+    "ns": "phd-qual-rand-seven-d",
+    "fn": "*jd-post-doctoral-quality-research-seven-dcurrent-by-z-tnldy-clock3*",
+    "args": [],
+    "z": 20822.650837,
+    "ok": true
+   },
+   {
+    "ns": "project-hybridization-development-parametric",
+    "fn": "*jd-project-integral-system-parametric-pisp36dcurrent-by-z-tnldy-clock3*",
+    "args": [],
+    "z": 20822.650837,
+    "ok": true
+   },
+   {
+    "ns": "ephesians221-building",
+    "fn": "*jd-sun-and-moon-clothed-woman-built-up-in-travail100dcurrent-by-z-tnldy-clock3*",
+    "args": [],
+    "z": 20822.650837,
+    "ok": true
+   },
+   {
+    "ns": "ephesians221-building",
+    "fn": "*jd-sun-and-moon-clothed-woman-travail-buildup1000-sevenday-depiction-not-in-standard-formcurrent-by-z-tnldy-clock3*",
+    "args": [],
+    "z": 20822.650837,
+    "ok": true
+   },
+   {
+    "ns": "roundabout-aimee",
+    "fn": "*jd-roundabout-aimee-propercurrent-by-z-tnldy-clock3*",
+    "args": [],
+    "z": 20822.650837,
+    "ok": true
+   },
+   {
+    "ns": "the-parable-of-the-two-jeroboams",
+    "fn": "*jd-the-first-jeroboam100dcurrent-by-z-tnldy-clock3*",
+    "args": [],
+    "z": 20822.650837,
+    "ok": true
+   },
+   {
+    "ns": "the-parable-of-the-two-jeroboams",
+    "fn": "*jd-the-second-jeroboam100dcurrent-by-z-tnldy-clock3*",
+    "args": [],
+    "z": 20822.650837,
+    "ok": true
+   },
+   {
+    "ns": "the-shulammite-queen",
+    "fn": "*jd-shulam-the-queen-yjcurrent-by-z-tnldy-clock3*",
+    "args": [],
+    "z": 20822.650837,
+    "ok": true
+   },
+   {
+    "ns": "the-shulammite-queen",
+    "fn": "*jd-shulam-the-queen100dcurrent-by-z-tnldy-clock3*",
+    "args": [],
+    "z": 20822.650837,
+    "ok": true
+   },
+   {
+    "ns": "countdowns-to-the-vision-and-the-wrath-mercy",
+    "fn": "*jd-countdown100d-as-per-ztp-to-armageddoncurrent-by-z-tnldy-clock3*",
+    "args": [],
+    "z": 20822.650837,
+    "ok": true
+   },
+   {
+    "ns": "countdowns-to-the-vision-and-the-wrath-mercy",
+    "fn": "*jd-countdown100d-as-per-ztp-to-the-global-timeshortening-linecurrent-by-z-tnldy-clock3*",
+    "args": [],
+    "z": 20822.650837,
+    "ok": true
+   },
+   {
+    "ns": "countdowns-to-the-vision-and-the-wrath-mercy",
+    "fn": "*jd-countdown100d-as-per-ztp-to-the-last-earth-reaping-before-the-great-tribulationcurrent-by-z-tnldy-clock3*",
+    "args": [],
+    "z": 20822.650837,
+    "ok": true
+   },
+   {
+    "ns": "countdowns-to-the-vision-and-the-wrath-mercy",
+    "fn": "*jd-countdown100d-as-per-ztp-to-the-sealing-of-the-elect-of-the-twelve-tribes-of-israelcurrent-by-z-tnldy-clock3*",
+    "args": [],
+    "z": 20822.650837,
+    "ok": true
+   },
+   {
+    "ns": "countdowns-to-the-vision-and-the-wrath-mercy",
+    "fn": "*jd-countdown100d-as-per-ztp-to-the-travail-of-the-sun-and-moon-clothed-womancurrent-by-z-tnldy-clock3*",
+    "args": [],
+    "z": 20822.650837,
+    "ok": true
+   },
+   {
+    "ns": "countdowns-to-the-vision-and-the-wrath-mercy",
+    "fn": "*jd-countdown100d-as-per-ztp-to-the-visioncurrent-by-z-tnldy-clock3*",
+    "args": [],
+    "z": 20822.650837,
+    "ok": true
+   },
+   {
+    "ns": "countdowns-to-the-vision-and-the-wrath-mercy",
+    "fn": "*jd-countdown100d-as-per-ztp-to-the-wrathcurrent-by-z-tnldy-clock3*",
+    "args": [],
+    "z": 20822.650837,
+    "ok": true
+   },
+   {
+    "ns": "the-end-ie-purpose-of-all-things-is-at-hand",
+    "fn": "*jd-the-end-ie-purpose-of-all-things1-is-at-hand-ygcurrent-by-z-tnldy-clock3*",
+    "args": [],
+    "z": 20822.650837,
+    "ok": true
+   },
+   {
+    "ns": "seeking-and-finding-the-comfort-in-charity-faith-and-hope",
+    "fn": "*jd-seeking-finding-the-comfort-in-charity-faith-and-hope300dcurrent-by-z-tnldy-clock3*",
+    "args": [],
+    "z": 20822.650837,
+    "ok": true
+   },
+   {
+    "ns": "miscellaneous-streamlines",
+    "fn": "*jd-again-exclamated-the-great-school700ddiv6pt9current-by-z-tnldy-clock3*",
+    "args": [],
+    "z": 20822.650837,
+    "ok": true
+   },
+   {
+    "ns": "miscellaneous-streamlines",
+    "fn": "*jd-counting-in-weeks-unto-the-physical-revelation-of-my-wife-the-wife-the-chosen7dcurrent-by-z-tnldy-clock3*",
+    "args": [],
+    "z": 20822.650837,
+    "ok": true
+   },
+   {
+    "ns": "miscellaneous-streamlines",
+    "fn": "*jd-miracle-normal-life-sevenhunddiv6pt9current-by-z-tnldy-clock3*",
+    "args": [],
+    "z": 20822.650837,
+    "ok": true
+   },
+   {
+    "ns": "miscellaneous-streamlines",
+    "fn": "*jd-promotion-not-from-east-nor-from-west23ddiv82pt80current-by-z-tnldy-clock3*",
+    "args": [],
+    "z": 20822.650837,
+    "ok": true
+   },
+   {
+    "ns": "miscellaneous-streamlines",
+    "fn": "*jd-the-passion-of-the-gift-from-god100dcurrent-by-z-tnldy-clock3*",
+    "args": [],
+    "z": 20822.650837,
+    "ok": true
+   },
+   {
+    "ns": "miscellaneous-streamlines",
+    "fn": "*jd-walking-leaping-praising-god-all-the-way-to-armageddon100d-ztp18040-justified-in-the-midst-of-the-adversarial-gatheringscurrent-by-z-tnldy-clock3*",
+    "args": [],
+    "z": 20822.650837,
+    "ok": true
+   },
+   {
+    "ns": "miscellaneous-streamlines",
+    "fn": "*jd-walking-leaping-praising-god-all-the-way-to-armageddon100d-ztp18117pt-beginnings-of-the-gathering-of-the-mighty-and-holy-peoplecurrent-by-z-tnldy-clock3*",
+    "args": [],
+    "z": 20822.650837,
+    "ok": true
+   },
+   {
+    "ns": "miscellaneous-streamlines",
+    "fn": "*jd-walking-leaping-praising-god-all-the-way-to-armageddon100d-ztp18120current-by-z-tnldy-clock3*",
+    "args": [],
+    "z": 20822.650837,
+    "ok": true
+   },
+   {
+    "ns": "miscellaneous-streamlines",
+    "fn": "*jd-walking-leaping-praising-god-all-the-way-to-armageddon100d-ztp18148-glorious-end-as-in-purpose-of-the-light-of-seven-dayscurrent-by-z-tnldy-clock3*",
+    "args": [],
+    "z": 20822.650837,
+    "ok": true
+   },
+   {
+    "ns": "miscellaneous-streamlines",
+    "fn": "current-monthday-valuetothesecond-by-ygad",
+    "args": [
+     "24.5"
+    ],
+    "z": 20822.650837,
+    "ok": true
+   },
+   {
+    "ns": "miscellaneous-streamlines",
+    "fn": "current-yearday-valuetothesecond-by-ygad-uses-agent-z-tnldy-clock3",
+    "args": [
+     "24.5"
+    ],
+    "z": 20822.650837,
+    "ok": true
+   },
+   {
+    "ns": "shulam-military-time",
+    "fn": "*jd-shulam-military-time-deathmode1-igvd-ygcurrent-by-z-tnldy-clock3*",
+    "args": [],
+    "z": 20822.650837,
+    "ok": true
+   },
+   {
+    "ns": "shulam-military-time",
+    "fn": "*jd-shulam-military-time-deathmode1-igvd-yjcurrent-by-z-tnldy-clock3*",
+    "args": [],
+    "z": 20822.650837,
+    "ok": true
+   },
+   {
+    "ns": "shulam-military-time",
+    "fn": "*jd-shulam-military-time-deathmode1-igvd100current-by-z-tnldy-clock3*",
+    "args": [],
+    "z": 20822.650837,
+    "ok": true
+   },
+   {
+    "ns": "shulam-military-time",
+    "fn": "*jd-shulam-military-time-deathmode2-igvd-ygcurrent-by-z-tnldy-clock3*",
+    "args": [],
+    "z": 20822.650837,
+    "ok": true
+   },
+   {
+    "ns": "shulam-military-time",
+    "fn": "*jd-unto-the-overflow-of-the-shulammite-military-ygcurrent-by-z-tnldy-clock3*",
+    "args": [],
+    "z": 20822.650837,
+    "ok": true
+   },
+   {
+    "ns": "theeatrestwork-timesavingsgrant-the144000000redemptionconsideration",
+    "fn": "*jd-the-eat-rest-work-time-savings-grant100dcurrent-by-z-tnldy-clock3*",
+    "args": [],
+    "z": 20822.650837,
+    "ok": true
+   },
+   {
+    "ns": "theeatrestwork-timesavingsgrant-the144000000redemptionconsideration",
+    "fn": "*jd-the144000000-time-redemption-proper-metriccurrent-by-z-tnldy-clock3*",
+    "args": [],
+    "z": 20822.650837,
+    "ok": true
+   },
+   {
+    "ns": "thefleefactor-thefleeingflood",
+    "fn": "*jd-the-flee-factor-ygcurrent-by-z-tnldy-clock3*",
+    "args": [],
+    "z": 20822.650837,
+    "ok": true
+   },
+   {
+    "ns": "thefleefactor-thefleeingflood",
+    "fn": "*jd-the-flee-factor100dcurrent-by-z-tnldy-clock3*",
+    "args": [],
+    "z": 20822.650837,
+    "ok": true
+   },
+   {
+    "ns": "thegreatthingsofgodslaw-alittleherealittlethere",
+    "fn": "*jd-the-great-things-of-gods-law-a-little-here-a-little-there-proper-metriccurrent-by-z-tnldy-clock3*",
+    "args": [],
+    "z": 20822.650837,
+    "ok": true
+   },
+   {
+    "ns": "thegoodsamaritansystem-implementationofthezerotradesalvation",
+    "fn": "*jd-proper-of-fully-developed-subset-of-the-good-samaritan-system-implementation-of-the-zero-trade-salvationcurrent-by-z-tnldy-clock3*",
+    "args": [],
+    "z": 20822.650837,
+    "ok": true
+   },
+   {
+    "ns": "thegoodsamaritansystem-implementationofthezerotradesalvation",
+    "fn": "*jd-the-good-samaritan-system-implementation-of-the-zero-trade-salvation-global-propercurrent-by-z-tnldy-clock3*",
+    "args": [],
+    "z": 20822.650837,
+    "ok": true
+   },
+   {
+    "ns": "some-derivatives-of-thegreatthingsofgodslaw-alittleherealittlethere",
+    "fn": "*jd-the-great-things-of-gods-law-a-little-here-a-little-there-yg-streamline-at-xequals38pt325current-by-z-tnldy-clock3*",
+    "args": [],
+    "z": 20822.650837,
+    "ok": true
+   },
+   {
+    "ns": "some-derivatives-of-thegreatthingsofgodslaw-alittleherealittlethere",
+    "fn": "*jd-the-great-things-of-gods-law-a-little-here-a-little-there-yg-streamline-at-xequals38pt95878current-by-z-tnldy-clock3*",
+    "args": [],
+    "z": 20822.650837,
+    "ok": true
+   },
+   {
+    "ns": "some-derivatives-of-thegreatthingsofgodslaw-alittleherealittlethere",
+    "fn": "*jd-the-great-things-of-gods-law-a-little-here-a-little-there-yg-streamline-at-xequals44pt10current-by-z-tnldy-clock3*",
+    "args": [],
+    "z": 20822.650837,
+    "ok": true
+   },
+   {
+    "ns": "some-derivatives-of-thegreatthingsofgodslaw-alittleherealittlethere",
+    "fn": "*jd-the-great-things-of-gods-law-a-little-here-a-little-there-yj-streamline-at-xequals38pt325current-by-z-tnldy-clock3*",
+    "args": [],
+    "z": 20822.650837,
+    "ok": true
+   },
+   {
+    "ns": "some-derivatives-of-thegreatthingsofgodslaw-alittleherealittlethere",
+    "fn": "*jd-the-great-things-of-gods-law-a-little-here-a-little-there-yj-streamline-at-xequals38pt95878current-by-z-tnldy-clock3*",
+    "args": [],
+    "z": 20822.650837,
+    "ok": true
+   },
+   {
+    "ns": "some-derivatives-of-thegreatthingsofgodslaw-alittleherealittlethere",
+    "fn": "*jd-the-great-things-of-gods-law-a-little-here-a-little-there-yj-streamline-at-xequals44pt10current-by-z-tnldy-clock3*",
+    "args": [],
+    "z": 20822.650837,
+    "ok": true
+   },
+   {
+    "ns": "saved-and-locked-to-the-vision",
+    "fn": "*jd-biomass-substrate-reconstitution-preprogram700div6pt9current-by-z-tnldy-clock3*",
+    "args": [],
+    "z": 20822.650837,
+    "ok": true
+   },
+   {
+    "ns": "saved-and-locked-to-the-vision",
+    "fn": "*jd-saved-and-locked-to-the-vision-ygcurrent-by-z-tnldy-clock3*",
+    "args": [],
+    "z": 20822.650837,
+    "ok": true
+   },
+   {
+    "ns": "saved-and-locked-to-the-vision",
+    "fn": "*jd-saved1000dcurrent-by-z-tnldy-clock3*",
+    "args": [],
+    "z": 20822.650837,
+    "ok": true
+   },
+   {
+    "ns": "concerning-the-new-nation-at-nigeria",
+    "fn": "*jd-the-federal-republic-of-nigeria-shall-be-one-stick-in-the-hand-of-the-lord-ygcurrent-by-z-tnldy-clock3*",
+    "args": [],
+    "z": 20822.650837,
+    "ok": true
+   },
+   {
+    "ns": "execution-of-the-total-project-development-process",
+    "fn": "*jd-execution-of-the-total-project-development-process-yjcurrent-by-z-tnldy-clock3*",
+    "args": [],
+    "z": 20822.650837,
+    "ok": true
+   },
+   {
+    "ns": "the-abstract-of-projects-matricial-multiverse",
+    "fn": "*jd-fully-developed-subset-of-the-abstract-of-projects-at-ztps17640-proper-metriccurrent-by-z-tnldy-clock3*",
+    "args": [],
+    "z": 20822.650837,
+    "ok": true
+   },
+   {
+    "ns": "the-abstract-of-projects-matricial-multiverse",
+    "fn": "*jd-manifestation-of-the-mystery-the-zero-banker-seven-dcurrent-by-z-tnldy-clock3*",
+    "args": [],
+    "z": 20822.650837,
+    "ok": true
+   },
+   {
+    "ns": "judgements-of-which-we-have-not-heard",
+    "fn": "*jd-judgments-of-which-we-have-not-heard10000dcurrent-by-z-tnldy-clock3*",
+    "args": [],
+    "z": 20822.650837,
+    "ok": true
+   },
+   {
+    "ns": "judgements-of-which-we-have-not-heard",
+    "fn": "*jd-judgments-of-which-we-have-not-heard7000d-atyequalsminus18current-by-z-tnldy-clock3*",
+    "args": [],
+    "z": 20822.650837,
+    "ok": true
+   },
+   {
+    "ns": "judgements-of-which-we-have-not-heard",
+    "fn": "*jd-judgments-of-which-we-have-not-heard7000d-atyequalszerocurrent-by-z-tnldy-clock3*",
+    "args": [],
+    "z": 20822.650837,
+    "ok": true
+   },
+   {
+    "ns": "judgements-of-which-we-have-not-heard",
+    "fn": "*jd-the-lord-shall-judge-his-people700d-atyequalsminus18current-by-z-tnldy-clock3*",
+    "args": [],
+    "z": 20822.650837,
+    "ok": true
+   },
+   {
+    "ns": "judgements-of-which-we-have-not-heard",
+    "fn": "*jd-the-lord-shall-judge-his-people700d-atyequalszerocurrent-by-z-tnldy-clock3*",
+    "args": [],
+    "z": 20822.650837,
+    "ok": true
+   },
+   {
+    "ns": "untothejudgement-untotherest-thejoyofourlord",
+    "fn": "*jd-unto-the-judgement-unto-the-rest-the-joy-of-our-lordcurrent-by-z-tnldy-clock3*",
+    "args": [],
+    "z": 20822.650837,
+    "ok": true
+   },
+   {
+    "ns": "greatwhitethrone-untothejudgement-untotherest-thejoyofourlord",
+    "fn": "*jd-great-white-throne-unto-the-judgement-unto-the-rest-the-joy-of-our-lordcurrent-by-z-tnldy-clock3*",
+    "args": [],
+    "z": 20822.650837,
+    "ok": true
+   },
+   {
+    "ns": "dark-night-of-the-prophets-soul",
+    "fn": "*jd-dark-nignt-of-the-prophets-soul-yg-ztp12000current-by-z-tnldy-clock3*",
+    "args": [],
+    "z": 20822.650837,
+    "ok": true
+   },
+   {
+    "ns": "dark-night-of-the-prophets-soul",
+    "fn": "*jd-dark-nignt-of-the-prophets-soul-yj-ztp12000current-by-z-tnldy-clock3*",
+    "args": [],
+    "z": 20822.650837,
+    "ok": true
+   },
+   {
+    "ns": "dark-night-of-the-prophets-soul",
+    "fn": "*jd-dark-nignt-of-the-prophets-soul-yj-ztp12060current-by-z-tnldy-clock3*",
+    "args": [],
+    "z": 20822.650837,
+    "ok": true
+   },
+   {
+    "ns": "ten-days-unto-the-alternative-havens",
+    "fn": "*jd-ten-days-unto-the-alternative-havens10d-tahcurrent-by-z-tnldy-clock3*",
+    "args": [],
+    "z": 20822.650837,
+    "ok": true
+   },
+   {
+    "ns": "threeppnoah-beliefpropagation",
+    "fn": "*jd-neutral-organization-for-alternative-havens-alternative-haven-initiative-r12-y0current-by-z-tnldy-clock3*",
+    "args": [],
+    "z": 20822.650837,
+    "ok": true
+   },
+   {
+    "ns": "threeppnoah-beliefpropagation",
+    "fn": "*jd-neutral-organization-for-alternative-havens-alternative-haven-initiative-r82pt80-y0current-by-z-tnldy-clock3*",
+    "args": [],
+    "z": 20822.650837,
+    "ok": true
+   },
+   {
+    "ns": "threeppnoah-beliefpropagation",
+    "fn": "*jd-neutral-organization-for-alternative-havens-alternative-haven-initiative-r82pt80-y70current-by-z-tnldy-clock3*",
+    "args": [],
+    "z": 20822.650837,
+    "ok": true
+   },
+   {
+    "ns": "threeppnoah-beliefpropagation",
+    "fn": "*jd-neutral-organization-for-alternative-havens-alternative-haven-initiative-rminus21pt60-yminus21pt60current-by-z-tnldy-clock3*",
+    "args": [],
+    "z": 20822.650837,
+    "ok": true
+   },
+   {
+    "ns": "threeppnoah-beliefpropagation",
+    "fn": "*jd-threepp-noah-belief-propagation-propercurrent-by-z-tnldy-clock3*",
+    "args": [],
+    "z": 20822.650837,
+    "ok": true
+   },
+   {
+    "ns": "daysi-to-daysv-and-seventytimesseventyyearsdetermined-and-patriarchview",
+    "fn": "*jd-days-onecurrent-by-z-tnldy-clock3*",
+    "args": [],
+    "z": 20822.650837,
+    "ok": true
+   },
+   {
+    "ns": "daysi-to-daysv-and-seventytimesseventyyearsdetermined-and-patriarchview",
+    "fn": "*jd-fortynine-times-onehundred-years-determined-in-patriarchview100yjcurrent-by-z-tnldy-clock3*",
+    "args": [],
+    "z": 20822.650837,
+    "ok": true
+   },
+   {
+    "ns": "daysi-to-daysv-and-seventytimesseventyyearsdetermined-and-patriarchview",
+    "fn": "*jd-seventy-times-seventy-years-determined70ygcurrent-by-z-tnldy-clock3*",
+    "args": [],
+    "z": 20822.650837,
+    "ok": true
+   },
+   {
+    "ns": "daysi-to-daysv-and-seventytimesseventyyearsdetermined-and-patriarchview",
+    "fn": "*jd-seventy-times-seventy-years-determined70yjcurrent-by-z-tnldy-clock3*",
+    "args": [],
+    "z": 20822.650837,
+    "ok": true
+   },
+   {
+    "ns": "the-birth-of-the-fig-tree",
+    "fn": "*jd-birth-of-the-fig-tree-ca-minustwoonesixzero-yjcurrent-by-z-tnldy-clock3*",
+    "args": [],
+    "z": 20822.650837,
+    "ok": true
+   },
+   {
+    "ns": "the-birth-of-the-fig-tree",
+    "fn": "*jd-birth-of-the-fig-tree-ca-oneoneonesixzero-yjcurrent-by-z-tnldy-clock3*",
+    "args": [],
+    "z": 20822.650837,
+    "ok": true
+   },
+   {
+    "ns": "the-birth-of-the-fig-tree",
+    "fn": "*jd-birth-of-the-fig-tree-eighttwoeightzero-yjcurrent-by-z-tnldy-clock3*",
+    "args": [],
+    "z": 20822.650837,
+    "ok": true
+   },
+   {
+    "ns": "the-birth-of-the-fig-tree",
+    "fn": "*jd-birth-of-the-fig-tree-eighttwosixfive-yjcurrent-by-z-tnldy-clock3*",
+    "args": [],
+    "z": 20822.650837,
+    "ok": true
+   },
+   {
+    "ns": "the-birth-of-the-fig-tree",
+    "fn": "*jd-birth-of-the-fig-tree-minuseighteightnine-yjcurrent-by-z-tnldy-clock3*",
+    "args": [],
+    "z": 20822.650837,
+    "ok": true
+   },
+   {
+    "ns": "the-birth-of-the-fig-tree",
+    "fn": "*jd-birth-of-the-fig-tree-minusoneonetwozero-yjcurrent-by-z-tnldy-clock3*",
+    "args": [],
+    "z": 20822.650837,
+    "ok": true
+   },
+   {
+    "ns": "the-birth-of-the-fig-tree",
+    "fn": "*jd-birth-of-the-fig-tree-minusonesixzerozero-yjcurrent-by-z-tnldy-clock3*",
+    "args": [],
+    "z": 20822.650837,
+    "ok": true
+   },
+   {
+    "ns": "the-birth-of-the-fig-tree",
+    "fn": "*jd-birth-of-the-fig-tree-minusonezerothreenine-yjcurrent-by-z-tnldy-clock3*",
+    "args": [],
+    "z": 20822.650837,
+    "ok": true
+   },
+   {
+    "ns": "the-birth-of-the-fig-tree",
+    "fn": "*jd-birth-of-the-fig-tree-minustwoonesixzero-yjcurrent-by-z-tnldy-clock3*",
+    "args": [],
+    "z": 20822.650837,
+    "ok": true
+   },
+   {
+    "ns": "the-birth-of-the-fig-tree",
+    "fn": "*jd-birth-of-the-fig-tree-oneoneonesixzero-yjcurrent-by-z-tnldy-clock3*",
+    "args": [],
+    "z": 20822.650837,
+    "ok": true
+   },
+   {
+    "ns": "from-thisnigeria-unto-thenewnigeria",
+    "fn": "*jd-battle-for-the-new-nigeria-at-extremis100dcurrent-by-z-tnldy-clock3*",
+    "args": [],
+    "z": 20822.650837,
+    "ok": true
+   },
+   {
+    "ns": "from-thisnigeria-unto-thenewnigeria",
+    "fn": "*jd-reeducation-of-this-nigeria-the-university-of-hard-knocks-ygcurrent-by-z-tnldy-clock3*",
+    "args": [],
+    "z": 20822.650837,
+    "ok": true
+   },
+   {
+    "ns": "from-thisnigeria-unto-thenewnigeria",
+    "fn": "*jd-reeducation-of-this-nigeria-the-university-of-hard-knocks-yjcurrent-by-z-tnldy-clock3*",
+    "args": [],
+    "z": 20822.650837,
+    "ok": true
+   },
+   {
+    "ns": "from-thisnigeria-unto-thenewnigeria",
+    "fn": "*jd-reeducation-of-this-nigeria-the-university-of-hard-knocks100dcurrent-by-z-tnldy-clock3*",
+    "args": [],
+    "z": 20822.650837,
+    "ok": true
+   },
+   {
+    "ns": "awindofdoctrine-anengagingproposal-anintriguingprospect",
+    "fn": "*jd-a-wind-of-doctrine-an-engaging-proposal-an-intriguing-prospect100dcurrent-by-z-tnldy-clock3*",
+    "args": [],
+    "z": 20822.650837,
+    "ok": true
+   },
+   {
+    "ns": "some-winds-of-doctrine",
+    "fn": "*jd-unto-the-graduation-from-acolyte-to-sonoflight-unto-creator-amen-ygcurrent-by-z-tnldy-clock3*",
+    "args": [],
+    "z": 20822.650837,
+    "ok": true
+   },
+   {
+    "ns": "some-winds-of-doctrine",
+    "fn": "*jd-unto-the-graduation-from-acolyte-to-sonoflight-unto-creator-amen-yjcurrent-by-z-tnldy-clock3*",
+    "args": [],
+    "z": 20822.650837,
+    "ok": true
+   },
+   {
+    "ns": "some-winds-of-doctrine",
+    "fn": "*jd-unto-the-graduation-from-acolyte-to-sonoflight-unto-creator-amen100dcurrent-by-z-tnldy-clock3*",
+    "args": [],
+    "z": 20822.650837,
+    "ok": true
+   },
+   {
+    "ns": "house-of-white-gold",
+    "fn": "*jd-house-of-white-gold-ygcurrent-by-z-tnldy-clock3*",
+    "args": [],
+    "z": 20822.650837,
+    "ok": true
+   },
+   {
+    "ns": "house-of-white-gold",
+    "fn": "*jd-house-of-white-gold-yjcurrent-by-z-tnldy-clock3*",
+    "args": [],
+    "z": 20822.650837,
+    "ok": true
+   },
+   {
+    "ns": "house-of-white-gold",
+    "fn": "*jd-house-of-white-gold100dcurrent-by-z-tnldy-clock3*",
+    "args": [],
+    "z": 20822.650837,
+    "ok": true
+   },
+   {
+    "ns": "the-revelation-of-the-trial-expanded",
+    "fn": "*jd-miracle2-eigen-metriccurrent-by-z-tnldy-clock3*",
+    "args": [],
+    "z": 20822.650837,
+    "ok": true
+   },
+   {
+    "ns": "some-derivatives-of-the-revelation-of-the-trial-expanded",
+    "fn": "*jd-aimee-mungovan-recuperation-airborne-heartbreak-virus-vaccine-conception-nne-berna-rip-my-own-nucleus-rebels-access-girl-n14k-test-chidera-etal-desolate-chi-raptures-over-gsm-it-is-done-the-trial-expanded-streamline-at-y-equals37pt928current-by-z-tnldy-clock3*",
+    "args": [],
+    "z": 20822.650837,
+    "ok": true
+   },
+   {
+    "ns": "some-derivatives-of-the-revelation-of-the-trial-expanded",
+    "fn": "*jd-depositcheck-defense-of-the-algorithm-universe50ddiv18-linearized-from-m147pt60-to-p241pt20-full-development-of-birth50ddiv18current-by-z-tnldy-clock3*",
+    "args": [],
+    "z": 20822.650837,
+    "ok": true
+   },
+   {
+    "ns": "some-derivatives-of-the-revelation-of-the-trial-expanded",
+    "fn": "*jd-depositcheck-execution-span-the-trial-fully-developed-rise-streamline-ie-at-y-equals26pt93current-by-z-tnldy-clock3*",
+    "args": [],
+    "z": 20822.650837,
+    "ok": true
+   },
+   {
+    "ns": "some-derivatives-of-the-revelation-of-the-trial-expanded",
+    "fn": "*jd-depositcheck-outflow-of-the-algorithm-of-the-proposal-universe50ddiv18-linearized-from-m147pt60-to-p241pt20-full-development-of-birth50ddiv18current-by-z-tnldy-clock3*",
+    "args": [],
+    "z": 20822.650837,
+    "ok": true
+   },
+   {
+    "ns": "some-derivatives-of-the-revelation-of-the-trial-expanded",
+    "fn": "*jd-the-account-of-the-alien-corridor-proposal-the-trial-streamline-at-y-equals-m10pt39current-by-z-tnldy-clock3*",
+    "args": [],
+    "z": 20822.650837,
+    "ok": true
+   },
+   {
+    "ns": "some-derivatives-of-the-revelation-of-the-trial-expanded",
+    "fn": "*jd-the-rise-from-so-great-a-death-the-trial-equipotential-line-against-all-w-equal48pt00current-by-z-tnldy-clock3*",
+    "args": [],
+    "z": 20822.650837,
+    "ok": true
+   },
+   {
+    "ns": "some-derivatives-of-the-revelation-of-the-trial-expanded",
+    "fn": "*jd-trump-putin-the-seventh-kingdom-and-the-transition-the-trial-equipotential-line-against-all-w-equal43pt20current-by-z-tnldy-clock3*",
+    "args": [],
+    "z": 20822.650837,
+    "ok": true
+   },
+   {
+    "ns": "making-wedding",
+    "fn": "*jd-making-wedding-gentile-using-also-passion-and-desire-proper-metriccurrent-by-z-tnldy-clock3*",
+    "args": [],
+    "z": 20822.650837,
+    "ok": true
+   },
+   {
+    "ns": "making-wedding",
+    "fn": "*jd-making-wedding-jew-using-also-passion-and-desire-proper-metriccurrent-by-z-tnldy-clock3*",
+    "args": [],
+    "z": 20822.650837,
+    "ok": true
+   },
+   {
+    "ns": "some-derivatives-of-making-wedding",
+    "fn": "*jd-marriage-wedding-miracle-making-wedding-gentile-streamline-at-y-equals0pt00current-by-z-tnldy-clock3*",
+    "args": [],
+    "z": 20822.650837,
+    "ok": true
+   },
+   {
+    "ns": "some-derivatives-of-making-wedding",
+    "fn": "*jd-the-first-judgment-embodiment-of-the-saving-grace-cfh-making-wedding-jew-streamline-at-y-equals2pt01current-by-z-tnldy-clock3*",
+    "args": [],
+    "z": 20822.650837,
+    "ok": true
+   },
+   {
+    "ns": "the-marriage-supper-of-the-lamb",
+    "fn": "*jd-the-marriage-supper-the-approach-unto-the-rest-that-remains-proper-metriccurrent-by-z-tnldy-clock3*",
+    "args": [],
+    "z": 20822.650837,
+    "ok": true
+   },
+   {
+    "ns": "some-derivatives-of-the-marriage-supper-of-the-lamb",
+    "fn": "*jd-ginika-umeano-the-depositcheck0-witness-questionmark-the-marriage-supper-streamline-at-y-equals9pt99current-by-z-tnldy-clock3*",
+    "args": [],
+    "z": 20822.650837,
+    "ok": true
+   },
+   {
+    "ns": "some-derivatives-of-the-marriage-supper-of-the-lamb",
+    "fn": "*jd-official-development-of-the-relationship-between-the-girl-of-new-york-and-i-questionmark-the-marriage-supper-streamline-at-y-equals21pt60current-by-z-tnldy-clock3*",
+    "args": [],
+    "z": 20822.650837,
+    "ok": true
+   },
+   {
+    "ns": "some-derivatives-of-the-marriage-supper-of-the-lamb",
+    "fn": "*jd-the-marriage-supper-fully-developed-line-of-equipotential-ie-against-all-w-equal82pt80current-by-z-tnldy-clock3*",
+    "args": [],
+    "z": 20822.650837,
+    "ok": true
+   },
+   {
+    "ns": "the-blessed-glorious-hope",
+    "fn": "*jd-the-blessed-and-glorious-hope-appearing-even-through-the-great-tribulation-unto-armageddon-and-beyond-amen-note-using-ztp16800current-by-z-tnldy-clock3*",
+    "args": [],
+    "z": 20822.650837,
+    "ok": true
+   },
+   {
+    "ns": "the-blessed-glorious-hope",
+    "fn": "*jd-the-blessed-and-glorious-hope-appearing-even-through-the-great-tribulation-unto-armageddon-and-beyond-amen-note-using-ztp16848current-by-z-tnldy-clock3*",
+    "args": [],
+    "z": 20822.650837,
+    "ok": true
+   },
+   {
+    "ns": "the-blessed-glorious-hope",
+    "fn": "*jd-the-blessed-and-glorious-hope-appearing-even-through-the-great-tribulation-unto-armageddon-and-beyond-amen-note-using-ztp16853current-by-z-tnldy-clock3*",
+    "args": [],
+    "z": 20822.650837,
+    "ok": true
+   },
+   {
+    "ns": "the-blessed-glorious-hope",
+    "fn": "*jd-the-blessed-hope-and-the-glorious-appearing-propercurrent-by-z-tnldy-clock3*",
+    "args": [],
+    "z": 20822.650837,
+    "ok": true
+   },
+   {
+    "ns": "the-advent-of-the-daughter",
+    "fn": "*jd-mystery-of-the-great-spouse-the-global-proper-of-tnl3d-universe-emanating-at-tnldy0current-by-z-tnldy-clock3*",
+    "args": [],
+    "z": 20822.650837,
+    "ok": true
+   },
+   {
+    "ns": "the-advent-of-the-daughter",
+    "fn": "*jd-the-advent-of-the-daughter-proper-of-the-fullydeveloped-subset-of-tnl3d-universe-emanating-at-tnldy0current-by-z-tnldy-clock3*",
+    "args": [],
+    "z": 20822.650837,
+    "ok": true
+   },
+   {
+    "ns": "some-derivatives-of-the-revelation-of-the-seven-day-theory",
+    "fn": "*jd-deposit-check-execution-span-the-seven-day-theory-fully-developed-rise-streamline-ie-at-y-equals48pt00current-by-z-tnldy-clock3*",
+    "args": [],
+    "z": 20822.650837,
+    "ok": true
+   },
+   {
+    "ns": "some-derivatives-of-the-revelation-of-the-seven-day-theory",
+    "fn": "*jd-the-rise-from-so-great-a-death-the-seven-day-theory-equipotential-line-against-all-w-equal48pt00current-by-z-tnldy-clock3*",
+    "args": [],
+    "z": 20822.650837,
+    "ok": true
+   },
+   {
+    "ns": "your-savings-are-good-you-have-the-right-idea",
+    "fn": "*jd-your-savings-are-good-you-have-the-right-idea-ygcurrent-by-z-tnldy-clock3*",
+    "args": [],
+    "z": 20822.650837,
+    "ok": true
+   }
+  ]
+ }
+}
