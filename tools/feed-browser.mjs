@@ -5,7 +5,9 @@
  * GDELT's day sources. Each case opens feed.html as a FEED button would and checks what the window shows;
  * the last opens the Alien Corridor itself, loads a module and opens a feed from its buttons.
  *
- *   node tools/feed-browser.mjs [--shots DIR]
+ *   node tools/feed-browser.mjs [--shots DIR] [--base URL]
+ *
+ * --base runs the same cases against a published copy, e.g. https://nth-member.github.io/alien-corridor/
  */
 import { spawn } from "node:child_process";
 import http from "node:http";
@@ -14,8 +16,8 @@ import path from "node:path";
 import { fileURLToPath } from "node:url";
 
 const DOCS = path.join(path.dirname(fileURLToPath(import.meta.url)), "..", "docs");
-const SHOTS = process.argv.includes("--shots") ? process.argv[process.argv.indexOf("--shots") + 1] : null;
-const WEB = 8766, WD = 4457, BASE = `http://127.0.0.1:${WEB}/`;
+const arg = k => (process.argv.includes(k) ? process.argv[process.argv.indexOf(k) + 1] : null);
+const SHOTS = arg("--shots"), WEB = 8766, WD = 4457, BASE = arg("--base") || `http://127.0.0.1:${WEB}/`;
 let failures = 0;
 const check = (name, ok, detail = "") => { console.log(`  ${ok ? "ok  " : "FAIL"}  ${name}${detail ? `  — ${detail}` : ""}`); if (!ok) failures++; };
 const sleep = ms => new Promise(r => setTimeout(r, ms));
