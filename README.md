@@ -115,8 +115,22 @@ headless Firefox against the live feeds:
 - calls that name no TNLDY, and calls that read the clock;
 - the main page's FEED buttons.
 
-A link's expression arguments (anything but plain numbers) run only when RUN is pressed, and a name that is
-not one of the module's vars is refused.
+**Arguments.** Each argument box is named by the parameter the source gives it: `Z`, `Y`, `coll` and so on,
+read from the function's `def`. A function's FEED unlocks once every box is filled. Where the module's own
+source calls the function at top level, a second button, **⧉ FEED · AUTHOR'S CALL**, feeds that call. This
+applies to `mdqnm-execution-of-selected-sfos` in both editions' `jomosuperprocess1` and to
+`mdqnm-execution-of-selected-sfos2` in the primary edition's `jomosuperprocess2`. The window reads the
+argument from its own copy of the source, offering both the direct call and the one the load prints (by
+default). The argument is a vector naming the agents to show: 498 in the primary edition's
+jomosuperprocess1 (about 1,280 lines), 254 in its jomosuperprocess2 and 187 in the bank edition's
+jomosuperprocess1. A load of jomosuperprocess1 re-seals every agent of the engine (757 in the primary) in
+one instant and prints this snapshot. The window does the same at each reading: every agent is sealed at one clock reading
+before the call, at the present every second or at any TNLDY the clock is set to. A string value is shown
+as `println` prints it.
+
+Expressions typed in the Alien Corridor run as soon as its FEED opens the window: the page records what it
+asked for, and the window checks it. A link's expression arguments (anything but plain numbers) run only
+when RUN is pressed, and a name that is not one of the module's vars is refused.
 
 ## Not included
 

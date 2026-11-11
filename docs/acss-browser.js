@@ -60,6 +60,23 @@
     for (const m of s.matchAll(REQ)) if (NSSET.has(m[1])) await closure(m[1], seen);
   }
   const clean = r => { if (r && r.error) r.error = r.error.replace(/^Error: /, ""); return r; };
+  // Each function's parameters, as its source names them -- (def NAME (fn [..] ..)) or (defn NAME [..] ..) --
+  // so the GUI can say which argument each box expects (the last definition of a name wins, as on a load);
+  // and the lines of the author's own top-level calls of it, (NAME ...) or (println (NAME ...)).
+  const INFO = {};
+  function info(ns) {
+    if (!INFO[ns]) {
+      const params = {}, calls = {};
+      for (const f of window.ACSS.forms(SRC[ns] || "")) {
+        const d = f.text.match(/^\((?:def|defn)\s+(\S+)\s+(?:\(fn\s*)?\[([^\]]*)\]/);
+        if (d) { params[d[1]] = d[2].trim().split(/\s+/).filter(Boolean); continue; }
+        const c = f.text.match(/^\((?:(?:println|print|prn|pr)\s+\()?\s*([^\s()\[\]{}"]+)[\s)]/);
+        if (c) (calls[c[1]] = calls[c[1]] || []).push(f.line);
+      }
+      INFO[ns] = { params, calls };
+    }
+    return INFO[ns];
+  }
 
   const API = {
     async meta() {
@@ -78,10 +95,14 @@
     async vars(q) {
       const ns = q.get("ns");
       if (!loaded[ns]) return { error: ns + " is not loaded yet" };
-      const ar = ARITIES[ns] || {};
+      const ar = ARITIES[ns] || {}, inf = info(ns);
       return { ns, vars: E.vars(ns).map(([name, kind, pv]) => {
         const v = { name, kind };
-        if (kind === "fn") v.arities = ar[name] || [];
+        if (kind === "fn") {
+          v.arities = ar[name] || [];
+          if (inf.params[name]) v.params = inf.params[name];
+          if (inf.calls[name]) v.calls = inf.calls[name];
+        }
         else v.preview = trunc(pv, 300);
         return v; }) };
     },

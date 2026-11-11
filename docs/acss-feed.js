@@ -85,6 +85,19 @@
     return null;
   }
 
+  /* The author's own top-level calls of a function in its module's source, (NAME args ...) and
+     (println (NAME args ...)), each as { line, printed, args: [the argument texts] }. */
+  function callsOf(src, name) {
+    const re = new RegExp("^\\((?:(println|print|prn|pr)\\s+\\()?\\s*" + reEsc(name) + "[\\s)]"), out = [];
+    for (const f of root.ACSS.forms(src)) {
+      const m = f.text.match(re);
+      if (!m) continue;
+      const inner = f.text.slice(f.text.indexOf(name) + name.length).replace(m[1] ? /\)\s*\)\s*$/ : /\)\s*$/, "");
+      out.push({ line: f.line, printed: !!m[1], args: root.ACSS.forms(inner).map(x => x.text) });
+    }
+    return out;
+  }
+
   /* Which TNLDY a function names, by its name and parameters alone: "argument", "value", "clock" or null
      (decided by the call: the clock if its value moves with it, else the first date it writes). */
   function tnldyRule(name, params) {
@@ -175,7 +188,7 @@
   /* Where a window [a, b] (epoch ms) stands against the present. */
   function regime(a, b, now) { return a > now ? "future" : b < now ? "past" : "present"; }
 
-  const api = { RealDate, DAY, zNow, zText, instants, readings, atClock, agentForms, sealForms, paramsOf, tnldyRule,
+  const api = { RealDate, DAY, zNow, zText, instants, readings, atClock, agentForms, sealForms, paramsOf, callsOf, tnldyRule,
                 firstNumber, sameValue, Session, regime, noteDate() {} };
   root.ACSSFeed = api;
   if (typeof module === "object" && module && module.exports) module.exports = api;

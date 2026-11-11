@@ -464,10 +464,16 @@ async function refreshVars(ns){
     html += '</div>';
     if (v.kind === "fn") {
       const n = (v.arities && v.arities.length) ? v.arities[0] : 0;
+      // each box named by the parameter the source gives it (Z, Y, coll, ...)
+      const pn = (v.params && v.params.length === n) ? v.params : null;
+      const need = 'supply ' + (pn ? pn.join(", ") : (n === 1 ? "its argument" : "its arguments")) + ' first';
       html += '<div class="argrow" id="args'+i+'">';
-      for (let a=0; a<n; a++) html += '<input placeholder="arg'+(a+1)+' (clojure expr)" data-arg>';
+      for (let a=0; a<n; a++) html += '<input placeholder="'+esc(pn ? pn[a] : 'arg'+(a+1))+' (clojure expr)" data-arg>';
       html += '<button class="mini" data-run="'+i+'">▶ RUN</button>' +
-              '<button class="mini" data-feed="'+i+'"'+(n ? ' disabled title="supply the arguments first"' : '')+'>⧉ FEED</button></div>';
+              '<button class="mini" data-feed="'+i+'" data-need="'+esc(need)+'"'+(n ? ' disabled title="'+esc(need)+'"' : '')+'>⧉ FEED</button>' +
+              // the module's source calls it itself: feed the author's own call (its arguments are read there, from the source)
+              (v.calls ? '<button class="mini" data-authorfeed="'+i+'" title="the call the module itself makes, line '+v.calls.join(" and ")+'">⧉ FEED · AUTHOR\'S CALL</button>' : '') +
+              '</div>';
     } else if (v.kind === "agent" || v.kind === "atom" || v.kind === "ref") {
       html += '<div class="argrow"><button class="mini" data-deref="'+i+'">◉ DEREF</button>' +
               (v.kind === "agent" ? '<button class="mini" data-feed="'+i+'">⧉ FEED</button>' : '') + '</div>';
@@ -481,23 +487,27 @@ async function refreshVars(ns){
   document.querySelectorAll("[data-run]").forEach(b => b.onclick = () => invokeVar(ns, r.vars[+b.dataset.run], +b.dataset.run));
   document.querySelectorAll("[data-deref]").forEach(b => b.onclick = () => derefVar(ns, r.vars[+b.dataset.deref], +b.dataset.deref));
   document.querySelectorAll("[data-feed]").forEach(b => b.onclick = () => openFeed(ns, r.vars[+b.dataset.feed].name, r.vars[+b.dataset.feed].kind, +b.dataset.feed));
+  document.querySelectorAll("[data-authorfeed]").forEach(b => b.onclick = () => openFeed(ns, r.vars[+b.dataset.authorfeed].name, "fn", +b.dataset.authorfeed, "author"));
   // a function's FEED waits for its arguments
   document.querySelectorAll(".argrow[id^=args]").forEach(row => row.addEventListener("input", () => {
     const fb = row.querySelector("[data-feed]");
-    if (fb) { fb.disabled = !Array.prototype.every.call(row.querySelectorAll("[data-arg]"), x => x.value.trim()); fb.title = fb.disabled ? "supply the arguments first" : ""; }
+    if (fb) { fb.disabled = !Array.prototype.every.call(row.querySelectorAll("[data-arg]"), x => x.value.trim()); fb.title = fb.disabled ? fb.dataset.need : ""; }
   }));
 }
 
 /* FEED: a window of its own (feed.html) that reads the agent, or the function with the arguments supplied,
    at the TNLDY it names -- past, present or future -- with the knowledge-server feeds at that TNLDY. */
-function openFeed(ns, name, kind, i){
-  const args = i == null ? [] : Array.prototype.map.call(document.querySelectorAll("#args"+i+" [data-arg]"), x => x.value.trim());
+function openFeed(ns, name, kind, i, call){
+  const args = i == null || call ? [] : Array.prototype.map.call(document.querySelectorAll("#args"+i+" [data-arg]"), x => x.value.trim());
   const q = new URLSearchParams({ tree: (state.meta && state.meta.tree) || "primary", ns, name, kind: kind === "agent" ? "agent" : "fn" });
   if (args.length) q.set("args", JSON.stringify(args));
-  const key = ns + "/" + name + "/" + args.join("\u0001");
+  if (call) q.set("call", call);
+  const key = ns + "/" + name + "/" + (call || args.join("\u0001"));
   let h = 0; for (let k = 0; k < key.length; k++) h = (h * 31 + key.charCodeAt(k)) | 0;
-  const url = "feed.html?" + q.toString();
-  const w = window.open(url, "acss-feed-" + (h >>> 0).toString(36), "popup,width=900,height=940");
+  const url = "feed.html?" + q.toString(), winName = "acss-feed-" + (h >>> 0).toString(36);
+  // what this page asked the window to read: the window runs typed expressions only when they came from here
+  (window.acssFeedRequests = window.acssFeedRequests || {})[winName] = q.toString();
+  const w = window.open(url, winName, "popup,width=900,height=940");
   if (!w && i != null) {
     const el = $("#res"+i);
     el.classList.add("show");

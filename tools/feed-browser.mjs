@@ -159,6 +159,8 @@ try {
     return { before, after: fn.querySelector("[data-feed]").disabled, agents: !!agent, n: document.querySelectorAll("[data-feed]").length };`);
   check("the Alien Corridor: FEED on agents and functions", b.agents && b.n > 5, `${b.n} FEED buttons`);
   check("a function's FEED waits for its arguments", b.before === true && b.after === false);
+  const ph = await exec(`return [...new Set([...document.querySelectorAll("[data-arg]")].map(x => x.placeholder))];`);
+  check("each argument box names the parameter the source gives it", ph.includes("Z (clojure expr)") && ph.includes("Y (clojure expr)"), ph.join(" · "));
   const handles0 = await call("GET", `${S}/window/handles`);
   await exec(`[...document.querySelectorAll(".varcard")].find(c => c.querySelector("[data-deref]") && c.querySelector("[data-feed]")).querySelector("[data-feed]").click();`);
   await sleep(1500);
@@ -171,6 +173,49 @@ try {
     st = await exec(STATE);
     check("... reading that agent at the present, with its feed", st.badge === "PRESENT" && st.items > 0, `${st.what.split("\n")[1].slice(0, 70)} · ${st.items} items`);
     await shot("6-opened-from-the-corridor");
+    await call("POST", `${S}/window`, { handle: handles0[0] });
+  }
+
+  // 11. mdqnm-execution-of-selected-sfos [coll]: a collection, here of agents, read as one snapshot at the clock
+  const JSP1 = "org.threeppnoah.mdqnm.jomosuperprocess1.mdqnm-timemachines-and-clocks";
+  await exec(`document.querySelector('.nsitem[data-ns="${JSP1}"]').click();`);
+  await until(`return document.querySelector("#loadBtn");`);
+  await exec(`document.querySelector("#loadBtn").click();`);
+  await until(`return /public vars exposed/.test((document.querySelector("#modStatus")||{}).innerText || "");`, 120000);
+  const c = await exec(`const inp = document.querySelector("[data-arg]"), fb = document.querySelector("[data-feed]");
+    const r = { ph: inp.placeholder, title: fb.title, locked: fb.disabled };
+    inp.value = "[{:z-tnldy-clock3 z-tnldy-clock3} {:crf *cognitive-radio-frequency-tuner-for-the-exec-tpdp-hertz-pulsar-signal*}]";
+    inp.dispatchEvent(new Event("input", { bubbles: true })); r.unlocked = !fb.disabled; return r;`);
+  check("selected-sfos: its box asks for coll, and FEED says so", c.ph === "coll (clojure expr)" && c.title === "supply coll first" && c.locked && c.unlocked, `${c.ph} · "${c.title}"`);
+  const h0 = await call("GET", `${S}/window/handles`);
+  await exec(`document.querySelector("[data-feed]").click();`);
+  await sleep(1500);
+  const h1 = await call("GET", `${S}/window/handles`), win = h1.find(h => !h0.includes(h));
+  if (win) {
+    await call("POST", `${S}/window`, { handle: win });
+    await until(`return /#object\\[clojure\\.lang\\.Agent/.test((document.querySelector("#call")||{}).innerText || "") && document.querySelector("#tz .badge");`, 120000);
+    st = await exec(STATE);
+    check("... the expression typed in the Alien Corridor runs at once: a snapshot of the agents, tied to the engine's clock",
+      /engine's clock, which this call reads/.test(st.tz) && st.badge === "PRESENT" && /read at the clock every/.test(st.call), st.call.split("\n").pop().slice(0, 110));
+    await shot("7-selected-sfos");
+    await call("DELETE", `${S}/window`);
+    await call("POST", `${S}/window`, { handle: h0[0] });
+  } else check("... its feed window opened", false);
+  // ... and the call the module makes itself, at load: FEED · AUTHOR'S CALL
+  const h2 = await call("GET", `${S}/window/handles`);
+  const has = await exec(`const b = document.querySelector("[data-authorfeed]"); if (b) b.click(); return !!b;`);
+  await sleep(1500);
+  const win2 = (await call("GET", `${S}/window/handles`)).find(h => !h2.includes(h));
+  check("selected-sfos: FEED · AUTHOR'S CALL is offered", has && !!win2);
+  if (win2) {
+    await call("POST", `${S}/window`, { handle: win2 });
+    await until(`return ((document.querySelector("#call")||{}).innerText || "").split("clojure.lang.Agent").length > 400;`, 120000);
+    st = await exec(STATE);
+    const n = st.call.split("clojure.lang.Agent").length - 1;
+    check("... the author's printed call (line 1563): every agent it names, sealed in one instant, read in real time",
+      n > 400 && /line 1563 · printed at load/.test(st.call) && /all 757 agents/.test(st.call) && /read at the clock every/.test(st.call) && st.badge === "PRESENT",
+      `${n} agents in the snapshot · ${st.call.split("\n").pop().slice(0, 80)}`);
+    await shot("8-author-call");
   }
 } catch (e) {
   check("the run completed", false, e.message);
